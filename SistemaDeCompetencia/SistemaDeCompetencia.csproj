@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD58EF89-B827-4B45-B83B-43C8EA2056B7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SistemaDeCompetencia</RootNamespace>
+    <AssemblyName>SistemaDeCompetencia</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controladores\GestorUsuario.cs" />
+    <Compile Include="Dto\DtoDireccion.cs" />
+    <Compile Include="Dto\DtoLocalidad.cs" />
+    <Compile Include="Dto\DtoLogin.cs" />
+    <Compile Include="Dto\DtoPais.cs" />
+    <Compile Include="Dto\DtoProvincia.cs" />
+    <Compile Include="Dto\DtoTipoDocumento.cs" />
+    <Compile Include="Dto\DtoUsuario.cs" />
+    <Compile Include="Migrations\202010062354017_actualizacion.cs" />
+    <Compile Include="Migrations\202010062354017_actualizacion.designer.cs">
+      <DependentUpon>202010062354017_actualizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010080128461_actualizacion1.cs" />
+    <Compile Include="Migrations\202010080128461_actualizacion1.designer.cs">
+      <DependentUpon>202010080128461_actualizacion1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010100220400_actualizacion2.cs" />
+    <Compile Include="Migrations\202010100220400_actualizacion2.designer.cs">
+      <DependentUpon>202010100220400_actualizacion2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010100235135_actualizacion3.cs" />
+    <Compile Include="Migrations\202010100235135_actualizacion3.designer.cs">
+      <DependentUpon>202010100235135_actualizacion3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010100247598_actualizacion4.cs" />
+    <Compile Include="Migrations\202010100247598_actualizacion4.designer.cs">
+      <DependentUpon>202010100247598_actualizacion4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010100255350_actualizacion5.cs" />
+    <Compile Include="Migrations\202010100255350_actualizacion5.designer.cs">
+      <DependentUpon>202010100255350_actualizacion5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010100302307_actualizacion6.cs" />
+    <Compile Include="Migrations\202010100302307_actualizacion6.designer.cs">
+      <DependentUpon>202010100302307_actualizacion6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Dto\DtoAuditoria.cs" />
+    <Compile Include="Dto\DtoCompetencia.cs" />
+    <Compile Include="Dto\DtoDatosResultado.cs" />
+    <Compile Include="Dto\DtoDeporte.cs" />
+    <Compile Include="Dto\DtoDeporteLugar.cs" />
+    <Compile Include="Dto\DtoDisponibilidad.cs" />
+    <Compile Include="Dto\DtoEnfrentamiento.cs" />
+    <Compile Include="Dto\DtoEstado.cs" />
+    <Compile Include="Dto\DtoFecha.cs" />
+    <Compile Include="Dto\DtoFixture.cs" />
+    <Compile Include="Dto\DtoFormaDePuntuacion.cs" />
+    <Compile Include="Dto\DtoLugarDeRealizacion.cs" />
+    <Compile Include="Dto\DtoModalidad.cs" />
+    <Compile Include="Dto\DtoParticipante.cs" />
+    <Compile Include="Dto\DtoPuntuacion.cs" />
+    <Compile Include="Dto\DtoResultado.cs" />
+    <Compile Include="Dto\DtoResultadoFinal.cs" />
+    <Compile Include="Dto\DtoScore.cs" />
+    <Compile Include="Dto\DtoSet.cs" />
+    <Compile Include="Modelo\Auditoria.cs" />
+    <Compile Include="Modelo\Competencia.cs" />
+    <Compile Include="Modelo\CompetenciaContext.cs" />
+    <Compile Include="Modelo\DatosResultado.cs" />
+    <Compile Include="Modelo\DeporteLugar.cs" />
+    <Compile Include="Modelo\Deporte.cs" />
+    <Compile Include="Modelo\Direccion.cs" />
+    <Compile Include="Modelo\Disponibilidad.cs" />
+    <Compile Include="Modelo\Enfrentamiento.cs" />
+    <Compile Include="Modelo\Estado.cs" />
+    <Compile Include="Modelo\Fecha.cs" />
+    <Compile Include="Modelo\Fixture.cs" />
+    <Compile Include="Modelo\FormaDePuntuacion.cs" />
+    <Compile Include="Modelo\Localidad.cs" />
+    <Compile Include="Modelo\Login.cs" />
+    <Compile Include="Modelo\LugarDeRealizacion.cs" />
+    <Compile Include="Modelo\Modalidad.cs" />
+    <Compile Include="Modelo\Pais.cs" />
+    <Compile Include="Modelo\Participante.cs" />
+    <Compile Include="Modelo\Provincia.cs" />
+    <Compile Include="Modelo\Puntuacion.cs" />
+    <Compile Include="Modelo\Resultado.cs" />
+    <Compile Include="Modelo\ResultadoFinal.cs" />
+    <Compile Include="Modelo\Score.cs" />
+    <Compile Include="Modelo\Set.cs" />
+    <Compile Include="Modelo\TipoDocumento.cs" />
+    <Compile Include="Modelo\Usuario.cs" />
+    <Compile Include="Vista\MostrarFixture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\MostrarFixture.Designer.cs">
+      <DependentUpon>MostrarFixture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\GestionarResultado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\GestionarResultado.Designer.cs">
+      <DependentUpon>GestionarResultado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vista\DarAltaCompetencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\DarAltaCompetencia.Designer.cs">
+      <DependentUpon>DarAltaCompetencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\DarAltaParticipante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\DarAltaParticipante.Designer.cs">
+      <DependentUpon>DarAltaParticipante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\InicioDeSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\InicioDeSesion.Designer.cs">
+      <DependentUpon>InicioDeSesion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ListarCompetencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\ListarCompetencia.Designer.cs">
+      <DependentUpon>ListarCompetencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ListarParticipante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\ListarParticipante.Designer.cs">
+      <DependentUpon>ListarParticipante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\MostrarTablaPosiciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\MostrarTablaPosiciones.Designer.cs">
+      <DependentUpon>MostrarTablaPosiciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\PantallaPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\PantallaPrincipal.Designer.cs">
+      <DependentUpon>PantallaPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\VerCompentencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\VerCompentencia.Designer.cs">
+      <DependentUpon>VerCompentencia.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Migrations\202010062354017_actualizacion.resx">
+      <DependentUpon>202010062354017_actualizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010080128461_actualizacion1.resx">
+      <DependentUpon>202010080128461_actualizacion1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010100220400_actualizacion2.resx">
+      <DependentUpon>202010100220400_actualizacion2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010100235135_actualizacion3.resx">
+      <DependentUpon>202010100235135_actualizacion3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010100247598_actualizacion4.resx">
+      <DependentUpon>202010100247598_actualizacion4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010100255350_actualizacion5.resx">
+      <DependentUpon>202010100255350_actualizacion5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010100302307_actualizacion6.resx">
+      <DependentUpon>202010100302307_actualizacion6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Vista\DarAltaCompetencia.resx">
+      <DependentUpon>DarAltaCompetencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\DarAltaParticipante.resx">
+      <DependentUpon>DarAltaParticipante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\InicioDeSesion.resx">
+      <DependentUpon>InicioDeSesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\ListarCompetencia.resx">
+      <DependentUpon>ListarCompetencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\ListarParticipante.resx">
+      <DependentUpon>ListarParticipante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\MostrarTablaPosiciones.resx">
+      <DependentUpon>MostrarTablaPosiciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\PantallaPrincipal.resx">
+      <DependentUpon>PantallaPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\VerCompentencia.resx">
+      <DependentUpon>VerCompentencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dao\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Anotación 2020-04-12 212430.png" />
+    <Content Include="Resources\conexion-corporal-eventos-deportivos-300x265.png" />
+    <Content Include="Resources\conexion-corporal-eventos-deportivos.png" />
+    <Content Include="Resources\eventos-deportivos-2-600x543.png" />
+    <Content Include="Resources\inicio.png" />
+    <Content Include="Resources\inicio1.png" />
+    <Content Include="Resources\inicio2.png" />
+    <Content Include="Resources\WhatsApp Image 2020-04-11 at 18.11.53 %281%29.jpeg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
