@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
-
+using SistemaDeCompetencia.Dto;
+using SistemaDeCompetencia.Controladores;
 
 namespace SistemaDeCompetencia.Vista
 
@@ -17,23 +18,22 @@ namespace SistemaDeCompetencia.Vista
     {
        // OleDbConnection conexion;
 
-        public DarAltaCompetencia()
+        public DarAltaCompetencia(DtoUsuario dtoUsuario)
         {
-            //conexion = new OleDbConnection("Provider = Microsoft.Jet.OLEDB.12; Data Source = C:\\Users\\Yesii\\source\repos\\BaseDeDatos.mdb");
-            //ConexionBaseDeDatos();
+            /*
+            GestorCompetencia gestorCompetencia = new GestorCompetencia();
+            List<DtoDeporte> listaDtoDeportes = gestorCompetencia.listarDeportes(dtoUsuario.DtoUsuarioId);
+            List<String> nombreDeportes = new List<string>();
+            foreach (var deporte in listaDtoDeportes)
+            {
+                nombreDeportes.Add(deporte.Nombre);
+            }
+            */
             InitializeComponent();
+            //comboBox_deporte.Items.Add(nombreDeportes);
+            
         }
-     /*   private void ConexionBaseDeDatos()
-        {
-            try
-            {
-                conexion.Open();
-            }
-            catch
-            {
-                MessageBox.Show("Hola");
-            }
-        }*/
+     
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -95,6 +95,11 @@ namespace SistemaDeCompetencia.Vista
         }
 
         private void dgvLugarDeRealizacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboBox_deporte_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

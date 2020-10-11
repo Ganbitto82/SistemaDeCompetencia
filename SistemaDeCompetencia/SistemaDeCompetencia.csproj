@@ -61,7 +61,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controladores\GestorCompetencia.cs" />
     <Compile Include="Controladores\GestorUsuario.cs" />
+    <Compile Include="Dao\DAODeporte.cs" />
+    <Compile Include="Dao\DAODeporteEntityFramework.cs" />
     <Compile Include="Dto\DtoDireccion.cs" />
     <Compile Include="Dto\DtoLocalidad.cs" />
     <Compile Include="Dto\DtoLogin.cs" />
@@ -275,9 +278,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dao\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Resources\Anotación 2020-04-12 212430.png" />
     <Content Include="Resources\conexion-corporal-eventos-deportivos-300x265.png" />

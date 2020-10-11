@@ -1,4 +1,5 @@
-﻿using SistemaDeCompetencia.Vista;
+﻿using SistemaDeCompetencia.Dto;
+using SistemaDeCompetencia.Vista;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,8 @@ namespace SistemaDeCompetencia
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DarAltaCompetencia());
+            int idDtoUsusario = 1;
+            Application.Run(new DarAltaCompetencia(new DtoUsuario(idDtoUsusario)));
         }
     }
 }

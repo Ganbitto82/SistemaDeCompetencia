@@ -12,6 +12,12 @@ namespace SistemaDeCompetencia.Dto
     
     public class DtoDeporte
     {
+        public DtoDeporte(int deporteId, string nombre)
+        {
+            DeporteId = deporteId;
+            Nombre = nombre;
+        }
+
         public int DeporteId { get; set; }
         public string Nombre { get; set; }
         public List<DtoDeporteLugar> DeportesLugares { get; set; }

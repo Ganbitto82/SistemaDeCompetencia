@@ -123,6 +123,7 @@
             this.comboBox_deporte.Name = "comboBox_deporte";
             this.comboBox_deporte.Size = new System.Drawing.Size(174, 21);
             this.comboBox_deporte.TabIndex = 6;
+            this.comboBox_deporte.SelectedIndexChanged += new System.EventHandler(this.comboBox_deporte_SelectedIndexChanged);
             // 
             // Aceptar
             // 
@@ -210,7 +211,7 @@
             this.label_tituloLugar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_tituloLugar.Location = new System.Drawing.Point(3, 51);
             this.label_tituloLugar.Name = "label_tituloLugar";
-            this.label_tituloLugar.Size = new System.Drawing.Size(289, 16);
+            this.label_tituloLugar.Size = new System.Drawing.Size(298, 16);
             this.label_tituloLugar.TabIndex = 3;
             this.label_tituloLugar.Text = "Lugar de Realizacion de la Competencia";
             this.label_tituloLugar.Click += new System.EventHandler(this.label3_Click);

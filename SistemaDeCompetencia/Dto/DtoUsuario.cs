@@ -8,6 +8,13 @@ namespace SistemaDeCompetencia.Dto
 {
     public class DtoUsuario
     {
+      
+
+        public DtoUsuario(int idDtoUsusario)
+        {
+            this.DtoUsuarioId = idDtoUsusario;
+        }
+
         public int DtoUsuarioId { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
