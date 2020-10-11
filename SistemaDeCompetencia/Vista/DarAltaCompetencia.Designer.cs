@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label_nombre = new System.Windows.Forms.Label();
             this.textBox_nombre = new System.Windows.Forms.TextBox();
             this.label_deporte = new System.Windows.Forms.Label();
@@ -167,8 +167,8 @@
             // 
             this.TablaLugares.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.TablaLugares.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
-            this.TablaLugares.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.DarkGray;
+            this.TablaLugares.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.TablaLugares.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.TablaLugares.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.TablaLugares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -178,16 +178,16 @@
             this.TablaLugares.Location = new System.Drawing.Point(28, 80);
             this.TablaLugares.Name = "TablaLugares";
             this.TablaLugares.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaLugares.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TablaLugares.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaLugares.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TablaLugares.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.TablaLugares.Size = new System.Drawing.Size(551, 91);
             this.TablaLugares.TabIndex = 7;
             this.TablaLugares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLugarDeRealizacion_CellContentClick);
@@ -244,10 +244,6 @@
             // 
             this.comboBox_modalidad.BackColor = System.Drawing.SystemColors.ControlLight;
             this.comboBox_modalidad.FormattingEnabled = true;
-            this.comboBox_modalidad.Items.AddRange(new object[] {
-            "SISTEMA DE LIGA",
-            "SISTEMA DE ELIMINATORIAS SIMPLE",
-            "SISTEMA DE ELIMINATORIAS DOBLE"});
             this.comboBox_modalidad.Location = new System.Drawing.Point(102, 12);
             this.comboBox_modalidad.Name = "comboBox_modalidad";
             this.comboBox_modalidad.Size = new System.Drawing.Size(200, 21);
@@ -266,6 +262,7 @@
             this.comboBox_formaPutuacion.Name = "comboBox_formaPutuacion";
             this.comboBox_formaPutuacion.Size = new System.Drawing.Size(92, 21);
             this.comboBox_formaPutuacion.TabIndex = 19;
+            this.comboBox_formaPutuacion.SelectedIndexChanged += new System.EventHandler(this.comboBox_formaPutuacion_SelectedIndexChanged);
             // 
             // numericUpDown_tantos
             // 
@@ -320,6 +317,7 @@
             this.numericUpDown_presencia.Name = "numericUpDown_presencia";
             this.numericUpDown_presencia.Size = new System.Drawing.Size(47, 20);
             this.numericUpDown_presencia.TabIndex = 13;
+            this.numericUpDown_presencia.ValueChanged += new System.EventHandler(this.numericUpDown_presencia_ValueChanged);
             // 
             // label_presencia
             // 
@@ -338,6 +336,7 @@
             this.numericUpDown_partEmpatados.Name = "numericUpDown_partEmpatados";
             this.numericUpDown_partEmpatados.Size = new System.Drawing.Size(45, 20);
             this.numericUpDown_partEmpatados.TabIndex = 11;
+            this.numericUpDown_partEmpatados.ValueChanged += new System.EventHandler(this.numericUpDown_partEmpatados_ValueChanged);
             // 
             // label_partEmpatados
             // 
@@ -360,6 +359,7 @@
             this.comboBox_permiso.Name = "comboBox_permiso";
             this.comboBox_permiso.Size = new System.Drawing.Size(92, 21);
             this.comboBox_permiso.TabIndex = 9;
+            this.comboBox_permiso.SelectedIndexChanged += new System.EventHandler(this.comboBox_permiso_SelectedIndexChanged);
             // 
             // label_permiso
             // 
@@ -378,6 +378,7 @@
             this.numericUpDown_partGanados.Name = "numericUpDown_partGanados";
             this.numericUpDown_partGanados.Size = new System.Drawing.Size(47, 20);
             this.numericUpDown_partGanados.TabIndex = 7;
+            this.numericUpDown_partGanados.ValueChanged += new System.EventHandler(this.numericUpDown_partGanados_ValueChanged);
             // 
             // label_partGanados
             // 

@@ -8,32 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
-
+using SistemaDeCompetencia.Modelo;
 
 namespace SistemaDeCompetencia.Vista
 
 {
     public partial class DarAltaCompetencia : Form
     {
-       // OleDbConnection conexion;
-
+        private string permiso;
+        private string formaDePuntuacion;
         public DarAltaCompetencia()
         {
-            //conexion = new OleDbConnection("Provider = Microsoft.Jet.OLEDB.12; Data Source = C:\\Users\\Yesii\\source\repos\\BaseDeDatos.mdb");
-            //ConexionBaseDeDatos();
+            
             InitializeComponent();
+            cargarModalidad();
+            
+           
         }
-     /*   private void ConexionBaseDeDatos()
-        {
-            try
-            {
-                conexion.Open();
-            }
-            catch
-            {
-                MessageBox.Show("Hola");
-            }
-        }*/
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -67,11 +59,24 @@ namespace SistemaDeCompetencia.Vista
         private void comboBox_modalidad_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            string modalidad =  comboBox_modalidad.SelectedItem.ToString();
+            Console.WriteLine("El indicador es : " + comboBox_modalidad.SelectedItem);
+            controlModalidad(modalidad);
+            
         }
 
         private void Aceptar_Click(object sender, EventArgs e)
         {
-          //  MessageBox.Show("Mensaje de informacion","Titulo",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            string nombreCompetencia = textBox_nombre.Text;
+            string deporteElegido = comboBox_deporte.SelectedText;
+            int indice = TablaLugares.CurrentRow.Index;
+            string lugar = TablaLugares.Rows[indice].Cells[0].Value.ToString();
+            int disponibilidad= (int)TablaLugares.Rows[indice].Cells[1].Value;
+
+             
+           
+            
+            //  MessageBox.Show("Mensaje de informacion","Titulo",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -97,6 +102,100 @@ namespace SistemaDeCompetencia.Vista
         private void dgvLugarDeRealizacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void numericUpDown_partGanados_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void controlModalidad(string modalidad)
+        {
+            numericUpDown_partGanados.Enabled = false;
+            numericUpDown_presencia.Enabled = false;
+            numericUpDown_partEmpatados.Enabled = false;
+            numericUpDown_tantos.Enabled = false;
+            comboBox_permiso.Enabled = false;
+            comboBox_formaPutuacion.Enabled=false;
+
+            switch (modalidad) {
+                case "SISTEMA_DE_LIGA":
+                    numericUpDown_partGanados.Enabled = true;
+                    comboBox_permiso.Enabled = true;
+                    numericUpDown_presencia.Enabled = true;
+                    comboBox_formaPutuacion.Enabled = true;
+                    numericUpDown_partGanados.Value = 0;
+                    numericUpDown_presencia.Value = 0;
+                    comboBox_permiso.Text = "--Seleccione--";
+                    comboBox_formaPutuacion.Text = "--Seleccione--";
+                    break;
+                case "SISTEMA_DE_ELIMINACION_DOBLE":
+                    numericUpDown_partGanados.Enabled = true;
+                    numericUpDown_presencia.Enabled = true;
+                    comboBox_permiso.Enabled = false;
+                    comboBox_formaPutuacion.Enabled = true;
+                    numericUpDown_partGanados.Value = 0;
+                    numericUpDown_presencia.Value = 0;
+                    comboBox_permiso.Text = "--Seleccione--";
+                    comboBox_formaPutuacion.Text = "--Seleccione--";
+
+                    break;
+                case "SISTEMA_DE_ELIMINACION_SIMPLE":
+                    numericUpDown_partGanados.Enabled = true;
+                    numericUpDown_presencia.Enabled = true;
+                    comboBox_permiso.Enabled = false;
+                    comboBox_formaPutuacion.Enabled = true;
+                    numericUpDown_partGanados.Value = 0;
+                    numericUpDown_presencia.Value = 0;
+                    comboBox_permiso.Text = "--Seleccione--";
+                    comboBox_formaPutuacion.Text = "--Seleccione--";
+
+                    break;
+            }
+        }
+        private void cargarModalidad() {
+            comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_LIGA);
+            comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_ELIMINACION_DOBLE);
+            comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_ELIMINACION_SIMPLE);
+             }
+
+        private void numericUpDown_presencia_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown_partEmpatados_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox_permiso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            permiso = comboBox_permiso.SelectedItem.ToString();
+            if (permiso == "SI")
+                numericUpDown_partEmpatados.Enabled = true;
+            else
+            {
+                numericUpDown_partEmpatados.Enabled = false;
+                numericUpDown_partEmpatados.Value = 0;
+            }
+        }
+
+        private void comboBox_formaPutuacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            formaDePuntuacion = comboBox_formaPutuacion.SelectedItem.ToString();
+            if (formaDePuntuacion == "SETS")
+            {
+                numericUpDown_sets.Enabled = true;
+                numericUpDown_tantos.Enabled = false;
+                numericUpDown_tantos.Value = 0;
+            }
+
+            else
+            {
+                numericUpDown_sets.Enabled = false;
+                numericUpDown_tantos.Enabled = true;
+                numericUpDown_sets.Value = 0;
+            }
         }
     }
 }
