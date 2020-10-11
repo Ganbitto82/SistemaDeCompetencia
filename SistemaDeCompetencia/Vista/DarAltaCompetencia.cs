@@ -16,10 +16,11 @@ namespace SistemaDeCompetencia.Vista
 {
     public partial class DarAltaCompetencia : Form
     {
-       // OleDbConnection conexion;
-
+        // OleDbConnection conexion;
+        DtoUsuario dtoUsuarioForm = new DtoUsuario();
         public DarAltaCompetencia(DtoUsuario dtoUsuario)
         {
+            dtoUsuarioForm = dtoUsuario;
             /*
             GestorCompetencia gestorCompetencia = new GestorCompetencia();
             List<DtoDeporte> listaDtoDeportes = gestorCompetencia.listarDeportes(dtoUsuario.DtoUsuarioId);
@@ -102,6 +103,13 @@ namespace SistemaDeCompetencia.Vista
         private void comboBox_deporte_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Cancelar_Click(object sender, EventArgs e)
+        {
+            Form frmListarComp = new ListarCompetencia(dtoUsuarioForm);
+            frmListarComp.Show();
+            this.Close();
         }
     }
 }

@@ -230,6 +230,7 @@
             this.button_nueva.TabIndex = 29;
             this.button_nueva.Text = "Nueva";
             this.button_nueva.UseVisualStyleBackColor = false;
+            this.button_nueva.Click += new System.EventHandler(this.button_nueva_Click);
             // 
             // button_detalles
             // 
@@ -247,8 +248,8 @@
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
             this.tablaDeCompetencias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.tablaDeCompetencias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tablaDeCompetencias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tablaDeCompetencias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tablaDeCompetencias.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
@@ -334,7 +335,7 @@
             this.salir.UseVisualStyleBackColor = true;
             this.salir.Click += new System.EventHandler(this.salir_Click);
             // 
-            // Form2
+            // ListarCompetencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -345,7 +346,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "Form2";
+            this.Name = "ListarCompetencia";
             this.Text = "Listar Competencias Deportivas";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

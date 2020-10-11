@@ -48,6 +48,7 @@
             this.button_cu03.TabIndex = 19;
             this.button_cu03.Text = "Listar Competencias Deportivas";
             this.button_cu03.UseVisualStyleBackColor = false;
+            this.button_cu03.Click += new System.EventHandler(this.button_cu03_Click);
             // 
             // button_cu07
             // 
@@ -87,6 +88,7 @@
             this.button1.TabIndex = 22;
             this.button1.Text = "Salir";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 

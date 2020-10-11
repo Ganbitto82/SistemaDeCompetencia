@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SistemaDeCompetencia.Dto;
+using SistemaDeCompetencia.vista;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,25 @@ namespace SistemaDeCompetencia.Vista
 {
     public partial class PantallaPrincipal : Form
     {
-        public PantallaPrincipal()
+        DtoUsuario dtoUsuarioForm = new DtoUsuario();
+        public PantallaPrincipal(DtoUsuario dtoUsuario)
         {
+            dtoUsuarioForm = dtoUsuario;
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form frmInicio = new InicioDeSesion();
+            frmInicio.Show();
+            this.Close();
+        }
+
+        private void button_cu03_Click(object sender, EventArgs e)
+        {
+            Form frmListarComp = new ListarCompetencia(dtoUsuarioForm);
+            frmListarComp.Show();
+            this.Close();
         }
     }
 }

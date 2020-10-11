@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SistemaDeCompetencia.Controladores;
+using SistemaDeCompetencia.Dto;
+using SistemaDeCompetencia.Vista;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,10 +44,47 @@ namespace SistemaDeCompetencia.vista
 
         private void buttonIngresar_Click(object sender, EventArgs e)
         {
-            string correo = textBoxCorreo.Text;
-            string contraseña = textBoxContraseña.Text;
+            DtoLogin dtoLog = new DtoLogin();
+            dtoLog.correoElectronico = textBoxCorreo.Text.ToUpper();
+            dtoLog.Contraseña = textBoxContraseña.Text.ToUpper();
+
+            if (!(dtoLog.correoElectronico.Equals("") && dtoLog.Contraseña.Equals("")))
+            {
+
+                GestorUsuario gest = new GestorUsuario();
+                try
+                {
+                    DtoUsuario user = gest.autenticarUsusario(dtoLog);
+                    Form frm2 = new PantallaPrincipal(user);
+                    frm2.Show();
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    MessageBox.Show(ex.Message, "Datos Invalidos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    textBoxCorreo.Clear();
+                    textBoxContraseña.Clear();
+
+                }
+
+
+
+
+            }
+            else MessageBox.Show("Complete todos los datos.", "Datos Invalidos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+
         }
 
-       
+        private void buttonSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+            
+
+        }
     }
+
+       
+    
 }

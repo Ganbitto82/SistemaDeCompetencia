@@ -74,6 +74,7 @@
             this.buttonSalir.TabIndex = 26;
             this.buttonSalir.Text = "SALIR";
             this.buttonSalir.UseVisualStyleBackColor = true;
+            this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
             // 
             // pictureBox1
             // 

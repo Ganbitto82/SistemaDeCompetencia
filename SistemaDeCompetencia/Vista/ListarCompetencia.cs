@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaDeCompetencia.Dto;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,10 @@ namespace SistemaDeCompetencia.Vista
 {
     public partial class ListarCompetencia : Form
     {
-        public ListarCompetencia()
+        DtoUsuario dtoUsuarioForm = new DtoUsuario();
+        public ListarCompetencia(DtoUsuario dtoUsuario)
         {
+            dtoUsuarioForm = dtoUsuario;
             InitializeComponent();
         }
 
@@ -44,12 +47,16 @@ namespace SistemaDeCompetencia.Vista
 
         private void salir_Click(object sender, EventArgs e)
         {
-
+            Form frmPantallaPrincipal = new PantallaPrincipal(dtoUsuarioForm);
+            frmPantallaPrincipal.Show();
+            this.Close();
         }
 
         private void button_cancelar_Click(object sender, EventArgs e)
         {
-
+            Form frmPantallaPrincipal = new PantallaPrincipal(dtoUsuarioForm);
+            frmPantallaPrincipal.Show();
+            this.Close();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -59,7 +66,17 @@ namespace SistemaDeCompetencia.Vista
 
         private void label7_Click(object sender, EventArgs e)
         {
+            Form frmPantallaPrincipal = new PantallaPrincipal(dtoUsuarioForm);
+            frmPantallaPrincipal.Show();
+            this.Close();
 
+        }
+
+        private void button_nueva_Click(object sender, EventArgs e)
+        {
+            Form frmDarAltaComp = new DarAltaCompetencia(dtoUsuarioForm);
+            frmDarAltaComp.Show();
+            this.Close();
         }
     }
 }
