@@ -8,8 +8,9 @@ namespace SistemaDeCompetencia.Modelo
 {
     public enum  Modalidad
     {
-        SistemaDeLiga,
-        EliminacionSimple,
-        EliminacionDoble
+        SISTEMA_DE_LIGA,
+        SISTEMA_DE_ELIMINACION_SIMPLE,
+        SISTEMA_DE_ELIMINACION_DOBLE,
+
     }
 }
