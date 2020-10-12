@@ -18,6 +18,7 @@ namespace SistemaDeCompetencia.Dao
             //creamos el context
             CompetenciaContext context = new CompetenciaContext();
 
+
             try
             {
 
