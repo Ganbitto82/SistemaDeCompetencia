@@ -13,7 +13,7 @@ namespace SistemaDeCompetencia.Controladores
     {
         DAODeporte daoDeporte = new DAODeporteEntityFramework();
 
-        public List<DtoDeporte> listarDeportes(int idUsuario)
+        public List<DtoDeporte> listarDeportes()
         { 
         
             //inicializamos listaDTODeportes
@@ -22,7 +22,7 @@ namespace SistemaDeCompetencia.Controladores
             try
             {
                 //obtenemos la lista de deportes del usuario
-                List<Deporte> listaDeportes = daoDeporte.listarDeportes(idUsuario);
+                List<Deporte> listaDeportes = daoDeporte.listarDeportes();
                 //iteramos por los deportes y los pasamos a dto, luego los agregamos a la listaDtoDeportes
                 foreach (var deporte in listaDeportes)
                 {

@@ -10,5 +10,6 @@ namespace SistemaDeCompetencia.Dao
     interface DAODeporte
     {
         List<Deporte> listarDeportes(int idUsuario);
+        List<Deporte> listarDeportes();
     }
 }

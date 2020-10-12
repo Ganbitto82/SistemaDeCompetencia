@@ -37,6 +37,7 @@ namespace SistemaDeCompetencia.Vista
             InitializeComponent();
             //comboBox_deporte.Items.Add(nombreDeportes);
             cargarModalidad();
+            cargarDeportes();
 
         }
      
@@ -173,6 +174,17 @@ namespace SistemaDeCompetencia.Vista
             comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_LIGA);
             comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_ELIMINACION_DOBLE);
             comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_ELIMINACION_SIMPLE);
+        }
+
+        private void cargarDeportes()
+        {
+            GestorCompetencia gComp = new GestorCompetencia();
+            List<DtoDeporte> lista = gComp.listarDeportes();
+            foreach(var deporte in lista)
+            {
+                comboBox_deporte.Items.Add(deporte.Nombre);
+            }
+
         }
 
         private void numericUpDown_presencia_ValueChanged(object sender, EventArgs e)

@@ -17,7 +17,7 @@ namespace SistemaDeCompetencia.Dao
             List<DeporteLugar> listaDeporteLugares = new List<DeporteLugar>();
             //creamos el context
             CompetenciaContext context = new CompetenciaContext();
-
+            
 
             try
             {
@@ -41,6 +41,28 @@ namespace SistemaDeCompetencia.Dao
                 throw new Exception("Error al Buscar Deporte en la Base de Datos");
             }
             
+
+
+        }
+        public List<Deporte> listarDeportes()
+        {
+            //creamos el context
+            CompetenciaContext context = new CompetenciaContext();
+
+
+            try
+            {
+
+
+                //retornamos la lista de deportes
+                return context.Deporte.ToList();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Error al Buscar Deporte en la Base de Datos");
+            }
+
 
 
         }

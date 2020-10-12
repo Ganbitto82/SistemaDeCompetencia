@@ -23,6 +23,7 @@ namespace SistemaDeCompetencia.Modelo
         public DbSet<Disponibilidad> Disponibilidad { get; set; }
         public DbSet<TipoDocumento> TipoDocumento { get; set; }
         public DbSet<Competencia> Competencia { get; set; }
+        public DbSet<Deporte> Deporte { get; set; }
         public DbSet<DeporteLugar> DeporteLugar { get; set; }
         public DbSet<Participante> Participante { get; set; }
         public DbSet<Score> Score { get; set; }
