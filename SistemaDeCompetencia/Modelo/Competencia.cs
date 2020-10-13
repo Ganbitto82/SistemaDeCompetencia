@@ -43,5 +43,11 @@ namespace SistemaDeCompetencia.Modelo
         public int DeporteId { get; set; }
         public Deporte Deporte { get; set; }
 
+        public Competencia()
+        {
+            Disponibilidades = new List<Disponibilidad>();
+            DarDeBaja = false;
+        }
+
     }
 }

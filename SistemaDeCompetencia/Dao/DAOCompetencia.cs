@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace SistemaDeCompetencia.Dao
 {
-    interface DAODeporte
+    interface DAOCompetencia
     {
-        List<Deporte> listarDeportes(int idUsuario);
-        List<Deporte> listarDeportes();
-        Deporte buscarPorId(int idDeporte);
+        List<Competencia> buscarPorNombre(String nombreCompetencia);
     }
 }
