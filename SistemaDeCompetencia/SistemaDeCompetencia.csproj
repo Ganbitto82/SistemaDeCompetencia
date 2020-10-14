@@ -63,12 +63,13 @@
   <ItemGroup>
     <Compile Include="Controladores\GestorCompetencia.cs" />
     <Compile Include="Controladores\GestorUsuario.cs" />
+    <Compile Include="Dao\DAOCompetencia.cs" />
+    <Compile Include="Dao\DAOCompetenciaEntityFramework.cs" />
     <Compile Include="Dao\DAODeporte.cs" />
     <Compile Include="Dao\DAODeporteEntityFramework.cs" />
     <Compile Include="Dao\DAOLugar.cs" />
     <Compile Include="Dao\DAOLogin.cs" />
     <Compile Include="Dao\DAOLoginEntityFramework.cs" />
-    <Compile Include="Dao\DAOLugarEntityFramework.cs" />
     <Compile Include="Dao\DAOUsuario.cs" />
     <Compile Include="Dao\DAOUsuarioEntityFramework.cs" />
     <Compile Include="Dto\DtoDireccion.cs" />

@@ -9,6 +9,24 @@ namespace SistemaDeCompetencia.Dao
 {
     class DAODeporteEntityFramework : DAODeporte
     {
+        public Deporte buscarPorId(int idDeporte)
+        {
+            //creamos el context
+            CompetenciaContext context = new CompetenciaContext();
+            try
+            {
+
+                return context.Deporte.Where(d => d.DeporteId.Equals(idDeporte)).FirstOrDefault();
+
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Error al buscar Deporte en la base de datos");
+            }
+
+        }
+
         public List<Deporte> listarDeportes(int idUsuario)
         {   
             //Inicializamos un Set de deportes (los Set no permiten elementos repetidos
