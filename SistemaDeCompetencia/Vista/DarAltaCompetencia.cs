@@ -19,10 +19,15 @@ namespace SistemaDeCompetencia.Vista
     {
         // OleDbConnection conexion;
         DtoUsuario dtoUsuarioForm = new DtoUsuario();
-        private GestorCompetencia gComp= new GestorCompetencia();
+        private GestorCompetencia gComp = new GestorCompetencia();
         private List<DtoDeporte> listaDeporte;
         private List<DtoLugarDeRealizacion> listaDtoLugares;
-       
+        private List<DtoDisponibilidad> listaDtoDisponibilidad;
+
+        private string deporteSeleccionado;
+        private DtoDeporte dtoDeporte;
+
+
         public DarAltaCompetencia(DtoUsuario dtoUsuario)
         {
             dtoUsuarioForm = dtoUsuario;
@@ -39,10 +44,9 @@ namespace SistemaDeCompetencia.Vista
             //comboBox_deporte.Items.Add(nombreDeportes);
             cargarModalidad();
             cargarDeportes();
-            
-
+           
         }
-     
+
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -76,23 +80,24 @@ namespace SistemaDeCompetencia.Vista
         private void comboBox_modalidad_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            string modalidad =  comboBox_modalidad.SelectedItem.ToString();
-           // Console.WriteLine("El indicador es : " + comboBox_modalidad.SelectedItem);
+            string modalidad = comboBox_modalidad.SelectedItem.ToString();
             controlModalidad(modalidad);
-            
+
         }
 
         private void Aceptar_Click(object sender, EventArgs e)
         {
-            string nombreCompetencia = textBox_nombre.Text;
-            string deporteElegido = comboBox_deporte.SelectedText;
-            int indice = TablaLugares.CurrentRow.Index;
-            string lugar = TablaLugares.Rows[indice].Cells[0].Value.ToString();
-            int disponibilidad= (int)TablaLugares.Rows[indice].Cells[1].Value;
 
-             
-           
-            
+            DtoCompetencia dtoCompetencia = new DtoCompetencia();
+            DtoLugarDeRealizacion dtoLugarDeRealizacion = new DtoLugarDeRealizacion();
+            // dtoLugarDeRealizacion
+
+            dtoCompetencia.Nombre = textBox_nombre.Text.ToUpper();
+            dtoCompetencia.DtoDeporte = dtoDeporte;
+
+
+
+
             //  MessageBox.Show("Mensaje de informacion","Titulo",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
@@ -100,6 +105,7 @@ namespace SistemaDeCompetencia.Vista
         {
 
         }
+       
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -111,31 +117,60 @@ namespace SistemaDeCompetencia.Vista
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+       /* private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+         
+        }*/
+      /*  private void TablaLugares_CellContentClick(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Columns_KeyPress);
+            
+            if (TablaLugares.CurrentCell.ColumnIndex == 1 )
+              
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Columns_KeyPress);
+                }
+            }
         }
+
+        private void Columns_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }*/
+
+
 
         private void dgvLugarDeRealizacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+           
         }
 
 
         private void comboBox_deporte_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string deporteSeleccionado = comboBox_deporte.SelectedItem.ToString();
+            deporteSeleccionado = comboBox_deporte.SelectedItem.ToString();
 
             int deporteId = 0;
             foreach (var deporte in listaDeporte)
-            { if (deporte.Nombre == deporteSeleccionado)
+            {
+                if (deporte.Nombre == deporteSeleccionado)
+                {
                     deporteId = deporte.DeporteId;
-                                       }
+                    dtoDeporte = deporte;
+                }
+            }
             listaDtoLugares = gComp.listarLugares(deporteId, dtoUsuarioForm.DtoUsuarioId );
             
             TablaLugares.Rows.Clear();
             cargarTabla(listaDtoLugares);
-
+             
         }
 
         
@@ -147,10 +182,27 @@ namespace SistemaDeCompetencia.Vista
             TablaLugares.Rows[n].Cells[0].Value = lugar.Nombre;
             }
         }
+        private void cargarDisponibilidad(List<DtoLugarDeRealizacion> listaLugares)
+        {
+          // verificarTabla()
+            DtoDisponibilidad dtoDisponibilidad = new DtoDisponibilidad();
+
+          
+
+            /*foreach (var lugar in listaLugares)
+            {
+                dtoDisponibilidad.LugarId = lugar.LugarId;
+                dtoDisponibilidad.Disponible= TablaLugares.
+
+
+            }*/
+
+
+        }
 
         private void numericUpDown_partGanados_ValueChanged(object sender, EventArgs e)
         {
-
+      
         }
         private void controlModalidad(string modalidad)
         {

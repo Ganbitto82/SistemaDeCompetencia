@@ -168,7 +168,8 @@
             // TablaLugares
             // 
             this.TablaLugares.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.TablaLugares.AllowUserToOrderColumns = true;
+            this.TablaLugares.AllowUserToAddRows = false;
+            this.TablaLugares.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
             this.TablaLugares.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.TablaLugares.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
@@ -190,6 +191,7 @@
             this.TablaLugares.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.TablaLugares.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.TablaLugares.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TablaLugares.Size = new System.Drawing.Size(551, 91);
             this.TablaLugares.TabIndex = 7;
             this.TablaLugares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLugarDeRealizacion_CellContentClick);
@@ -603,6 +605,7 @@
             this.Disponibilidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Disponibilidad.HeaderText = "Disponibilidad";
             this.Disponibilidad.Name = "Disponibilidad";
+            this.Disponibilidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // DarAltaCompetencia
             // 

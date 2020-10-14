@@ -124,12 +124,10 @@
     <Compile Include="Dto\DtoDeporteLugar.cs" />
     <Compile Include="Dto\DtoDisponibilidad.cs" />
     <Compile Include="Dto\DtoEnfrentamiento.cs" />
-    <Compile Include="Dto\DtoEstado.cs" />
     <Compile Include="Dto\DtoFecha.cs" />
     <Compile Include="Dto\DtoFixture.cs" />
     <Compile Include="Dto\DtoFormaDePuntuacion.cs" />
     <Compile Include="Dto\DtoLugarDeRealizacion.cs" />
-    <Compile Include="Dto\DtoModalidad.cs" />
     <Compile Include="Dto\DtoParticipante.cs" />
     <Compile Include="Dto\DtoPuntuacion.cs" />
     <Compile Include="Dto\DtoResultado.cs" />
