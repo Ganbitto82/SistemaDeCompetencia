@@ -67,9 +67,10 @@
     <Compile Include="Dao\DAOCompetenciaEntityFramework.cs" />
     <Compile Include="Dao\DAODeporte.cs" />
     <Compile Include="Dao\DAODeporteEntityFramework.cs" />
-    <Compile Include="Dao\DAOLugar.cs" />
+    <Compile Include="Dao\DAOLugarRealizacion.cs" />
     <Compile Include="Dao\DAOLogin.cs" />
     <Compile Include="Dao\DAOLoginEntityFramework.cs" />
+    <Compile Include="Dao\DAOLugarDeRealizacionEntityFramework.cs" />
     <Compile Include="Dao\DAOUsuario.cs" />
     <Compile Include="Dao\DAOUsuarioEntityFramework.cs" />
     <Compile Include="Dto\DtoDireccion.cs" />

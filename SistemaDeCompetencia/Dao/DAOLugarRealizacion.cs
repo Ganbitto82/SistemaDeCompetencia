@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SistemaDeCompetencia.Dao
 {
-   interface DAOLugar
+   interface DAOLugarDeRealizacion
     {
         List<LugarDeRealizacion> listarLugar(int deporteId, int usuarioId);
-
+        LugarDeRealizacion buscarLugarPorId(int idLugar);
     }
 }
