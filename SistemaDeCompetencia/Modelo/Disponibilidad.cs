@@ -20,7 +20,7 @@ namespace SistemaDeCompetencia.Modelo
         public int LugarId { get; set; }
         public  LugarDeRealizacion LugarDeRealizacion { get; set; }
         [ForeignKey("Competencia")]
-        public int CompetenciaId { get; set; }
+        public int? CompetenciaId { get; set; }
         public  Competencia Competencia { get; set; }
 
     }

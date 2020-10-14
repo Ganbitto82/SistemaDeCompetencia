@@ -65,8 +65,10 @@
     <Compile Include="Controladores\GestorUsuario.cs" />
     <Compile Include="Dao\DAODeporte.cs" />
     <Compile Include="Dao\DAODeporteEntityFramework.cs" />
+    <Compile Include="Dao\DAOLugar.cs" />
     <Compile Include="Dao\DAOLogin.cs" />
     <Compile Include="Dao\DAOLoginEntityFramework.cs" />
+    <Compile Include="Dao\DAOLugarEntityFramework.cs" />
     <Compile Include="Dao\DAOUsuario.cs" />
     <Compile Include="Dao\DAOUsuarioEntityFramework.cs" />
     <Compile Include="Dto\DtoDireccion.cs" />
@@ -107,6 +109,10 @@
     <Compile Include="Migrations\202010120041148_actualizacion7.cs" />
     <Compile Include="Migrations\202010120041148_actualizacion7.designer.cs">
       <DependentUpon>202010120041148_actualizacion7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010130404340_actualizacion8.cs" />
+    <Compile Include="Migrations\202010130404340_actualizacion8.designer.cs">
+      <DependentUpon>202010130404340_actualizacion8.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Dto\DtoAuditoria.cs" />
@@ -240,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010120041148_actualizacion7.resx">
       <DependentUpon>202010120041148_actualizacion7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010130404340_actualizacion8.resx">
+      <DependentUpon>202010130404340_actualizacion8.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

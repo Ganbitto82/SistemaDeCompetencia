@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label_nombre = new System.Windows.Forms.Label();
             this.textBox_nombre = new System.Windows.Forms.TextBox();
             this.label_deporte = new System.Windows.Forms.Label();
@@ -40,8 +40,6 @@
             this.Cancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TablaLugares = new System.Windows.Forms.DataGridView();
-            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Disponibilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label_tituloLugar = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.comboBox_modalidad = new System.Windows.Forms.ComboBox();
@@ -63,6 +61,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Disponibilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaLugares)).BeginInit();
             this.panel3.SuspendLayout();
@@ -169,8 +169,8 @@
             // 
             this.TablaLugares.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.TablaLugares.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.DarkGray;
-            this.TablaLugares.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
+            this.TablaLugares.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.TablaLugares.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.TablaLugares.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.TablaLugares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -180,31 +180,19 @@
             this.TablaLugares.Location = new System.Drawing.Point(28, 80);
             this.TablaLugares.Name = "TablaLugares";
             this.TablaLugares.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaLugares.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TablaLugares.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaLugares.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TablaLugares.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.TablaLugares.Size = new System.Drawing.Size(551, 91);
             this.TablaLugares.TabIndex = 7;
             this.TablaLugares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLugarDeRealizacion_CellContentClick);
-            // 
-            // Lugar
-            // 
-            this.Lugar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Lugar.HeaderText = "Lugar";
-            this.Lugar.Name = "Lugar";
-            // 
-            // Disponibilidad
-            // 
-            this.Disponibilidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Disponibilidad.HeaderText = "Disponibilidad";
-            this.Disponibilidad.Name = "Disponibilidad";
             // 
             // label_tituloLugar
             // 
@@ -212,7 +200,7 @@
             this.label_tituloLugar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_tituloLugar.Location = new System.Drawing.Point(3, 51);
             this.label_tituloLugar.Name = "label_tituloLugar";
-            this.label_tituloLugar.Size = new System.Drawing.Size(298, 16);
+            this.label_tituloLugar.Size = new System.Drawing.Size(289, 16);
             this.label_tituloLugar.TabIndex = 3;
             this.label_tituloLugar.Text = "Lugar de Realizacion de la Competencia";
             this.label_tituloLugar.Click += new System.EventHandler(this.label3_Click);
@@ -602,6 +590,19 @@
             this.label1.Size = new System.Drawing.Size(196, 13);
             this.label1.TabIndex = 19;
             this.label1.Text = "(*) Completar campos obligatorios";
+            // 
+            // Lugar
+            // 
+            this.Lugar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Lugar.HeaderText = "Lugar";
+            this.Lugar.Name = "Lugar";
+            this.Lugar.ReadOnly = true;
+            // 
+            // Disponibilidad
+            // 
+            this.Disponibilidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Disponibilidad.HeaderText = "Disponibilidad";
+            this.Disponibilidad.Name = "Disponibilidad";
             // 
             // DarAltaCompetencia
             // 

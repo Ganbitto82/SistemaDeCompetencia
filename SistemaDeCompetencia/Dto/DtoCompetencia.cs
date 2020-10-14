@@ -28,6 +28,7 @@ namespace SistemaDeCompetencia.Dto
        
        public int UsuarioId { get; set; }
        public  DtoUsuario DtoUsuario { get; set; }
+            
         
         public List<DtoDisponibilidad> Disponibilidades { get; set; }
         public List<DtoParticipante> Participantes { get; set; }

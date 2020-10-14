@@ -19,9 +19,10 @@ namespace SistemaDeCompetencia.Vista
     {
         // OleDbConnection conexion;
         DtoUsuario dtoUsuarioForm = new DtoUsuario();
-
-        private string permiso;
-        private string formaDePuntuacion;
+        private GestorCompetencia gComp= new GestorCompetencia();
+        private List<DtoDeporte> listaDeporte;
+        private List<DtoLugarDeRealizacion> listaDtoLugares;
+       
         public DarAltaCompetencia(DtoUsuario dtoUsuario)
         {
             dtoUsuarioForm = dtoUsuario;
@@ -38,6 +39,7 @@ namespace SistemaDeCompetencia.Vista
             //comboBox_deporte.Items.Add(nombreDeportes);
             cargarModalidad();
             cargarDeportes();
+            
 
         }
      
@@ -75,7 +77,7 @@ namespace SistemaDeCompetencia.Vista
         {
 
             string modalidad =  comboBox_modalidad.SelectedItem.ToString();
-            Console.WriteLine("El indicador es : " + comboBox_modalidad.SelectedItem);
+           // Console.WriteLine("El indicador es : " + comboBox_modalidad.SelectedItem);
             controlModalidad(modalidad);
             
         }
@@ -120,7 +122,31 @@ namespace SistemaDeCompetencia.Vista
         }
 
 
-        private void comboBox_deporte_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void comboBox_deporte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string deporteSeleccionado = comboBox_deporte.SelectedItem.ToString();
+
+            int deporteId = 0;
+            foreach (var deporte in listaDeporte)
+            { if (deporte.Nombre == deporteSeleccionado)
+                    deporteId = deporte.DeporteId;
+                                       }
+            listaDtoLugares = gComp.listarLugares(deporteId, dtoUsuarioForm.DtoUsuarioId );
+            
+            TablaLugares.Rows.Clear();
+            cargarTabla(listaDtoLugares);
+
+        }
+
+        
+        private void cargarTabla(List<DtoLugarDeRealizacion> listaDtoLugares)
+        {
+            foreach (var lugar in listaDtoLugares) 
+            { 
+            int n= TablaLugares.Rows.Add();
+            TablaLugares.Rows[n].Cells[0].Value = lugar.Nombre;
+            }
+        }
 
         private void numericUpDown_partGanados_ValueChanged(object sender, EventArgs e)
         {
@@ -135,7 +161,8 @@ namespace SistemaDeCompetencia.Vista
             comboBox_permiso.Enabled = false;
             comboBox_formaPutuacion.Enabled=false;
 
-            switch (modalidad) {
+            switch (modalidad)
+            {
                 case "SISTEMA_DE_LIGA":
                     numericUpDown_partGanados.Enabled = true;
                     comboBox_permiso.Enabled = true;
@@ -143,6 +170,8 @@ namespace SistemaDeCompetencia.Vista
                     comboBox_formaPutuacion.Enabled = true;
                     numericUpDown_partGanados.Value = 0;
                     numericUpDown_presencia.Value = 0;
+                    numericUpDown_tantos.Value = 0;
+                    numericUpDown_sets.Value = 0;
                     comboBox_permiso.Text = "--Seleccione--";
                     comboBox_formaPutuacion.Text = "--Seleccione--";
                     break;
@@ -151,8 +180,11 @@ namespace SistemaDeCompetencia.Vista
                     numericUpDown_presencia.Enabled = true;
                     comboBox_permiso.Enabled = false;
                     comboBox_formaPutuacion.Enabled = true;
+                    numericUpDown_partEmpatados.Value = 0;
                     numericUpDown_partGanados.Value = 0;
                     numericUpDown_presencia.Value = 0;
+                    numericUpDown_tantos.Value = 0;
+                    numericUpDown_sets.Value = 0;
                     comboBox_permiso.Text = "--Seleccione--";
                     comboBox_formaPutuacion.Text = "--Seleccione--";
 
@@ -161,9 +193,12 @@ namespace SistemaDeCompetencia.Vista
                     numericUpDown_partGanados.Enabled = true;
                     numericUpDown_presencia.Enabled = true;
                     comboBox_permiso.Enabled = false;
+                    numericUpDown_partGanados.Value = 0;
                     comboBox_formaPutuacion.Enabled = true;
                     numericUpDown_partGanados.Value = 0;
                     numericUpDown_presencia.Value = 0;
+                    numericUpDown_tantos.Value = 0;
+                    numericUpDown_sets.Value = 0;
                     comboBox_permiso.Text = "--Seleccione--";
                     comboBox_formaPutuacion.Text = "--Seleccione--";
 
@@ -178,9 +213,8 @@ namespace SistemaDeCompetencia.Vista
 
         private void cargarDeportes()
         {
-            GestorCompetencia gComp = new GestorCompetencia();
-            List<DtoDeporte> lista = gComp.listarDeportes();
-            foreach(var deporte in lista)
+            listaDeporte = gComp.listarDeportes();
+            foreach(var deporte in listaDeporte)
             {
                 comboBox_deporte.Items.Add(deporte.Nombre);
             }
@@ -207,7 +241,7 @@ namespace SistemaDeCompetencia.Vista
 
         private void comboBox_permiso_SelectedIndexChanged(object sender, EventArgs e)
         {
-            permiso = comboBox_permiso.SelectedItem.ToString();
+            string permiso = comboBox_permiso.SelectedItem.ToString();
             if (permiso == "SI")
                 numericUpDown_partEmpatados.Enabled = true;
             else
@@ -219,7 +253,7 @@ namespace SistemaDeCompetencia.Vista
 
         private void comboBox_formaPutuacion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            formaDePuntuacion = comboBox_formaPutuacion.SelectedItem.ToString();
+          string formaDePuntuacion = comboBox_formaPutuacion.SelectedItem.ToString();
             if (formaDePuntuacion == "SETS")
             {
                 numericUpDown_sets.Enabled = true;
