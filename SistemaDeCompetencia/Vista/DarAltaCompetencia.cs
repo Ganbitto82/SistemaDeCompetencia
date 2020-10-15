@@ -95,6 +95,39 @@ namespace SistemaDeCompetencia.Vista
             dtoCompetencia.Nombre = textBox_nombre.Text.ToUpper();
             dtoCompetencia.DtoDeporte = dtoDeporte;
 
+            //prueba
+            dtoCompetencia.PermisoDeEmpate = true;
+            dtoCompetencia.Reglamento = "probando reglamento";
+            dtoCompetencia.PuntosPorPartidosGanado = 7;
+            dtoCompetencia.PuntosPorPartidoEmpatado = 5;
+            dtoCompetencia.PuntosPorPresentarse = 2;
+            /* ver como se hace con la modalidad*/
+            dtoCompetencia.Modalidad= Modalidad.SISTEMA_DE_LIGA;
+            //cargar usuario
+            dtoCompetencia.DtoUsuario = dtoUsuarioForm;
+            dtoCompetencia.UsuarioId = dtoUsuarioForm.DtoUsuarioId;
+            //cargamos deporte 
+            dtoCompetencia.DtoDeporte = dtoDeporte;
+            //disponibilidades 
+            List<DtoDisponibilidad> disponibilidades = new List<DtoDisponibilidad>();
+            DtoDisponibilidad dis1 = new DtoDisponibilidad();
+            dis1.Disponible = 7;
+            dis1.LugarId = 4;
+            disponibilidades.Add(dis1);
+            DtoDisponibilidad dis2 = new DtoDisponibilidad();
+            dis2.Disponible = 6;
+            dis2.LugarId = 3;
+            disponibilidades.Add(dis2);
+
+            dtoCompetencia.Disponibilidades = disponibilidades;
+
+            // forma de punt
+            DtoSet f = new DtoSet();
+            f.Cantidad = 7;
+            dtoCompetencia.DtoFormaDePuntuacion = f;
+
+            GestorCompetencia gestorCompetencia = new GestorCompetencia();
+            gestorCompetencia.darDeAltaCompetenciaDeporiva(dtoCompetencia);
 
 
 

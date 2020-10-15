@@ -17,7 +17,8 @@ namespace SistemaDeCompetencia.Dao
             try
             {
                 //creamos el context
-                var context = new CompetenciaContext();
+                //var context = new CompetenciaContext();
+                CompetenciaContext context = DAOCompetenciaEntityFramework.context;
                 //buscamos los login que coinciden con el correoElectronico
                 List<Login> log = context.Login.Where(l => l.correoElectronico == user).ToList();
                 //retornamos la lista de logins
