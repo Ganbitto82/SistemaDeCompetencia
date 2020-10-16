@@ -14,8 +14,7 @@ namespace SistemaDeCompetencia.Dao
             try
             {
                 //creamos el context
-                //CompetenciaContext context = new CompetenciaContext();
-                CompetenciaContext context = DAOCompetenciaEntityFramework.context;
+                CompetenciaContext context = new CompetenciaContext();
                 //retornamos el usuario con esa Id
                 return context.Usuario.Where(u => u.UsuarioId == id).FirstOrDefault();
             }
