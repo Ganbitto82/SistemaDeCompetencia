@@ -23,6 +23,9 @@ namespace SistemaDeCompetencia.Vista
         private List<DtoDeporte> listaDeporte;
         private List<DtoLugarDeRealizacion> listaDtoLugares;
         private List<DtoDisponibilidad> listaDtoDisponibilidad;
+        private int valorDisponibilidad;
+
+
 
         private string deporteSeleccionado;
         private DtoDeporte dtoDeporte;
@@ -45,6 +48,8 @@ namespace SistemaDeCompetencia.Vista
             cargarModalidad();
             cargarDeportes();
            
+
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -95,39 +100,6 @@ namespace SistemaDeCompetencia.Vista
             dtoCompetencia.Nombre = textBox_nombre.Text.ToUpper();
             dtoCompetencia.DtoDeporte = dtoDeporte;
 
-            //prueba
-            dtoCompetencia.PermisoDeEmpate = true;
-            dtoCompetencia.Reglamento = "probando reglamento";
-            dtoCompetencia.PuntosPorPartidosGanado = 7;
-            dtoCompetencia.PuntosPorPartidoEmpatado = 5;
-            dtoCompetencia.PuntosPorPresentarse = 2;
-            /* ver como se hace con la modalidad*/
-            dtoCompetencia.Modalidad= Modalidad.SISTEMA_DE_LIGA;
-            //cargar usuario
-            dtoCompetencia.DtoUsuario = dtoUsuarioForm;
-            dtoCompetencia.UsuarioId = dtoUsuarioForm.DtoUsuarioId;
-            //cargamos deporte 
-            dtoCompetencia.DtoDeporte = dtoDeporte;
-            //disponibilidades 
-            List<DtoDisponibilidad> disponibilidades = new List<DtoDisponibilidad>();
-            DtoDisponibilidad dis1 = new DtoDisponibilidad();
-            dis1.Disponible = 7;
-            dis1.LugarId = 4;
-            disponibilidades.Add(dis1);
-            DtoDisponibilidad dis2 = new DtoDisponibilidad();
-            dis2.Disponible = 6;
-            dis2.LugarId = 3;
-            disponibilidades.Add(dis2);
-
-            dtoCompetencia.Disponibilidades = disponibilidades;
-
-            // forma de punt
-            DtoSet f = new DtoSet();
-            f.Cantidad = 7;
-            dtoCompetencia.DtoFormaDePuntuacion = f;
-
-            GestorCompetencia gestorCompetencia = new GestorCompetencia();
-            gestorCompetencia.darDeAltaCompetenciaDeporiva(dtoCompetencia);
 
 
 
@@ -149,40 +121,13 @@ namespace SistemaDeCompetencia.Vista
         {
 
         }
+             
 
 
-       /* private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void TablaLugares_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-         
-        }*/
-      /*  private void TablaLugares_CellContentClick(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            e.Control.KeyPress -= new KeyPressEventHandler(Columns_KeyPress);
             
-            if (TablaLugares.CurrentCell.ColumnIndex == 1 )
-              
-            {
-                TextBox tb = e.Control as TextBox;
-                if (tb != null)
-                {
-                    tb.KeyPress += new KeyPressEventHandler(Columns_KeyPress);
-                }
-            }
-        }
-
-        private void Columns_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }*/
-
-
-
-        private void dgvLugarDeRealizacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
         }
 
 
@@ -203,7 +148,7 @@ namespace SistemaDeCompetencia.Vista
             
             TablaLugares.Rows.Clear();
             cargarTabla(listaDtoLugares);
-             
+           
         }
 
         
@@ -215,22 +160,18 @@ namespace SistemaDeCompetencia.Vista
             TablaLugares.Rows[n].Cells[0].Value = lugar.Nombre;
             }
         }
-        private void cargarDisponibilidad(List<DtoLugarDeRealizacion> listaLugares)
+        private void cargarDisponibilidad(List<DtoLugarDeRealizacion> listaLugares )
         {
-          // verificarTabla()
-            DtoDisponibilidad dtoDisponibilidad = new DtoDisponibilidad();
-
           
-
-            /*foreach (var lugar in listaLugares)
+            foreach (var lugar in listaLugares)
             {
+                DtoDisponibilidad dtoDisponibilidad = new DtoDisponibilidad();
+
                 dtoDisponibilidad.LugarId = lugar.LugarId;
-                dtoDisponibilidad.Disponible= TablaLugares.
-
-
-            }*/
-
-
+               // dtoDisponibilidad.Disponible = valorDisponibilidad;
+                //listaDtoDisponibilidad.Add(dtoDisponibilidad);
+               
+            }
         }
 
         private void numericUpDown_partGanados_ValueChanged(object sender, EventArgs e)
@@ -353,5 +294,48 @@ namespace SistemaDeCompetencia.Vista
                 numericUpDown_sets.Value = 0;
             }
         }
+        private bool validarNumero(string numero)
+        {
+            //Obtenemos la longitud del numero 
+            int cantidad = numero.Length;
+            for (int i = 0; i != cantidad; ++i)
+            {
+                //Detectamos si el numero es solo entero 
+                if (!(numero[i] >= '0' && numero[i] <= '9'))
+                    return true;
+            }
+            return false;
+        }
+        private void TablaLugares_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+
+            DataGridViewTextBoxCell cell = TablaLugares[1, e.RowIndex] as DataGridViewTextBoxCell;
+            //Si es la columna de disponibilidad y  es un número, la condición se cumple.
+
+            {
+                if (e.ColumnIndex == 1 && validarNumero(e.FormattedValue.ToString()))
+                {
+                    e.Cancel = true;
+                    TablaLugares.Rows[e.RowIndex].ErrorText = "Solo se puede ingresar números y no puede ser vacio";
+                }
+                else
+                {
+
+                    //string valor = e.FormattedValue.ToString();
+
+                    // cargarDisponibilidad(listaDtoLugares);
+
+
+                }
+
+            }
+        }
+        
+        private void TablaLugares_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            //Borra el mensaje de error cuando la validación termine...
+            TablaLugares.Rows[e.RowIndex].ErrorText = "     ";
+        }
+
     }
 }

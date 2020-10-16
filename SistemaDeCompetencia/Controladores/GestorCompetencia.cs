@@ -98,7 +98,7 @@ namespace SistemaDeCompetencia.Controladores
 
             /* agregar deporte a competencia y a dtoCompetencia */
             Deporte d = daoDeporte.buscarPorId(dtoCompetencia.DtoDeporte.DeporteId);
-            c.Deporte = d;
+            //c.Deporte = d;
             c.DeporteId = d.DeporteId;
              
 
@@ -139,7 +139,7 @@ namespace SistemaDeCompetencia.Controladores
 
             c.FormaDePuntuacion = f;
 
-            dAOCompetencia.insertarCompetencia(c);
+
 
             return true;
         }

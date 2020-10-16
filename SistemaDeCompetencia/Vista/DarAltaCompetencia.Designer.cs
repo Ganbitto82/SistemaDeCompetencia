@@ -40,6 +40,8 @@
             this.Cancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TablaLugares = new System.Windows.Forms.DataGridView();
+            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Disponibilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label_tituloLugar = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.comboBox_modalidad = new System.Windows.Forms.ComboBox();
@@ -61,8 +63,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Disponibilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaLugares)).BeginInit();
             this.panel3.SuspendLayout();
@@ -170,6 +170,7 @@
             this.TablaLugares.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.TablaLugares.AllowUserToAddRows = false;
             this.TablaLugares.AllowUserToDeleteRows = false;
+            this.TablaLugares.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
             this.TablaLugares.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.TablaLugares.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
@@ -194,7 +195,22 @@
             this.TablaLugares.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TablaLugares.Size = new System.Drawing.Size(551, 91);
             this.TablaLugares.TabIndex = 7;
-            this.TablaLugares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLugarDeRealizacion_CellContentClick);
+            this.TablaLugares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaLugares_CellContentClick);
+            this.TablaLugares.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.TablaLugares_CellValidating);
+            // 
+            // Lugar
+            // 
+            this.Lugar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Lugar.HeaderText = "Lugar";
+            this.Lugar.Name = "Lugar";
+            this.Lugar.ReadOnly = true;
+            // 
+            // Disponibilidad
+            // 
+            this.Disponibilidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Disponibilidad.HeaderText = "Disponibilidad";
+            this.Disponibilidad.Name = "Disponibilidad";
+            this.Disponibilidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // label_tituloLugar
             // 
@@ -592,20 +608,6 @@
             this.label1.Size = new System.Drawing.Size(196, 13);
             this.label1.TabIndex = 19;
             this.label1.Text = "(*) Completar campos obligatorios";
-            // 
-            // Lugar
-            // 
-            this.Lugar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Lugar.HeaderText = "Lugar";
-            this.Lugar.Name = "Lugar";
-            this.Lugar.ReadOnly = true;
-            // 
-            // Disponibilidad
-            // 
-            this.Disponibilidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Disponibilidad.HeaderText = "Disponibilidad";
-            this.Disponibilidad.Name = "Disponibilidad";
-            this.Disponibilidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // DarAltaCompetencia
             // 
