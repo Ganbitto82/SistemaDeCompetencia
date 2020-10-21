@@ -143,7 +143,7 @@ namespace SistemaDeCompetencia.Controladores
 
             return true;
         }
-        private bool validarDatos(DtoCompetencia dtoCompetencia)
+     public bool validarDatos(DtoCompetencia dtoCompetencia)
         {
             //Si el nombre de la competencia es nulo o vacio, no hay disponibilidades o tipo de modalidad o forma de puntuacion se lanza una excepcion
             if (string.IsNullOrWhiteSpace(dtoCompetencia.Nombre)
@@ -162,11 +162,12 @@ namespace SistemaDeCompetencia.Controladores
             if (dtoCompetencia.Modalidad.Equals(Modalidad.SISTEMA_DE_LIGA) && (dtoCompetencia.PuntosPorPresentarse >= dtoCompetencia.PuntosPorPartidosGanado)) throw new Exception("Los puntos por presentarse son mayor o igual a la cantidad de puntos por partido ganado.");
             return true;
         }
-        private bool nombreEnUso(string nombre)
+        public bool nombreEnUso(string nombre)
         {
             //retornamos true si ya esta en uso el nombre y false si el nombre esta disponible
             return (dAOCompetencia.buscarPorNombre(nombre).Count() != 0);
 
         }
+       
     }
 }

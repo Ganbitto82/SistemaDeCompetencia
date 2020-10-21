@@ -27,5 +27,9 @@ namespace SistemaDeCompetencia.Dao
                 throw new Exception("Error al buscar Competencia en la Base de datos.");
             }
         }
+       
+         
     }
-}
+}         
+
+

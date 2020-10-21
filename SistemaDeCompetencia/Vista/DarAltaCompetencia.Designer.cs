@@ -40,8 +40,6 @@
             this.Cancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TablaLugares = new System.Windows.Forms.DataGridView();
-            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Disponibilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label_tituloLugar = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.comboBox_modalidad = new System.Windows.Forms.ComboBox();
@@ -63,6 +61,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Disponibilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaLugares)).BeginInit();
             this.panel3.SuspendLayout();
@@ -83,7 +83,6 @@
             this.label_nombre.Size = new System.Drawing.Size(73, 16);
             this.label_nombre.TabIndex = 0;
             this.label_nombre.Text = "Nombre (*)";
-            this.label_nombre.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox_nombre
             // 
@@ -93,6 +92,7 @@
             this.textBox_nombre.Size = new System.Drawing.Size(174, 20);
             this.textBox_nombre.TabIndex = 1;
             this.textBox_nombre.TextChanged += new System.EventHandler(this.textBox_nombre_TextChanged);
+            this.textBox_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_nombre_KeyPress);
             // 
             // label_deporte
             // 
@@ -103,7 +103,6 @@
             this.label_deporte.Size = new System.Drawing.Size(73, 16);
             this.label_deporte.TabIndex = 2;
             this.label_deporte.Text = "Deporte (*)";
-            this.label_deporte.Click += new System.EventHandler(this.label2_Click);
             // 
             // label_modalidad
             // 
@@ -192,25 +191,11 @@
             this.TablaLugares.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.TablaLugares.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.TablaLugares.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.TablaLugares.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.TablaLugares.Size = new System.Drawing.Size(551, 91);
             this.TablaLugares.TabIndex = 7;
-            this.TablaLugares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaLugares_CellContentClick);
+            this.TablaLugares.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaLugares_CellValidated);
             this.TablaLugares.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.TablaLugares_CellValidating);
-            // 
-            // Lugar
-            // 
-            this.Lugar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Lugar.HeaderText = "Lugar";
-            this.Lugar.Name = "Lugar";
-            this.Lugar.ReadOnly = true;
-            // 
-            // Disponibilidad
-            // 
-            this.Disponibilidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Disponibilidad.HeaderText = "Disponibilidad";
-            this.Disponibilidad.Name = "Disponibilidad";
-            this.Disponibilidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // label_tituloLugar
             // 
@@ -221,7 +206,6 @@
             this.label_tituloLugar.Size = new System.Drawing.Size(289, 16);
             this.label_tituloLugar.TabIndex = 3;
             this.label_tituloLugar.Text = "Lugar de Realizacion de la Competencia";
-            this.label_tituloLugar.Click += new System.EventHandler(this.label3_Click);
             // 
             // panel3
             // 
@@ -298,6 +282,7 @@
             this.numericUpDown_sets.Name = "numericUpDown_sets";
             this.numericUpDown_sets.Size = new System.Drawing.Size(47, 20);
             this.numericUpDown_sets.TabIndex = 16;
+            this.numericUpDown_sets.ValueChanged += new System.EventHandler(this.numericUpDown_sets_ValueChanged);
             // 
             // label_sets
             // 
@@ -573,7 +558,6 @@
             this.listBox_reglamento.Name = "listBox_reglamento";
             this.listBox_reglamento.Size = new System.Drawing.Size(610, 186);
             this.listBox_reglamento.TabIndex = 16;
-            this.listBox_reglamento.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
@@ -583,7 +567,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(636, 661);
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label7
             // 
@@ -596,7 +579,6 @@
             this.label7.Size = new System.Drawing.Size(405, 25);
             this.label7.TabIndex = 18;
             this.label7.Text = "Sistema de Competencias Deportivas";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label1
             // 
@@ -608,6 +590,19 @@
             this.label1.Size = new System.Drawing.Size(196, 13);
             this.label1.TabIndex = 19;
             this.label1.Text = "(*) Completar campos obligatorios";
+            // 
+            // Lugar
+            // 
+            this.Lugar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Lugar.HeaderText = "Lugar";
+            this.Lugar.Name = "Lugar";
+            // 
+            // Disponibilidad
+            // 
+            this.Disponibilidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Disponibilidad.HeaderText = "Disponibilidad";
+            this.Disponibilidad.Name = "Disponibilidad";
+            this.Disponibilidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // DarAltaCompetencia
             // 
