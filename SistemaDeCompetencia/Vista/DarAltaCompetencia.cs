@@ -158,7 +158,7 @@ namespace SistemaDeCompetencia.Vista
         private bool validarCampoSets() 
         {
          //funcion queverifica que la cantidad máxima de sets no es numrero impar o es número mayor a 10
-            if (numericUpDown_sets.Value % 2 != 0 ||  numericUpDown_sets.Value > 10)
+            if (numericUpDown_sets.Value % 2 != 0 && numericUpDown_sets.Value < 10)
                 return true;
             else
                 return false;
@@ -169,21 +169,19 @@ namespace SistemaDeCompetencia.Vista
             
             
                 if (numericUpDown_partGanados.Value < numericUpDown_partEmpatados.Value)
-                    return true;
-                else
                     return false;
-            
-          
+                else
+                    return true;
+           
         }
         private bool validarPuntosPorPresentarse() 
         {
-         //funcion que verifica que los puntos por presentarse son mayor o igual a la cantidad de puntos por partido ganado
-            if (numericUpDown_presencia.Value > numericUpDown_partGanados.Value)
-                return true;
-            else
+            //La cantidad de puntos por partido ganado es menor que la cantidad de puntos por partido empatado.
+            if (numericUpDown_presencia.Value >= numericUpDown_partGanados.Value)
                 return false;
+            else
+                return true;
         }
-
         private void numericUpDown_partGanados_ValueChanged(object sender, EventArgs e)
         {
 
@@ -428,6 +426,11 @@ namespace SistemaDeCompetencia.Vista
         }
 
         private void numericUpDown_sets_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DarAltaCompetencia_Load(object sender, EventArgs e)
         {
 
         }
