@@ -571,6 +571,7 @@
             this.listBox_reglamento.Name = "listBox_reglamento";
             this.listBox_reglamento.Size = new System.Drawing.Size(610, 186);
             this.listBox_reglamento.TabIndex = 16;
+            this.listBox_reglamento.SelectedIndexChanged += new System.EventHandler(this.listBox_reglamento_SelectedIndexChanged);
             // 
             // pictureBox1
             // 

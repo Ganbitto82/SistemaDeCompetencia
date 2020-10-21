@@ -50,6 +50,7 @@
             this.textBoxContraseña.BackColor = System.Drawing.SystemColors.MenuBar;
             this.textBoxContraseña.Location = new System.Drawing.Point(272, 213);
             this.textBoxContraseña.Name = "textBoxContraseña";
+            this.textBoxContraseña.PasswordChar = '*';
             this.textBoxContraseña.Size = new System.Drawing.Size(192, 20);
             this.textBoxContraseña.TabIndex = 24;
             this.textBoxContraseña.TextChanged += new System.EventHandler(this.textBoxCorreo_TextChanged);
