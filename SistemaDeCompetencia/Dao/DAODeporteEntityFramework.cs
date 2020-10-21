@@ -12,7 +12,8 @@ namespace SistemaDeCompetencia.Dao
         public Deporte buscarPorId(int idDeporte)
         {
             //creamos el context
-            CompetenciaContext context = new CompetenciaContext();
+            //CompetenciaContext context = new CompetenciaContext();
+            CompetenciaContext context = DAOCompetenciaEntityFramework.context;
             try
             {
 
@@ -34,8 +35,9 @@ namespace SistemaDeCompetencia.Dao
             //inicializamos una lista de DeporteLugar
             List<DeporteLugar> listaDeporteLugares = new List<DeporteLugar>();
             //creamos el context
-            CompetenciaContext context = new CompetenciaContext();
-            
+            //CompetenciaContext context = new CompetenciaContext();
+            CompetenciaContext context = DAOCompetenciaEntityFramework.context;
+
 
             try
             {
@@ -65,7 +67,8 @@ namespace SistemaDeCompetencia.Dao
         public List<Deporte> listarDeportes()
         {
             //creamos el context
-            CompetenciaContext context = new CompetenciaContext();
+            //CompetenciaContext context = new CompetenciaContext();
+            CompetenciaContext context = DAOCompetenciaEntityFramework.context;
 
 
             try

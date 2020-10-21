@@ -10,6 +10,7 @@ namespace SistemaDeCompetencia.Dao
     interface DAOCompetencia
     {
         List<Competencia> buscarPorNombre(String nombreCompetencia);
-       
+        bool insertarCompetencia(Competencia c);
+
     }
 }

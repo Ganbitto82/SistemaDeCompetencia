@@ -14,7 +14,8 @@ namespace SistemaDeCompetencia.Dao
             try
             {
                 //creamos el context
-                CompetenciaContext context = new CompetenciaContext();
+                //CompetenciaContext context = new CompetenciaContext();
+                CompetenciaContext context = DAOCompetenciaEntityFramework.context;
                 //retornamos el lugar con esa Id
                 return context.LugarDeRealizacion.Where(l => l.LugarId == idLugar).FirstOrDefault();
             }
@@ -36,8 +37,9 @@ namespace SistemaDeCompetencia.Dao
             List<LugarDeRealizacion> listaTodosLugares = new List<LugarDeRealizacion>();
 
             List<LugarDeRealizacion> listaLugares = new List<LugarDeRealizacion>();
-
-            CompetenciaContext context = new CompetenciaContext();
+            
+            CompetenciaContext context = DAOCompetenciaEntityFramework.context;
+            //CompetenciaContext context = new CompetenciaContext();
             try
             {
 
