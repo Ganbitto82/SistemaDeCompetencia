@@ -1,5 +1,5 @@
 ﻿namespace SistemaDeCompetencia.Vista
-{
+{         //ATENTI AL GRUPO
     partial class DarAltaCompetencia
     {
         /// <summary>
