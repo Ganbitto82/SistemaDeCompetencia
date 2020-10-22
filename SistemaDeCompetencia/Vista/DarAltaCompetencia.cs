@@ -376,7 +376,7 @@ namespace SistemaDeCompetencia.Vista
                 {
                     MessageBox.Show("Los puntos por presentarse deben ser menor a la cantidad de puntos por partidos ganado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
+                     
             }
 
 

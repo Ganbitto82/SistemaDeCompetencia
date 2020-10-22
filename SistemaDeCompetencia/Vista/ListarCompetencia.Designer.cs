@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -120,10 +120,6 @@
             // 
             this.comboBox_modalidad.BackColor = System.Drawing.SystemColors.ControlLight;
             this.comboBox_modalidad.FormattingEnabled = true;
-            this.comboBox_modalidad.Items.AddRange(new object[] {
-            "SISTEMA DE LIGA",
-            "SISTEMA DE ELIMINATORIAS SIMPLE",
-            "SISTEMA DE ELIMINATORIAS DOBLE"});
             this.comboBox_modalidad.Location = new System.Drawing.Point(383, 20);
             this.comboBox_modalidad.Name = "comboBox_modalidad";
             this.comboBox_modalidad.Size = new System.Drawing.Size(200, 21);
@@ -249,8 +245,8 @@
             // 
             // tablaDeCompetencias
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkGray;
-            this.tablaDeCompetencias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
+            this.tablaDeCompetencias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaDeCompetencias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -268,8 +264,8 @@
             this.tablaDeCompetencias.Location = new System.Drawing.Point(16, 58);
             this.tablaDeCompetencias.Name = "tablaDeCompetencias";
             this.tablaDeCompetencias.RowHeadersWidth = 35;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Silver;
-            this.tablaDeCompetencias.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
+            this.tablaDeCompetencias.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaDeCompetencias.Size = new System.Drawing.Size(484, 306);
             this.tablaDeCompetencias.TabIndex = 28;
             // 

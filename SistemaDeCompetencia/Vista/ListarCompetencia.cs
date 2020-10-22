@@ -19,7 +19,7 @@ namespace SistemaDeCompetencia.Vista
         private GestorCompetencia gestorCompetencia = new GestorCompetencia();
         DtoUsuario dtoUsuarioForm = new DtoUsuario();
         private List<DtoDeporte> listaDeporte = new List<DtoDeporte>();
-        private string deporteSeleccionado;
+
         public ListarCompetencia(DtoUsuario dtoUsuario)
         {
      
@@ -30,7 +30,25 @@ namespace SistemaDeCompetencia.Vista
             cargarModalidad();
 
         }
+        private void cargarModalidad()
+        { //carga en el comboBox las modalidades
+            comboBox_modalidad.Text = "--Seleccione--";
+            comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_LIGA);
+            comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_ELIMINACION_SIMPLE);
+            comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_ELIMINACION_DOBLE);
+        }
+        private void cargarDeportes()
 
+        { //funcion que carga los deportes en el comboBox
+
+            listaDeporte = gestorCompetencia.listarDeportes();
+            comboBox_deporte.Text = "--Seleccione--";
+            foreach (var deporte in listaDeporte)
+            {
+                comboBox_deporte.Items.Add(deporte.Nombre);
+            }
+
+        }
         private void Form2_Load(object sender, EventArgs e)
         {
 
@@ -45,18 +63,7 @@ namespace SistemaDeCompetencia.Vista
         {
 
         }
-        private void cargarDeportes()
-
-        { //funcion que carga los deportes en el comboBox
-
-            listaDeporte = gestorCompetencia.listarDeportes();
-            comboBox_deporte.Text = "--Seleccione--";
-            foreach (var deporte in listaDeporte)
-            {
-                comboBox_deporte.Items.Add(deporte.Nombre);
-            }
-
-        }
+       
         private void button1_Click(object sender, EventArgs e)
         {
             string nombre= textBox_nombre.Text;
@@ -116,13 +123,7 @@ namespace SistemaDeCompetencia.Vista
         {
             
         }
-        private void cargarModalidad()
-        { //carga en el comboBox las modalidades
-            comboBox_modalidad.Text = "--Seleccione--";
-            comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_LIGA);
-            comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_ELIMINACION_SIMPLE);
-            comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_ELIMINACION_DOBLE);
-        }
+       
         private void comboBox_modalidad_SelectedIndexChanged(object sender, EventArgs e)
         {
 
