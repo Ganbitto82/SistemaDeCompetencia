@@ -113,6 +113,7 @@
             this.Controls.Add(this.button_cu03);
             this.Controls.Add(this.pictureBox1);
             this.Name = "PantallaPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pantalla Principal";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

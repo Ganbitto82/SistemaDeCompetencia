@@ -266,6 +266,9 @@
     <EmbeddedResource Include="Vista\DarAltaParticipante.resx">
       <DependentUpon>DarAltaParticipante.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vista\GestionarResultado.resx">
+      <DependentUpon>GestionarResultado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista\InicioDeSesion.resx">
       <DependentUpon>InicioDeSesion.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\ListarParticipante.resx">
       <DependentUpon>ListarParticipante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\MostrarFixture.resx">
+      <DependentUpon>MostrarFixture.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\MostrarTablaPosiciones.resx">
       <DependentUpon>MostrarTablaPosiciones.cs</DependentUpon>

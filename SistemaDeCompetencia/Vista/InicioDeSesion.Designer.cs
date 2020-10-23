@@ -101,6 +101,7 @@
             this.Controls.Add(this.textBoxCorreo);
             this.Controls.Add(this.pictureBox1);
             this.Name = "InicioDeSesion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InicioDeSesion";
             this.Load += new System.EventHandler(this.Form_InicioDeSesion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -19,6 +19,7 @@ namespace SistemaDeCompetencia.Vista
         private GestorCompetencia gestorCompetencia = new GestorCompetencia();
         DtoUsuario dtoUsuarioForm = new DtoUsuario();
         private List<DtoDeporte> listaDeporte = new List<DtoDeporte>();
+        private List<DtoCompetencia> listaDtoCompetencia = new List<DtoCompetencia>();
 
         public ListarCompetencia(DtoUsuario dtoUsuario)
         {
@@ -66,13 +67,28 @@ namespace SistemaDeCompetencia.Vista
        
         private void button1_Click(object sender, EventArgs e)
         {
-            string nombre= textBox_nombre.Text;
+            string nombre= textBox_nombre.Text.ToUpper();
             string modalidad = comboBox_modalidad.SelectedItem.ToString();
             string deporte = comboBox_deporte.SelectedItem.ToString();
             string estado = comboBox_estado.SelectedItem.ToString();
 
+            listaDtoCompetencia = gestorCompetencia.FiltrarCompetencias(nombre,estado,modalidad,deporte);
 
-            
+            cargarTabla(listaDtoCompetencia);
+            tablaDeCompetencias.ClearSelection();
+        }
+        private void cargarTabla(List<DtoCompetencia> listaDtoCompetencia)
+        {
+            //carga los lugares en la tabla (columna Lugar)
+            foreach (var competencia in listaDtoCompetencia)
+            {
+                int n = tablaDeCompetencias.Rows.Add();
+                tablaDeCompetencias.Rows[n].Cells[0].Value = competencia.Nombre;
+                tablaDeCompetencias.Rows[n].Cells[1].Value = competencia.DtoDeporte.Nombre;
+                tablaDeCompetencias.Rows[n].Cells[2].Value = competencia.Modalidad;
+                tablaDeCompetencias.Rows[n].Cells[3].Value = competencia.Estado;
+            }
+           
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -125,6 +141,11 @@ namespace SistemaDeCompetencia.Vista
         }
        
         private void comboBox_modalidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tablaDeCompetencias_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

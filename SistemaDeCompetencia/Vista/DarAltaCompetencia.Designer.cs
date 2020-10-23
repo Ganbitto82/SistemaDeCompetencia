@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label_nombre = new System.Windows.Forms.Label();
             this.textBox_nombre = new System.Windows.Forms.TextBox();
             this.label_deporte = new System.Windows.Forms.Label();
@@ -59,10 +59,10 @@
             this.label_permiso = new System.Windows.Forms.Label();
             this.numericUpDown_partGanados = new System.Windows.Forms.NumericUpDown();
             this.label_partGanados = new System.Windows.Forms.Label();
-            this.listBox_reglamento = new System.Windows.Forms.ListBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBoxReglamento = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaLugares)).BeginInit();
             this.panel3.SuspendLayout();
@@ -170,8 +170,8 @@
             this.TablaLugares.AllowUserToAddRows = false;
             this.TablaLugares.AllowUserToDeleteRows = false;
             this.TablaLugares.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
-            this.TablaLugares.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkGray;
+            this.TablaLugares.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.TablaLugares.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.TablaLugares.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.TablaLugares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -181,16 +181,16 @@
             this.TablaLugares.Location = new System.Drawing.Point(28, 80);
             this.TablaLugares.Name = "TablaLugares";
             this.TablaLugares.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaLugares.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TablaLugares.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaLugares.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TablaLugares.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.TablaLugares.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.TablaLugares.Size = new System.Drawing.Size(551, 91);
             this.TablaLugares.TabIndex = 7;
@@ -262,7 +262,8 @@
             this.comboBox_formaPutuacion.FormattingEnabled = true;
             this.comboBox_formaPutuacion.Items.AddRange(new object[] {
             "SETS",
-            "PUNTUACION"});
+            "PUNTUACION",
+            "RESULTADO FINAL"});
             this.comboBox_formaPutuacion.Location = new System.Drawing.Point(183, 134);
             this.comboBox_formaPutuacion.Name = "comboBox_formaPutuacion";
             this.comboBox_formaPutuacion.Size = new System.Drawing.Size(92, 21);
@@ -395,193 +396,6 @@
             this.label_partGanados.TabIndex = 6;
             this.label_partGanados.Text = "Puntos por Partidos ganados";
             // 
-            // listBox_reglamento
-            // 
-            this.listBox_reglamento.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.listBox_reglamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox_reglamento.FormattingEnabled = true;
-            this.listBox_reglamento.Items.AddRange(new object[] {
-            "\t\t    \t\t",
-            "\t\t\t          REGLAMENTO PARA COMPETENCIAS DEPORTIVAS",
-            "   Objetivos:",
-            "   Fomentar el deporte como instrumento para mejorar la calidad de vida e integr" +
-                "ación social de los estudiantes universitarios.",
-            "   Incorporar hábitos de vida saludables.",
-            "   Promoción de valores culturales del deporte: identidad, fraternidad, trabajo " +
-                "en equipo y asistencia a pares",
-            "   Conectar y potenciar iniciativas sociales sin fines de lucro de distintas par" +
-                "te de Argentina y del mundo que utilizan el ",
-            "  deporte como forma de transformación y paz social.",
-            "   El presente Reglamento y/o sus modificaciones serán válidos para todos aquell" +
-                "os que tomen participación en las prácticas ",
-            "  deportivas del IUNIR y regirá toda actividad deportiva que desarrolle, organice" +
-                " y programe el área Deportes del ",
-            "  Departamento de Extensión.",
-            "   Estas normas se presumen conocidas por todos aquellos que participen en las p" +
-                "rácticas deportivas.",
-            "   La inscripción a las prácticas deportivas se realizará exclusivamente en el D" +
-                "epartamento de Extensión de manera personal ",
-            "o por vía electrónica (formulario en página web www.iunir.edu.ar/instituto/extens" +
-                "ion/deportes.asp)",
-            "   IUNIR se encargará de:",
-            "  \to Proveer canchas y elementos necesarios para realizar torneos",
-            "\to Contratar entrenador para cada disciplina",
-            "\to Contratar seguro para los deportistas",
-            "  De los entrenadores.",
-            "  Son facultades y obligaciones del entrenador:",
-            "   Elegir a los integrantes de los equipos representativos de la Universidad",
-            "   Solicitar ante el Coordinador de área los materiales requeridos para el desar" +
-                "rollo de los programas deportivos a su cargo",
-            "   Responder por la preparación técnica y física de los deportistas",
-            "   Vigilar y supervisar las actividades que desarrollan los deportistas dentro d" +
-                "e las áreas destinadas al deporte",
-            "   Elaborar los proyectos que han de cumplir los equipos a su cargo",
-            "   Proponer al Coordinador de área el calendario de actividades deportivas de lo" +
-                "s equipos a su cargo ",
-            "   Reportar al Coordinador los desperfectos de las instalaciones",
-            "   Optimizar los recursos",
-            "   Participar, salvo causa justificada, en todas las actividades programadas así" +
-                " como en aquellas en las que sea debidamente ",
-            "  convocado.",
-            "   Informar al Coordinador sobre el avance de los programas",
-            "   Acudir a las sesiones de trabajo convocados por el Coordinador",
-            "   Responder ante el Coordinador por los materiales deportivos que le sean entre" +
-                "gados para el desarrollo de sus programas",
-            "   Dirigir las prácticas y entrenamientos de los deportistas a su cargo, en el h" +
-                "orario, fecha y lugar programado",
-            "   Evaluar el aprovechamiento de los deportistas",
-            "   Proporcionar al Coordinador Técnico los datos que éste requiera para la formu" +
-                "lación de estadísticas",
-            "   Elaborar la documentación técnica que posibilita la formulación de estadístic" +
-                "as",
-            "   Elegir, conjuntamente con el Coordinador Técnico, entre los deportistas más d" +
-                "estacados, a los que lo auxilien en la ",
-            "  preparación técnica de los equipos",
-            "  De los Jugadores:",
-            "   Deberán ser alumnos que se encuentren cursando alguna carrera del Instituto, " +
-                "sin límites de edad.",
-            "   Deberán firmar un consentimiento donde se exprese su libre voluntad de partic" +
-                "ipar en las actividades deportivas, con ",
-            "  plena conciencia de la posibilidad de sufrir lesiones y sus consecuencias (anex" +
-                "o I)",
-            "   Los jugadores, para ser aceptados como tales, deberán entregar sin excepción",
-            "  los siguientes estudios al Departamento de Extensión:",
-            "\to laboratorio completo,",
-            "\to electrocardiograma,",
-            "\to ecocardiograma",
-            "\to ergometría computarizada.",
-            "   Éstos deberán ser evaluados por médico cardiólogo especialista en deportologí" +
-                "a que emita el apto final por escrito. ",
-            "  El mismo será guardado por el departamento de Extensión.",
-            "   Los estudios antes mencionados se repetirán al comienzo de cada ciclo lectivo" +
-                " en caso de presentar alguna alteración. ",
-            "  De no ser así, se realizarán de manera bianual.",
-            "   Los alumnos- deportistas declararán por escrito cuál es su cobertura de salud" +
-                ", número de afiliado, fotocopia de ",
-            "   credencial y aportará el teléfono del servicio de emergencias correspondiente " +
-                "a su obra social, así como los efectores ",
-            "  de atención privada que correspondan a su cobertura.",
-            "   En caso de no poseer cobertura de salud firmará un escrito donde acepta ser a" +
-                "sistido y ocasionalmente derivado a ",
-            "  efector de salud público.",
-            "   Se solicitarán los siguientes datos por escrito: domicilio en Rosario y lugar" +
-                " de origen, dos teléfonos de familiares de ",
-            "  contacto en caso de urgencia.",
-            "   Los jugadores deberán obedecer las indicaciones de los coordinadores, entrena" +
-                "dores y auxiliares",
-            "   En caso de mal comportamiento, falta de respeto al arbitraje o conducta antid" +
-                "eportiva el entrenador elevará una nota ",
-            "  al Departamento de Extensión, quien notificará a la Escuela correspondiente y a" +
-                " Secretaría Académica y solicitará la ",
-            "  aplicación del sistema de sanciones en caso de ser necesario (apercibimiento, s" +
-                "uspensión, expulsión).",
-            "   Se notificará al alumno acerca de la sanción propuesta",
-            "   A los 7 días se realizará una entrevista con el alumno sancionado para que ef" +
-                "ectúe su descargo",
-            "   Los jugadores deberán:",
-            "\to Asistir con regularidad y puntualidad a las prácticas deportivas, observar con" +
-                "ducta honorable y disciplinada",
-            "\to Abstenerse de actividades de índole política en el desarrollo de eventos depor" +
-                "tivos",
-            "\to Conservar en buen estado las instalaciones y material deportivo del Instituto",
-            "\to Representar al Instituto en los eventos deportivos para los cuales sean selecc" +
-                "ionados",
-            "\to Practicar el deporte sujetándose a los planes y programas aprobados por el Ins" +
-                "tituto",
-            "\to Abstenerse de consumir bebidas embriagantes, drogas, estupefacientes, salvo pr" +
-                "escripción médica ",
-            "  debidamente comprobada",
-            "\to No discriminar a ningún miembro de la Comunidad Deportiva y/o ajeno a ella por" +
-                " razón de nacimiento, raza, ",
-            "  sexo, o por cualquier otra circunstancia personal o social.",
-            "\to Respetar las decisiones/sanciones adoptadas por el Tribunal de",
-            "  Disciplina",
-            "\to La pérdida y/o daño de elementos personales será responsabilidad exclusiva de " +
-                "cada participante no pudiendo ",
-            "  en ningún caso, efectuar reclamo alguno a IUNIR",
-            "  De los torneos:",
-            "   Cada equipo que participe en algún tipo de torneo o partido amistoso con otra" +
-                "s instituciones universitarias deberá ser ",
-            "  acompañado por entrenador o  profesor a cargo. La lista de jugadores habilitado" +
-                "s será comunicada previo al encuentro por ",
-            "  Departamento de Extensión, área deportes.",
-            "   Los gastos originados por la participación en contiendas interuniversitarias " +
-                "serán solventados por IUNIR Departamento ",
-            "  Administración",
-            "   Los traslados a entrenamientos y partidos correrán por cuenta de los alumnos." +
-                "",
-            "  De las prácticas deportivas en general:",
-            "   Tomando en cuenta el tipo de actividades que el presente Reglamento regula, y" +
-                " sabiendo que la práctica físico-deportiva ",
-            "  supone en sí misma una actividad riesgosa por los diferentes componentes que la" +
-                " determinan, es que IUNIR y/o",
-            "  su Departamento de Extensión no serán responsables por los accidentes que pueda" +
-                " sufrir cualquier miembro de la ",
-            "  comunidad deportiva en pleno desarrollo de las actividades, causados entre part" +
-                "icipantes, causados entre terceros y ",
-            "  participantes antes, durante, o después de la competición, siempre que los mism" +
-                "os sean provocados por el desarrollo ",
-            "  normal y habitual de dicho deporte.",
-            "   Cuando un miembro de la comunidad deportiva de la Universidad ocasionare un d" +
-                "año a otro miembro y/o a un tercero, ",
-            "  excediendo el límite de riesgo normal en la competencia, aumentando el peligro " +
-                "normal para otros participantes y/o terceros, ",
-            "  podrá ser intimado a responder penal o civilmente, según el caso, desde que en " +
-                "el marco de las reglas de juego, ",
-            "  organizadores y partícipes no están dispensados de las obligaciones de prudenci" +
-                "a, diligencia y cuidados que le impone a ",
-            "  todo hombre el deber general de no dañar a los demás.",
-            "   Tanto IUNIR como el Departamento de Extensión no se responsabilizarán por las" +
-                " lesiones que pudieran sufrir los miembros ",
-            "  de la comunidad deportiva dentro de los predios, las que correrán por cuenta de" +
-                " quien la sufra asumiendo los riesgos del ",
-            "  deporte y del tránsito en el establecimiento en que se encuentren desarrollando" +
-                " las actividades.",
-            "   Se hace saber a todos los miembros de la comunidad educativa y/o deportiva qu" +
-                "e las actividades desarrolladas por el ",
-            "  Departamento de Extensión podrán ser fotografiadas y/o filmadas al único fin de" +
-                " su publicación y/o promoción a través",
-            "  de sus sitios Web oficiales y/o cualquier forma de publicidad",
-            "   Se hace saber a la totalidad de los miembros integrantes del Departamento de " +
-                "Extensión de IUNIR que el acceso a las ",
-            "  instalaciones designadas por dicha institución para el desarrollo de las activi" +
-                "dades deportivas -del tipo que fuesensupone ",
-            "  aceptar las normas contenidas en este reglamento."});
-            this.listBox_reglamento.Location = new System.Drawing.Point(12, 426);
-            this.listBox_reglamento.Name = "listBox_reglamento";
-            this.listBox_reglamento.Size = new System.Drawing.Size(610, 186);
-            this.listBox_reglamento.TabIndex = 16;
-            this.listBox_reglamento.SelectedIndexChanged += new System.EventHandler(this.listBox_reglamento_SelectedIndexChanged);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.DarkGreen;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(636, 661);
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -605,20 +419,41 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "(*) Completar campos obligatorios";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.DarkGreen;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(636, 661);
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
+            // 
+            // textBoxReglamento
+            // 
+            this.textBoxReglamento.Location = new System.Drawing.Point(12, 437);
+            this.textBoxReglamento.Multiline = true;
+            this.textBoxReglamento.Name = "textBoxReglamento";
+            this.textBoxReglamento.Size = new System.Drawing.Size(610, 179);
+            this.textBoxReglamento.TabIndex = 20;
+            this.textBoxReglamento.Text = "                                                                          Ingrese" +
+    " reglamento";
+            this.textBoxReglamento.TextChanged += new System.EventHandler(this.textBoxReglamento_TextChanged);
+            // 
             // DarAltaCompetencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 661);
+            this.Controls.Add(this.textBoxReglamento);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.listBox_reglamento);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Cancelar);
             this.Controls.Add(this.Aceptar);
             this.Controls.Add(this.pictureBox1);
             this.Name = "DarAltaCompetencia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dar de Alta Competencia Deportiva";
             this.Load += new System.EventHandler(this.DarAltaCompetencia_Load);
             this.panel2.ResumeLayout(false);
@@ -648,7 +483,6 @@
         private System.Windows.Forms.Button Cancelar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ListBox listBox_reglamento;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox_formaPutuacion;
@@ -671,6 +505,7 @@
         private System.Windows.Forms.DataGridView TablaLugares;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lugar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Disponibilidad;
+        private System.Windows.Forms.TextBox textBoxReglamento;
     }
 }
 

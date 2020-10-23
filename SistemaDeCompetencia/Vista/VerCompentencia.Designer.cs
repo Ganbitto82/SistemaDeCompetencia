@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.salir = new System.Windows.Forms.Button();
             this.button_cancelar = new System.Windows.Forms.Button();
@@ -48,6 +48,12 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.TablaEncuentro = new System.Windows.Forms.DataGridView();
+            this.encuentroParticipante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EncuentroParticipante2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TablaParticipante = new System.Windows.Forms.DataGridView();
+            this.Participante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
             this.button_modificar = new System.Windows.Forms.Button();
             this.button_DarDeBaja = new System.Windows.Forms.Button();
@@ -55,16 +61,10 @@
             this.button_tablaPosicion = new System.Windows.Forms.Button();
             this.button_generar = new System.Windows.Forms.Button();
             this.button_participantes = new System.Windows.Forms.Button();
-            this.TablaParticipante = new System.Windows.Forms.DataGridView();
-            this.Participante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TablaEncuentro = new System.Windows.Forms.DataGridView();
-            this.encuentroParticipante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EncuentroParticipante2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TablaParticipante)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaEncuentro)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaParticipante)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -229,6 +229,70 @@
             this.panel1.Size = new System.Drawing.Size(493, 535);
             this.panel1.TabIndex = 22;
             // 
+            // TablaEncuentro
+            // 
+            this.TablaEncuentro.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            this.TablaEncuentro.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.TablaEncuentro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TablaEncuentro.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.encuentroParticipante,
+            this.Vs,
+            this.EncuentroParticipante2});
+            this.TablaEncuentro.Location = new System.Drawing.Point(58, 387);
+            this.TablaEncuentro.Name = "TablaEncuentro";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaEncuentro.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TablaEncuentro.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.TablaEncuentro.Size = new System.Drawing.Size(364, 121);
+            this.TablaEncuentro.TabIndex = 39;
+            // 
+            // encuentroParticipante
+            // 
+            this.encuentroParticipante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.encuentroParticipante.HeaderText = "Participante";
+            this.encuentroParticipante.Name = "encuentroParticipante";
+            // 
+            // Vs
+            // 
+            this.Vs.HeaderText = "Vs";
+            this.Vs.Name = "Vs";
+            // 
+            // EncuentroParticipante2
+            // 
+            this.EncuentroParticipante2.HeaderText = "Participante";
+            this.EncuentroParticipante2.Name = "EncuentroParticipante2";
+            // 
+            // TablaParticipante
+            // 
+            this.TablaParticipante.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
+            this.TablaParticipante.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.TablaParticipante.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TablaParticipante.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Participante});
+            this.TablaParticipante.Location = new System.Drawing.Point(56, 259);
+            this.TablaParticipante.Name = "TablaParticipante";
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TablaParticipante.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.TablaParticipante.Size = new System.Drawing.Size(367, 93);
+            this.TablaParticipante.TabIndex = 38;
+            this.TablaParticipante.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaParticipante_CellContentClick);
+            // 
+            // Participante
+            // 
+            this.Participante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Participante.HeaderText = "Participantes";
+            this.Participante.Name = "Participante";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -300,70 +364,6 @@
             this.button_participantes.Text = "VerParticipante";
             this.button_participantes.UseVisualStyleBackColor = true;
             // 
-            // TablaParticipante
-            // 
-            this.TablaParticipante.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
-            this.TablaParticipante.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.TablaParticipante.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TablaParticipante.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Participante});
-            this.TablaParticipante.Location = new System.Drawing.Point(56, 259);
-            this.TablaParticipante.Name = "TablaParticipante";
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TablaParticipante.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.TablaParticipante.Size = new System.Drawing.Size(367, 93);
-            this.TablaParticipante.TabIndex = 38;
-            this.TablaParticipante.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaParticipante_CellContentClick);
-            // 
-            // Participante
-            // 
-            this.Participante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Participante.HeaderText = "Participantes";
-            this.Participante.Name = "Participante";
-            // 
-            // TablaEncuentro
-            // 
-            this.TablaEncuentro.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            this.TablaEncuentro.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.TablaEncuentro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TablaEncuentro.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.encuentroParticipante,
-            this.Vs,
-            this.EncuentroParticipante2});
-            this.TablaEncuentro.Location = new System.Drawing.Point(58, 387);
-            this.TablaEncuentro.Name = "TablaEncuentro";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaEncuentro.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TablaEncuentro.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.TablaEncuentro.Size = new System.Drawing.Size(364, 121);
-            this.TablaEncuentro.TabIndex = 39;
-            // 
-            // encuentroParticipante
-            // 
-            this.encuentroParticipante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.encuentroParticipante.HeaderText = "Participante";
-            this.encuentroParticipante.Name = "encuentroParticipante";
-            // 
-            // Vs
-            // 
-            this.Vs.HeaderText = "Vs";
-            this.Vs.Name = "Vs";
-            // 
-            // EncuentroParticipante2
-            // 
-            this.EncuentroParticipante2.HeaderText = "Participante";
-            this.EncuentroParticipante2.Name = "EncuentroParticipante2";
-            // 
             // VerCompentencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,12 +381,13 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox1);
             this.Name = "VerCompentencia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ver Competencia Deportiva";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TablaParticipante)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaEncuentro)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablaParticipante)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

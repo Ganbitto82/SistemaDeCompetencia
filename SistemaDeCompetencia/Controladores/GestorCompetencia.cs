@@ -89,7 +89,7 @@ namespace SistemaDeCompetencia.Controladores
             /* ver como se hace con la modalidad*/
             c.Modalidad = dtoCompetencia.Modalidad;
              
-            c.Estado = Modelo.Estado.Creada;
+            c.Estado = Modelo.Estado.CREADA;
 
             //seteamos el usuario
             Usuario u = daoUsuario.buscarPorId(dtoCompetencia.DtoUsuario.DtoUsuarioId);
@@ -168,6 +168,34 @@ namespace SistemaDeCompetencia.Controladores
             return (dAOCompetencia.buscarPorNombre(nombre).Count() != 0);
 
         }
+        public List<DtoCompetencia> FiltrarCompetencias(string nombreCompetencia, string stringEstado, string stringModalidad, string nombreDeporte) 
+        {
+
+            List<DtoCompetencia> listaDtoCompetencia = new List<DtoCompetencia>();
+
+            List<Competencia> listaCompetencia= dAOCompetencia.buscarCompetencias(nombreCompetencia, stringEstado, stringModalidad, nombreDeporte);
+
+            foreach (var competencia in listaCompetencia) 
+            {
+                DtoCompetencia dtoCompetencia = new DtoCompetencia();
+                DtoDeporte dtoDeporte = new DtoDeporte();
+                dtoCompetencia.CompetenciaId = competencia.CompetenciaId;
+                dtoCompetencia.Nombre = competencia.Nombre;
+                dtoCompetencia.Estado = competencia.Estado;
+                dtoCompetencia.Modalidad = competencia.Modalidad;
+
+                dtoDeporte.DeporteId = competencia.DeporteId;
+                dtoDeporte.Nombre = daoDeporte.buscarPorId(dtoDeporte.DeporteId).Nombre;
+                dtoCompetencia.DtoDeporte = dtoDeporte;
+                listaDtoCompetencia.Add(dtoCompetencia);
+
+            }
+            return listaDtoCompetencia;
+
+
+        }
+
        
+
     }
 }

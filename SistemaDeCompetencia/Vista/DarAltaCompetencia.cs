@@ -38,6 +38,7 @@ namespace SistemaDeCompetencia.Vista
             InitializeComponent();
             cargarModalidad();
             cargarDeportes();
+            textBoxReglamento.Text = " Ingrese reglamento";
         }
         
         private void textBox_nombre_TextChanged(object sender, EventArgs e)
@@ -226,6 +227,13 @@ namespace SistemaDeCompetencia.Vista
                 numericUpDown_sets.Enabled = false;
                 numericUpDown_tantos.Enabled = true;
                 numericUpDown_sets.Value = 0;
+            }
+            if (formaDePuntuacion == "RESULTADO FINAL") 
+            {
+                numericUpDown_tantos.Enabled = false;
+                numericUpDown_sets.Enabled = false;
+                numericUpDown_sets.Value = 0;
+                numericUpDown_tantos.Value = 0;
             }
         }
         private bool validarNumero(string numero)
@@ -423,7 +431,7 @@ namespace SistemaDeCompetencia.Vista
                 dtoCompetencia.DtoFormaDePuntuacion = f;
             }
             //reglamento
-            dtoCompetencia.Reglamento = listBox_reglamento.Text;
+            dtoCompetencia.Reglamento = textBoxReglamento.Text;
             
 
             GestorCompetencia gestorCompetencia = new GestorCompetencia();
@@ -460,8 +468,11 @@ namespace SistemaDeCompetencia.Vista
 
         }
 
-        private void listBox_reglamento_SelectedIndexChanged(object sender, EventArgs e)
+       
+
+        private void textBoxReglamento_TextChanged(object sender, EventArgs e)
         {
+           // textBoxReglamento.Text = "   ";
 
         }
     }

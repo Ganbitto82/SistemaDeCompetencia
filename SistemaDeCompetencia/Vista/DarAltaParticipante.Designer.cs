@@ -149,7 +149,7 @@
             this.Aceptar.Text = "Aceptar";
             this.Aceptar.UseVisualStyleBackColor = false;
             // 
-            // Form4
+            // DarAltaParticipante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -159,7 +159,8 @@
             this.Controls.Add(this.Aceptar);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "Form4";
+            this.Name = "DarAltaParticipante";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dar de Alta Participante";
             this.Load += new System.EventHandler(this.Form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

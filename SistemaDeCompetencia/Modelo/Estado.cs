@@ -8,10 +8,10 @@ namespace SistemaDeCompetencia.Modelo
 {
     public enum Estado
     {
-       Creada,
-       Planificada,
-       EnDisputa,
-       Finalizada
+       CREADA,
+       PLANIFICADA,
+       ENDISPUTA,
+       FINALIZADA
       
     }
 }

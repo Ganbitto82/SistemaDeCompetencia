@@ -171,5 +171,10 @@ namespace SistemaDeCompetencia.Vista
         {
 
         }
+
+        private void GestionarResultado_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
