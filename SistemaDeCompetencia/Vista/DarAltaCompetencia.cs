@@ -27,6 +27,7 @@ namespace SistemaDeCompetencia.Vista
         private List<int> valoresDeDisponibilidades = new List<int>();
         private string nombreCompentencia;
         private string modalidad;
+        private Modalidad modalidadDto;
         private string deporteSeleccionado;
         private DtoDeporte dtoDeporte;
 
@@ -108,6 +109,7 @@ namespace SistemaDeCompetencia.Vista
         {
             
             modalidad = comboBox_modalidad.SelectedItem.ToString();
+            
             controlModalidad(modalidad);
 
         }
@@ -138,19 +140,21 @@ namespace SistemaDeCompetencia.Vista
                     comboBox_permiso.Enabled = true;
                     numericUpDown_presencia.Enabled = true;
                     comboBox_formaPutuacion.Enabled = true;
+                    modalidadDto = Modalidad.SISTEMA_DE_LIGA;
 
                     break;
                 case "SISTEMA_DE_ELIMINACION_DOBLE":
                     numericUpDown_partGanados.Enabled = true;
                     numericUpDown_presencia.Enabled = true;
                     comboBox_formaPutuacion.Enabled = true;
-
+                    modalidadDto = Modalidad.SISTEMA_DE_ELIMINACION_DOBLE;
 
                     break;
                 case "SISTEMA_DE_ELIMINACION_SIMPLE":
                     numericUpDown_partGanados.Enabled = true;
                     numericUpDown_presencia.Enabled = true;
                     comboBox_formaPutuacion.Enabled = true;
+                    modalidadDto = Modalidad.SISTEMA_DE_ELIMINACION_SIMPLE;
                     break;
             }
         }
@@ -397,7 +401,7 @@ namespace SistemaDeCompetencia.Vista
             //disponibilidades 	
             dtoCompetencia.Disponibilidades = listaDtoDisponibilidad;
             /* ver como se hace con la modalidad*/
-            dtoCompetencia.Modalidad = Modalidad.SISTEMA_DE_LIGA;
+            dtoCompetencia.Modalidad = modalidadDto;
 
             dtoCompetencia.PuntosPorPartidosGanado = Convert.ToInt32(numericUpDown_partGanados.Value);
             dtoCompetencia.PermisoDeEmpate = permisoEmpate;

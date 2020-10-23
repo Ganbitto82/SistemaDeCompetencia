@@ -1,5 +1,7 @@
 ﻿using SistemaDeCompetencia.Controladores;
+using SistemaDeCompetencia.Dao;
 using SistemaDeCompetencia.Dto;
+using SistemaDeCompetencia.Modelo;
 using SistemaDeCompetencia.Vista;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,8 @@ namespace SistemaDeCompetencia.vista
     {
         public InicioDeSesion()
         {
+            //DAOCompetenciaEntityFramework dao = new DAOCompetenciaEntityFramework();
+            //dao.buscarCompetencias("", "", "", "FUTBOL");
             InitializeComponent();
         }
 
@@ -44,6 +48,8 @@ namespace SistemaDeCompetencia.vista
 
         private void buttonIngresar_Click(object sender, EventArgs e)
         {
+           // DAOCompetenciaEntityFramework dao = new DAOCompetenciaEntityFramework();
+            //dao.buscarCompetencias("a", "", "SISTEMA_DE_LIGA", "");
             DtoLogin dtoLog = new DtoLogin();
             dtoLog.correoElectronico = textBoxCorreo.Text.ToUpper();
             dtoLog.Contraseña = textBoxContraseña.Text.ToUpper();

@@ -53,6 +53,26 @@ namespace SistemaDeCompetencia.Dao
             return true;
         }
 
+        public List<Competencia> buscarCompetencias(string nombreCompetencia, string stringEstado, string stringModalidad, string nombreDeporte)
+        {
+            List<Competencia> competencias = context.Competencia.Where(c => c.Nombre.Contains(nombreCompetencia)).ToList();
+             if (!stringEstado.Equals("")) competencias = competencias.Where(c => c.Estado.ToString().Equals(stringEstado)).ToList();
+             if (!stringModalidad.Equals("")) competencias = competencias.Where(c => c.Modalidad.ToString().Equals(stringModalidad)).ToList();
+            if (!nombreDeporte.Equals(""))
+            {
+                Deporte deporte = context.Deporte.Where(d => d.Nombre.Equals(nombreDeporte)).FirstOrDefault();
+                competencias = competencias.Where(c => c.DeporteId.Equals(deporte.DeporteId)).ToList();
+            }
+            /* Console.WriteLine(competencias.ElementAt(0).Estado.ToString());
+         Console.WriteLine(competencias.ElementAt(0).Modalidad.ToString());
+         Console.ReadLine();
+         foreach(var c in competencias){
+            Console.WriteLine(c.Nombre + c.Estado + c.Modalidad + c.DeporteId);
+            Console.ReadLine();
+        }*/
+            return competencias;
+        }
+
 
     }
 }         

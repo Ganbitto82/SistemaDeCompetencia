@@ -11,6 +11,7 @@ namespace SistemaDeCompetencia.Dao
     {
         List<Competencia> buscarPorNombre(String nombreCompetencia);
         bool insertarCompetencia(Competencia c);
+        List<Competencia> buscarCompetencias(string nombreCompetencia, string stringEstado, string stringModalidad, string nombreDeporte);
 
     }
 }
