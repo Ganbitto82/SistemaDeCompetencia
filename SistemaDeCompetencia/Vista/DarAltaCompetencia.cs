@@ -30,6 +30,7 @@ namespace SistemaDeCompetencia.Vista
         private Modalidad modalidadDto;
         private string deporteSeleccionado;
         private DtoDeporte dtoDeporte;
+        private List<string> listaErrores = new List<string>();
 
 
         public DarAltaCompetencia(DtoUsuario dtoUsuario)
@@ -38,7 +39,7 @@ namespace SistemaDeCompetencia.Vista
             InitializeComponent();
             cargarModalidad();
             cargarDeportes();
-            textBoxReglamento.Text = " Ingrese reglamento";
+            
         }
         
         private void textBox_nombre_TextChanged(object sender, EventArgs e)
@@ -271,7 +272,7 @@ namespace SistemaDeCompetencia.Vista
             }
             catch (Exception)
             {
-                MessageBox.Show("Debe ingresar un valor numérico", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               // MessageBox.Show("Debe ingresar un valor numérico", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -306,7 +307,7 @@ namespace SistemaDeCompetencia.Vista
 
             if (verificarColumnaDisponibilidad()==false)
             {
-                MessageBox.Show("Debe cargar con los valores numéricos de la columna disponibilidad", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               // MessageBox.Show("Debe cargar con los valores numéricos de la columna disponibilidad", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             else
@@ -337,7 +338,8 @@ namespace SistemaDeCompetencia.Vista
             if (nombreCompentencia == null)
             {
                 permisoParaCrearCompetencia = false;
-                MessageBox.Show("Debe ingresar un nombre para la competencia", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                listaErrores.Add("Debe ingresar un nombre para la competencia");
+                //MessageBox.Show("Debe ingresar un nombre para la competencia", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
                 
             else
@@ -346,7 +348,8 @@ namespace SistemaDeCompetencia.Vista
             if (deporteSeleccionado == null)
             {
                 permisoParaCrearCompetencia = false;
-                MessageBox.Show("Debe seleccionar un deporte", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                listaErrores.Add("Debe seleccionar un deporte");
+                //MessageBox.Show("Debe seleccionar un deporte", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
                
             else 
@@ -355,7 +358,8 @@ namespace SistemaDeCompetencia.Vista
                 if (cargarValoresDisponibilidad() == false)
                 {
                     permisoParaCrearCompetencia = false;
-                    MessageBox.Show("Debe cargar las disponibilidades", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    listaErrores.Add("Debe cargar las disponibilidades");
+                    //MessageBox.Show("Debe cargar las disponibilidades", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                     
              }
@@ -363,7 +367,8 @@ namespace SistemaDeCompetencia.Vista
             if (modalidad == null)
             {
                 permisoParaCrearCompetencia = false;
-                MessageBox.Show("Debe seleccionar una modalidad", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                listaErrores.Add("Debe seleccionar una modalidad");
+                //MessageBox.Show("Debe seleccionar una modalidad", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
                 
 
@@ -377,7 +382,9 @@ namespace SistemaDeCompetencia.Vista
                     if (comboBox_permiso.SelectedItem == null)
                     {
                         permisoParaCrearCompetencia = false;
-                        MessageBox.Show("Debe seleccionar si permite empate ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        listaErrores.Add("Debe seleccionar si permite empate");
+                       // MessageBox.Show("Debe seleccionar si permite empate ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                   
                     }
 
                         
@@ -388,7 +395,8 @@ namespace SistemaDeCompetencia.Vista
                             if (validarPuntos() == false)
                             {
                                 permisoParaCrearCompetencia = false;
-                                MessageBox.Show("La cantidad de puntos por partidos ganado NO debe ser menor que la cantidad de puntos por partido empatados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                listaErrores.Add("La cantidad de puntos por partidos ganado NO debe ser menor que la cantidad de puntos por partido empatados");
+                                //MessageBox.Show("La cantidad de puntos por partidos ganado NO debe ser menor que la cantidad de puntos por partido empatados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                                 
                             permisoEmpate = true;
@@ -399,13 +407,15 @@ namespace SistemaDeCompetencia.Vista
                     if (validarPuntosPorPresentarse() == false)
                     {
                         permisoParaCrearCompetencia = false;
-                        MessageBox.Show("Los puntos por presentarse deben ser menor a la cantidad de puntos por partidos ganado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        listaErrores.Add("Los puntos por presentarse deben ser menor a la cantidad de puntos por partidos ganado");
+                        //MessageBox.Show("Los puntos por presentarse deben ser menor a la cantidad de puntos por partidos ganado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 if (comboBox_formaPutuacion.SelectedItem == null)
                 {
                     permisoParaCrearCompetencia = false;
-                    MessageBox.Show("Debe seleccionar forma de puntuacion ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    listaErrores.Add("Debe seleccionar forma de puntuacion ");
+                    //MessageBox.Show("Debe seleccionar forma de puntuacion ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                    
                 else
@@ -416,16 +426,18 @@ namespace SistemaDeCompetencia.Vista
                         if (validarCampoSets() == false)
                         {
                             permisoParaCrearCompetencia = false;
-                            MessageBox.Show("La cantidad máxima de un sets debe ser número impar o debe ser un númro menor a 10", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            listaErrores.Add("La cantidad máxima de un sets debe ser número impar o debe ser un númro menor a 10");
+                           // MessageBox.Show("La cantidad máxima de un sets debe ser número impar o debe ser un númro menor a 10", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                             
                     }
-                } 
+                }
 
                 
-                     
             }
-
+            var mensajeDeErrores = string.Join(Environment.NewLine, listaErrores);
+            MessageBox.Show(mensajeDeErrores, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            listaErrores.Clear();
 
             if (permisoParaCrearCompetencia)
             {
