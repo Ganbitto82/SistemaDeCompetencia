@@ -67,28 +67,70 @@ namespace SistemaDeCompetencia.Vista
        
         private void button1_Click(object sender, EventArgs e)
         {
+            string modalidad;
+            string deporte;
+            string estado;
+            
             string nombre= textBox_nombre.Text.ToUpper();
-            string modalidad = comboBox_modalidad.SelectedItem.ToString();
-            string deporte = comboBox_deporte.SelectedItem.ToString();
-            string estado = comboBox_estado.SelectedItem.ToString();
 
-            listaDtoCompetencia = gestorCompetencia.FiltrarCompetencias(nombre,estado,modalidad,deporte);
+            if (comboBox_modalidad.SelectedItem == null)
+            {
+                modalidad = "";
+            }
+            else
+            {
+                modalidad = comboBox_modalidad.SelectedItem.ToString();
+            }
+            if (comboBox_deporte.SelectedItem == null)
+            {
+                deporte = "";
+             }
+            else 
+            {
+                deporte = comboBox_deporte.SelectedItem.ToString();
+            }
+            if (comboBox_estado.SelectedItem == null)
+            {
+                estado = "";
+            }
+            else 
+            {
+                estado = comboBox_estado.SelectedItem.ToString();
 
-            cargarTabla(listaDtoCompetencia);
-            tablaDeCompetencias.ClearSelection();
+            }
+
+            if (nombre.Equals("") && modalidad.Equals("") && deporte.Equals("") && estado.Equals(""))
+            {
+                MessageBox.Show("Debe ingresar al menos uno de los criterios de búsqueda", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else 
+            { 
+               listaDtoCompetencia = gestorCompetencia.FiltrarCompetencias(nombre,estado,modalidad,deporte);
+               tablaDeCompetencias.Rows.Clear();
+               cargarTabla(listaDtoCompetencia);
+
+            }
+           
+                
+           
+            listaDtoCompetencia.Clear();
+            
+
         }
         private void cargarTabla(List<DtoCompetencia> listaDtoCompetencia)
         {
             //carga los lugares en la tabla (columna Lugar)
+            int n;
             foreach (var competencia in listaDtoCompetencia)
             {
-                int n = tablaDeCompetencias.Rows.Add();
+                n= tablaDeCompetencias.Rows.Add();
                 tablaDeCompetencias.Rows[n].Cells[0].Value = competencia.Nombre;
                 tablaDeCompetencias.Rows[n].Cells[1].Value = competencia.DtoDeporte.Nombre;
                 tablaDeCompetencias.Rows[n].Cells[2].Value = competencia.Modalidad;
                 tablaDeCompetencias.Rows[n].Cells[3].Value = competencia.Estado;
             }
-           
+        
+            
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)

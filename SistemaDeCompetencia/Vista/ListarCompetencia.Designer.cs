@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -247,8 +247,8 @@
             // 
             this.tablaDeCompetencias.AllowUserToAddRows = false;
             this.tablaDeCompetencias.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkGray;
-            this.tablaDeCompetencias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
+            this.tablaDeCompetencias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaDeCompetencias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -267,8 +267,8 @@
             this.tablaDeCompetencias.Name = "tablaDeCompetencias";
             this.tablaDeCompetencias.ReadOnly = true;
             this.tablaDeCompetencias.RowHeadersWidth = 35;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
-            this.tablaDeCompetencias.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
+            this.tablaDeCompetencias.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaDeCompetencias.Size = new System.Drawing.Size(484, 306);
             this.tablaDeCompetencias.TabIndex = 28;
             this.tablaDeCompetencias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaDeCompetencias_CellContentClick);
