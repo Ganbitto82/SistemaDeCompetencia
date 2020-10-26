@@ -1,6 +1,7 @@
 ﻿using SistemaDeCompetencia.Modelo;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,6 +72,11 @@ namespace SistemaDeCompetencia.Dao
             Console.ReadLine();
         }*/
             return competencias;
+        }
+
+        public List<Competencia> todas()
+        {
+            return context.Competencia.Include(c => c.Deporte).Include(c => c.Disponibilidades).ToList();
         }
 
 

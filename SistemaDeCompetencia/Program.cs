@@ -1,4 +1,6 @@
-﻿using SistemaDeCompetencia.Dto;
+﻿using SistemaDeCompetencia.Dao;
+using SistemaDeCompetencia.Dto;
+using SistemaDeCompetencia.Modelo;
 using SistemaDeCompetencia.vista;
 using SistemaDeCompetencia.Vista;
 using System;
@@ -23,6 +25,14 @@ namespace SistemaDeCompetencia
             int idDtoUsusario = 1;
             Application.Run(new DarAltaCompetencia(new DtoUsuario(idDtoUsusario))); 
             */
+            DAOCompetenciaEntityFramework dAOCompetencia = new DAOCompetenciaEntityFramework();
+            List<Competencia> lista = dAOCompetencia.todas();
+            foreach (Competencia c  in lista)
+            {
+                Console.Write(c);
+                Console.Write(c.Usuario);
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form frm1 = new InicioDeSesion();
