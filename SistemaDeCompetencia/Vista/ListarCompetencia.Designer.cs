@@ -68,7 +68,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(636, 661);
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label7
             // 
@@ -124,7 +123,6 @@
             this.comboBox_modalidad.Name = "comboBox_modalidad";
             this.comboBox_modalidad.Size = new System.Drawing.Size(200, 21);
             this.comboBox_modalidad.TabIndex = 21;
-            this.comboBox_modalidad.SelectedIndexChanged += new System.EventHandler(this.comboBox_modalidad_SelectedIndexChanged);
             // 
             // comboBox_estado
             // 
@@ -167,7 +165,6 @@
             this.textBox_nombre.Name = "textBox_nombre";
             this.textBox_nombre.Size = new System.Drawing.Size(200, 20);
             this.textBox_nombre.TabIndex = 4;
-            this.textBox_nombre.TextChanged += new System.EventHandler(this.textBox_nombre_TextChanged);
             // 
             // comboBox_deporte
             // 
@@ -177,7 +174,6 @@
             this.comboBox_deporte.Name = "comboBox_deporte";
             this.comboBox_deporte.Size = new System.Drawing.Size(200, 21);
             this.comboBox_deporte.TabIndex = 3;
-            this.comboBox_deporte.SelectedIndexChanged += new System.EventHandler(this.comboBox_deporte_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -216,7 +212,6 @@
             this.Competicion.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Competicion.Size = new System.Drawing.Size(610, 390);
             this.Competicion.TabIndex = 21;
-            this.Competicion.Paint += new System.Windows.Forms.PaintEventHandler(this.Competicion_Paint);
             // 
             // button_nueva
             // 
@@ -242,6 +237,7 @@
             this.button_detalles.TabIndex = 24;
             this.button_detalles.Text = "Detalles";
             this.button_detalles.UseVisualStyleBackColor = false;
+            this.button_detalles.Click += new System.EventHandler(this.button_detalles_Click);
             // 
             // tablaDeCompetencias
             // 
@@ -269,9 +265,11 @@
             this.tablaDeCompetencias.RowHeadersWidth = 35;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
             this.tablaDeCompetencias.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.tablaDeCompetencias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaDeCompetencias.Size = new System.Drawing.Size(484, 306);
             this.tablaDeCompetencias.TabIndex = 28;
-            this.tablaDeCompetencias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaDeCompetencias_CellContentClick);
+            this.tablaDeCompetencias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaDeCompetencias_CellClick);
+           // this.tablaDeCompetencias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaDeCompetencias_CellContentClick);
             // 
             // Column1
             // 
@@ -306,7 +304,6 @@
             this.label10.Size = new System.Drawing.Size(194, 18);
             this.label10.TabIndex = 27;
             this.label10.Text = "Competencia/s Creada/s";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label5
             // 
@@ -353,7 +350,6 @@
             this.Name = "ListarCompetencia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listar Competencias Deportivas";
-            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

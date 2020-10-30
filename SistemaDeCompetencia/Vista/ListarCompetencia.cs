@@ -2,6 +2,7 @@
 using SistemaDeCompetencia.Dto;
 using SistemaDeCompetencia.Modelo;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,9 @@ namespace SistemaDeCompetencia.Vista
         DtoUsuario dtoUsuarioForm = new DtoUsuario();
         private List<DtoDeporte> listaDeporte = new List<DtoDeporte>();
         private List<DtoCompetencia> listaDtoCompetencia = new List<DtoCompetencia>();
-
+        private string nombreCompetencia;
+        private DtoCompetencia dtoCompetenciaSeleccionado;
+      
         public ListarCompetencia(DtoUsuario dtoUsuario)
         {
      
@@ -50,21 +53,7 @@ namespace SistemaDeCompetencia.Vista
             }
 
         }
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Competicion_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-       
+            
         private void button1_Click(object sender, EventArgs e)
         {
             string modalidad;
@@ -72,6 +61,7 @@ namespace SistemaDeCompetencia.Vista
             string estado;
             
             string nombre= textBox_nombre.Text.ToUpper();
+            
 
             if (comboBox_modalidad.SelectedItem == null)
             {
@@ -99,22 +89,21 @@ namespace SistemaDeCompetencia.Vista
 
             }
 
+             // bool condicion = gestorCompetencia.validarCampos(nombre, estado, modalidad, deporte);
+             // 
             if (nombre.Equals("") && modalidad.Equals("") && deporte.Equals("") && estado.Equals(""))
             {
                 MessageBox.Show("Debe ingresar al menos uno de los criterios de búsqueda", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else 
-            { 
+            {
+               listaDtoCompetencia.Clear();
                listaDtoCompetencia = gestorCompetencia.FiltrarCompetencias(nombre,estado,modalidad,deporte);
                tablaDeCompetencias.Rows.Clear();
                cargarTabla(listaDtoCompetencia);
-
             }
            
-                
-           
-            listaDtoCompetencia.Clear();
-            
+                 
 
         }
         private void cargarTabla(List<DtoCompetencia> listaDtoCompetencia)
@@ -152,17 +141,25 @@ namespace SistemaDeCompetencia.Vista
             this.Close();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void label7_Click(object sender, EventArgs e)
         {
             Form frmPantallaPrincipal = new PantallaPrincipal(dtoUsuarioForm);
             frmPantallaPrincipal.Show();
             this.Close();
 
+        }
+        private void tablaDeCompetencias_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            nombreCompetencia = tablaDeCompetencias.Rows[e.RowIndex].Cells["Column1"].Value.ToString();
+            foreach (var dtoCompetencia in listaDtoCompetencia)
+            {
+                if (dtoCompetencia.Nombre.Equals(nombreCompetencia))
+                {
+                    dtoCompetenciaSeleccionado = dtoCompetencia;
+                }
+
+            }
         }
 
         private void button_nueva_Click(object sender, EventArgs e)
@@ -171,25 +168,29 @@ namespace SistemaDeCompetencia.Vista
             frmDarAltaComp.Show();
             this.Close();
         }
+           
 
-        private void textBox_nombre_TextChanged(object sender, EventArgs e)
+        private void button_detalles_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (dtoCompetenciaSeleccionado == null)
+                    MessageBox.Show("Debe  seleccionar una fila", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else 
+                {
+                    Form frmVerCompetencia = new VerCompentencia(dtoCompetenciaSeleccionado, dtoUsuarioForm);
+                    frmVerCompetencia.Show();
+                    this.Close();
+                }
 
+
+            }
+            catch (Exception )
+            {
+                MessageBox.Show("Debe ingresar al menos uno de los criterios de búsqueda", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        private void comboBox_deporte_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-       
-        private void comboBox_modalidad_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tablaDeCompetencias_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+    
     }
 }

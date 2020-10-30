@@ -194,7 +194,15 @@ namespace SistemaDeCompetencia.Controladores
 
 
         }
+        public bool validarCampos(string nombreCompetencia, string stringEstado, string stringModalidad, string nombreDeporte)
+        {
+            if (nombreCompetencia.Equals("") && stringEstado.Equals("") && stringModalidad.Equals("") && nombreDeporte.Equals(""))
 
+                return true;
+            else
+                return false;
+
+        }
        
 
     }
