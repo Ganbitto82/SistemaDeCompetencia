@@ -37,6 +37,8 @@ namespace SistemaDeCompetencia.Modelo
         [ForeignKey("FormaDePuntuacion")]
         public int FormaDePuntuacionId { get; set; }
         public FormaDePuntuacion FormaDePuntuacion { get; set; }
+        [ForeignKey("Fixture")]
+        public int? FixtureId { get; set; }
         public Fixture Fixture { get; set; }
 
         [ForeignKey("Deporte")]

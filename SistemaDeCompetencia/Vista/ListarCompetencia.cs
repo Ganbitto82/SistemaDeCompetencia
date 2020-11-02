@@ -89,9 +89,9 @@ namespace SistemaDeCompetencia.Vista
 
             }
 
-             // bool condicion = gestorCompetencia.validarCampos(nombre, estado, modalidad, deporte);
-             // 
-            if (nombre.Equals("") && modalidad.Equals("") && deporte.Equals("") && estado.Equals(""))
+             
+           
+            if (gestorCompetencia.validarCampos(nombre, estado, modalidad, deporte))
             {
                 MessageBox.Show("Debe ingresar al menos uno de los criterios de búsqueda", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
