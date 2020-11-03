@@ -11,7 +11,11 @@ namespace SistemaDeCompetencia.Modelo
     public class Enfrentamiento
     {   [Key]
         public int EnfrentamientoId { get; set; }
+        [ForeignKey("ParticipanteX")]
+        public int ParticipanteXId { get; set; }
         public Participante ParticipanteX { get; set; }
+        [ForeignKey("ParticipanteY")]
+        public int ParticipanteYId { get; set; }
         public Participante ParticipanteY { get; set; }
         public Enfrentamiento SucesorPerdedor { get; set; }
         public Enfrentamiento SucesorGanador { get; set; }
