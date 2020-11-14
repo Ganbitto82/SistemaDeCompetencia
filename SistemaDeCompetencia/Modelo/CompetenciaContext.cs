@@ -34,7 +34,7 @@ namespace SistemaDeCompetencia.Modelo
         public DbSet<Fixture> Fixture { get; set; }
         public DbSet<Fecha> Fechas { get; set; }
         public DbSet<Enfrentamiento> Enfrentamientos { get; set; }
-        public DbSet<DtoDatosResultado> DatosResultados { get; set; }
+        public DbSet<DatosResultado> DatosResultados { get; set; }
         public DbSet<Resultado> Resultados { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

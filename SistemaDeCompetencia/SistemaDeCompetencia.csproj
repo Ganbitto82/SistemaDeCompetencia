@@ -132,6 +132,10 @@
     <Compile Include="Migrations\202011030146286_actualizacion11.designer.cs">
       <DependentUpon>202011030146286_actualizacion11.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011100253211_actualizacion12.cs" />
+    <Compile Include="Migrations\202011100253211_actualizacion12.designer.cs">
+      <DependentUpon>202011100253211_actualizacion12.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Dto\DtoAuditoria.cs" />
     <Compile Include="Dto\DtoCompetencia.cs" />
@@ -277,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011030146286_actualizacion11.resx">
       <DependentUpon>202011030146286_actualizacion11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011100253211_actualizacion12.resx">
+      <DependentUpon>202011100253211_actualizacion12.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

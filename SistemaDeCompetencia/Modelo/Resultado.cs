@@ -16,7 +16,7 @@ namespace SistemaDeCompetencia.Modelo
       public int ParticipanteY { get; set; }
       [ForeignKey("DatosResultado")]
       public int? DatosResultadoId { get; set; }
-      public DtoDatosResultado DatosResultado { get; set; }
+      public DatosResultado DatosResultado { get; set; }
 
     }
 }

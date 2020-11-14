@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace SistemaDeCompetencia.Modelo
 {
     [Table("DatosResultado")]
-    public class DtoDatosResultado
+    public class DatosResultado
     {
         [Key]
         public int DatosResultadoId { get; set; }
@@ -19,7 +19,6 @@ namespace SistemaDeCompetencia.Modelo
         public bool ParticipanteXPresente { get; set; }
         public bool ParticipanteYPresente { get; set; }
         public Enfrentamiento Historico { get; set; }
-        public Enfrentamiento Actual { get; set; }
         public List<Resultado> Resultados { get; set; }
 
         

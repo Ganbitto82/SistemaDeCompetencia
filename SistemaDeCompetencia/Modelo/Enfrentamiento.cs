@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace SistemaDeCompetencia.Modelo
 {[Table("Enfrentamiento")]
     public class Enfrentamiento
-    {   [Key]
+    {[Key]
         public int EnfrentamientoId { get; set; }
         [ForeignKey("ParticipanteX")]
         public int ParticipanteXId { get; set; }
@@ -24,10 +24,11 @@ namespace SistemaDeCompetencia.Modelo
         [InverseProperty("Sucesorganador")]
         public List<Enfrentamiento> SucesorGanadores { get; set; }
         [InverseProperty("Historico")]
-        public List<DtoDatosResultado> Historicos { get; set; }
+        public List<DatosResultado> Historicos { get; set; }
         [ForeignKey("Fecha")]
         public int FechaId { get; set; }
         public Fecha Fecha { get; set; }
+        public DatosResultado Actual { get; set; }
 
 
     }
