@@ -435,9 +435,12 @@ namespace SistemaDeCompetencia.Vista
 
                 
             }
-            var mensajeDeErrores = string.Join(Environment.NewLine, listaErrores);
-            MessageBox.Show(mensajeDeErrores, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            listaErrores.Clear();
+            if (listaErrores.Count != 0)
+            {
+                var mensajeDeErrores = string.Join(Environment.NewLine, listaErrores);
+                MessageBox.Show(mensajeDeErrores, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                listaErrores.Clear();
+            }
 
             if (permisoParaCrearCompetencia)
             {
@@ -490,12 +493,15 @@ namespace SistemaDeCompetencia.Vista
                 GestorCompetencia gestorCompetencia = new GestorCompetencia();
                 try
                 {
-                    gestorCompetencia.darDeAltaCompetenciaDeporiva(dtoCompetencia);
+                    dtoCompetencia=gestorCompetencia.darDeAltaCompetenciaDeporiva(dtoCompetencia);
+                    
                     MessageBox.Show("La competencia fué dada de alta con éxito.", "Competencia Creada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Form frmListarComp = new ListarCompetencia(dtoUsuarioForm);
+                    /*Form frmListarComp = new ListarCompetencia(dtoUsuarioForm);
                     frmListarComp.Show();
+                    this.Close();*/
+                    Form frmListarParticipante = new ListarParticipante(dtoCompetencia);
+                    frmListarParticipante.Show();
                     this.Close();
-
                 }
                 catch (Exception ex)
                 {

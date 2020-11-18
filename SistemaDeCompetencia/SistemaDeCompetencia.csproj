@@ -71,6 +71,8 @@
     <Compile Include="Dao\DAOLogin.cs" />
     <Compile Include="Dao\DAOLoginEntityFramework.cs" />
     <Compile Include="Dao\DAOLugarDeRealizacionEntityFramework.cs" />
+    <Compile Include="Dao\DAOParticipante.cs" />
+    <Compile Include="Dao\DAOParticipanteEntityFramework.cs" />
     <Compile Include="Dao\DAOUsuario.cs" />
     <Compile Include="Dao\DAOUsuarioEntityFramework.cs" />
     <Compile Include="Dto\DtoDireccion.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaDeCompetencia.Dto;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ namespace SistemaDeCompetencia.Vista
 {
     public partial class DarAltaParticipante : Form
     {
-        public DarAltaParticipante()
+        public DarAltaParticipante(DtoCompetencia dtoCompetencia)
         {
             InitializeComponent();
         }
@@ -29,6 +30,11 @@ namespace SistemaDeCompetencia.Vista
         }
 
         private void Form4_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Aceptar_Click(object sender, EventArgs e)
         {
 
         }

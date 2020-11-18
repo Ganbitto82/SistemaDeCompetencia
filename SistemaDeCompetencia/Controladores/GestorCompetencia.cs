@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SistemaDeCompetencia.Controladores
 {
@@ -16,6 +17,8 @@ namespace SistemaDeCompetencia.Controladores
         DAOCompetencia dAOCompetencia = new DAOCompetenciaEntityFramework();
         DAOUsuario daoUsuario = new DAOUsuarioEntityFramework();
         DAOLugarDeRealizacion daoLugar = new DAOLugarDeRealizacionEntityFramework();
+        DAOParticipante daoParticipante = new DAOParticipanteEntityFramework();
+        
         public List<DtoDeporte> listarDeportes()
         { 
         
@@ -65,7 +68,7 @@ namespace SistemaDeCompetencia.Controladores
             }
             return listaDtoLugares;
         }
-        public Boolean darDeAltaCompetenciaDeporiva(DtoCompetencia dtoCompetencia)
+        public DtoCompetencia darDeAltaCompetenciaDeporiva(DtoCompetencia dtoCompetencia)
         {
             //validamos los datos ingresados 
             try
@@ -138,10 +141,11 @@ namespace SistemaDeCompetencia.Controladores
             }
 
             c.FormaDePuntuacion = f;
+           
+            c= dAOCompetencia.insertarCompetencia(c);
+            dtoCompetencia.CompetenciaId = c.CompetenciaId;
 
-            dAOCompetencia.insertarCompetencia(c);
-
-            return true;
+            return dtoCompetencia;
         }
      public bool validarDatos(DtoCompetencia dtoCompetencia)
         {
@@ -168,27 +172,36 @@ namespace SistemaDeCompetencia.Controladores
             return (dAOCompetencia.buscarPorNombre(nombre).Count() != 0);
 
         }
-        public List<DtoCompetencia> FiltrarCompetencias(string nombreCompetencia, string stringEstado, string stringModalidad, string nombreDeporte) 
+        public List<DtoCompetencia> FiltrarCompetencias(string nombreCompetencia, string stringEstado, string stringModalidad, string nombreDeporte, DtoUsuario dtoUsuario) 
         {
-
             List<DtoCompetencia> listaDtoCompetencia = new List<DtoCompetencia>();
 
-            List<Competencia> listaCompetencia= dAOCompetencia.buscarCompetencias(nombreCompetencia, stringEstado, stringModalidad, nombreDeporte);
-
-            foreach (var competencia in listaCompetencia) 
+            if (!validarCampos(nombreCompetencia, stringEstado, stringModalidad, nombreDeporte))
             {
-                DtoCompetencia dtoCompetencia = new DtoCompetencia();
-                DtoDeporte dtoDeporte = new DtoDeporte();
-                dtoCompetencia.CompetenciaId = competencia.CompetenciaId;
-                dtoCompetencia.Nombre = competencia.Nombre;
-                dtoCompetencia.Estado = competencia.Estado;
-                dtoCompetencia.Modalidad = competencia.Modalidad;
+                
+                List<Competencia> listaCompetencia = dAOCompetencia.buscarCompetencias(nombreCompetencia, stringEstado, stringModalidad, nombreDeporte,dtoUsuario.DtoUsuarioId);
 
-                dtoDeporte.DeporteId = competencia.DeporteId;
-                dtoDeporte.Nombre = daoDeporte.buscarPorId(dtoDeporte.DeporteId).Nombre;
-                dtoCompetencia.DtoDeporte = dtoDeporte;
-                listaDtoCompetencia.Add(dtoCompetencia);
+                foreach (var competencia in listaCompetencia)
+                {
+                    DtoCompetencia dtoCompetencia = new DtoCompetencia();
+                    DtoDeporte dtoDeporte = new DtoDeporte();
+                    dtoCompetencia.CompetenciaId = competencia.CompetenciaId;
+                    dtoCompetencia.Nombre = competencia.Nombre;
+                    dtoCompetencia.Estado = competencia.Estado;
+                    dtoCompetencia.Modalidad = competencia.Modalidad;
 
+                    dtoDeporte.DeporteId = competencia.DeporteId;
+                    //dtoDeporte.Nombre = daoDeporte.buscarPorId(dtoDeporte.DeporteId).Nombre;
+                    dtoDeporte.Nombre = competencia.Deporte.Nombre;
+                    dtoCompetencia.DtoDeporte = dtoDeporte;
+                    listaDtoCompetencia.Add(dtoCompetencia);
+
+                }
+
+            }
+            else 
+            {
+                MessageBox.Show("Debe ingresar al menos uno de los criterios de búsqueda", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             return listaDtoCompetencia;
 
@@ -203,7 +216,85 @@ namespace SistemaDeCompetencia.Controladores
                 return false; 
 
         }
-       
 
+        public bool DarDeAltaParticipante(DtoParticipante dtoParticipante, int competenciaId) 
+        {
+            if (!validarParticipante(dtoParticipante, competenciaId)) 
+            {
+                return false;
+            }
+             
+            Competencia competencia = new Competencia();
+            competencia = dAOCompetencia.buscarPorId(competenciaId);
+
+            if (competencia.Estado.Equals(Estado.ENDISPUTA) || competencia.Estado.Equals(Estado.FINALIZADA))
+            {
+                MessageBox.Show("No se puede agregar participante", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            foreach (var p in competencia.Participantes) 
+            {
+                if (dtoParticipante.Nombre == p.Nombre || dtoParticipante.CorreoElectronico == p.CorreoElectronico)
+                {
+                    MessageBox.Show(" Ya existe ese nombre o correo en la competencia ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+
+                }   
+               
+               
+            }
+            //eliminar();
+
+            competencia.Estado = Estado.CREADA;
+            Participante participante = new Participante();
+
+            participante.Nombre = dtoParticipante.Nombre;
+            participante.CorreoElectronico = dtoParticipante.CorreoElectronico;
+
+            competencia.Participantes.Add(participante);
+
+            competencia= dAOCompetencia.modificarCompetencia(competencia);
+            
+            return true;
+        }
+
+        bool validarParticipante(DtoParticipante dtoParticipante, int competenciaId) 
+        {
+            if (dtoParticipante == null && dtoParticipante.CorreoElectronico.Equals("") && dtoParticipante.Nombre.Equals(""))
+            {
+                MessageBox.Show("No se permiten datos vacios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;           
+            }
+            else 
+            {
+                if (daoParticipante.existeNombre(dtoParticipante.Nombre, competenciaId) || daoParticipante.existeCorreo(dtoParticipante.CorreoElectronico, competenciaId))
+                {
+                    MessageBox.Show(" Ya existe ese nombre o correo en la competencia ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                else 
+                {
+                    return true;
+                }
+
+            }
+        }
+
+        public List<DtoParticipante> listarParticipantesCompetencia(int competenciaId) 
+        {
+            Competencia competencia = new Competencia();
+            competencia = dAOCompetencia.buscarPorId(competenciaId);
+            List<DtoParticipante> listaDtoParticipante = new List<DtoParticipante>();
+            
+            foreach (var participante in competencia.Participantes)
+            {
+                DtoParticipante dtoparticipante = new DtoParticipante();
+                dtoparticipante.ParticipanteId = participante.ParticipanteId;
+                dtoparticipante.Nombre = participante.Nombre;
+                dtoparticipante.CorreoElectronico = participante.CorreoElectronico;
+                listaDtoParticipante.Add(dtoparticipante);
+            }         
+                       
+            return listaDtoParticipante;
+        }
     }
 }

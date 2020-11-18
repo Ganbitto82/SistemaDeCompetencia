@@ -105,6 +105,7 @@
             this.button_agregar.TabIndex = 26;
             this.button_agregar.Text = "Agregar";
             this.button_agregar.UseVisualStyleBackColor = true;
+            this.button_agregar.Click += new System.EventHandler(this.button_agregar_Click);
             // 
             // tablaDeParticipantes
             // 

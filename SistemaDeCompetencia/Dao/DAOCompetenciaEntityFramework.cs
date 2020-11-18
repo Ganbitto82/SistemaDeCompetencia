@@ -28,7 +28,7 @@ namespace SistemaDeCompetencia.Dao
                 throw new Exception("Error al buscar Competencia en la Base de datos.");
             }
         }
-        public bool insertarCompetencia(Competencia c)
+        public Competencia insertarCompetencia(Competencia c)
         {
             //creamos el context	
             //CompetenciaContext context = new CompetenciaContext();	
@@ -50,29 +50,50 @@ namespace SistemaDeCompetencia.Dao
                  context.Disponibilidad.Add(d);	
              }	
             */
-            return true;
+          
+            return c;
         }
 
-        public List<Competencia> buscarCompetencias(string nombreCompetencia, string stringEstado, string stringModalidad, string nombreDeporte)
+        public List<Competencia> buscarCompetencias(string nombreCompetencia, string stringEstado, string stringModalidad, string nombreDeporte, int usuarioId)
         {
-            List<Competencia> competencias = context.Competencia.Where(c => c.Nombre.Contains(nombreCompetencia)).ToList();
-             if (!stringEstado.Equals("")) competencias = competencias.Where(c => c.Estado.ToString().Equals(stringEstado)).ToList();
-             if (!stringModalidad.Equals("")) competencias = competencias.Where(c => c.Modalidad.ToString().Equals(stringModalidad)).ToList();
-            if (!nombreDeporte.Equals(""))
-            {
-                Deporte deporte = context.Deporte.Where(d => d.Nombre.Equals(nombreDeporte)).FirstOrDefault();
-                competencias = competencias.Where(c => c.DeporteId.Equals(deporte.DeporteId)).ToList();
-            }
-            /* Console.WriteLine(competencias.ElementAt(0).Estado.ToString());
-         Console.WriteLine(competencias.ElementAt(0).Modalidad.ToString());
-         Console.ReadLine();
-         foreach(var c in competencias){
-            Console.WriteLine(c.Nombre + c.Estado + c.Modalidad + c.DeporteId);
-            Console.ReadLine();
-        }*/
-            return competencias;
+            List<Competencia> competencias = context.Competencia.Include("Deporte").Where(c => c.UsuarioId == usuarioId ).ToList();
+            if (!nombreCompetencia.Equals("")) competencias =competencias.Where(c => c.Nombre.Contains(nombreCompetencia)).ToList();
+            if (!stringEstado.Equals("")) competencias = competencias.Where(c => c.Estado.ToString().Equals(stringEstado)).ToList();
+            if (!stringModalidad.Equals("")) competencias = competencias.Where(c => c.Modalidad.ToString().Equals(stringModalidad)).ToList();
+            if (!nombreDeporte.Equals("")) competencias = competencias.Where(c => c.Deporte.Nombre.Equals(nombreDeporte)).ToList();
+             
+
+                /* Console.WriteLine(competencias.ElementAt(0).Estado.ToString());
+             Console.WriteLine(competencias.ElementAt(0).Modalidad.ToString());
+             Console.ReadLine();
+             foreach(var c in competencias){
+                Console.WriteLine(c.Nombre + c.Estado + c.Modalidad + c.DeporteId);
+                Console.ReadLine();
+            }*/
+                return competencias;
         }
 
+       public  Competencia buscarPorId(int competenciaId) 
+        {
+            try
+            {
+                Competencia competencia = new Competencia();
+                competencia = context.Competencia.Where(c => c.CompetenciaId.Equals(competenciaId)).FirstOrDefault();
+
+                return competencia;
+            }
+            catch 
+            {
+                throw new Exception("Error al buscar Competencia en la Base de datos.");
+            }
+                        
+        }
+      public Competencia modificarCompetencia(Competencia c) 
+        {
+            context.Competencia.Add(c);
+            context.SaveChanges();
+            return c;
+        }
 
     }
 }         

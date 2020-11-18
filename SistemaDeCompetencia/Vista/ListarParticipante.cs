@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaDeCompetencia.Dto;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,14 @@ namespace SistemaDeCompetencia.Vista
 {
     public partial class ListarParticipante : Form
     {
-        public ListarParticipante()
+       private DtoCompetencia dtocompetencia = new DtoCompetencia();
+        
+        public ListarParticipante(DtoCompetencia dtoCompetencia)
         {
+            dtocompetencia = dtoCompetencia;
             InitializeComponent();
+
+            cargarTablaParticipante();
         }
 
         private void tablaDeParticipantes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -35,6 +41,16 @@ namespace SistemaDeCompetencia.Vista
         private void Form3_Load(object sender, EventArgs e)
         {
 
+        }
+        private void cargarTablaParticipante() 
+        { 
+        }
+
+        private void button_agregar_Click(object sender, EventArgs e)
+        {
+            Form frmDarAltaParticipante = new  DarAltaParticipante(dtocompetencia);
+            frmDarAltaParticipante.Show();
+            this.Close();
         }
     }
 }

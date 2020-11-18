@@ -89,16 +89,16 @@ namespace SistemaDeCompetencia.Vista
 
             }
 
-             
-           
-            if (gestorCompetencia.validarCampos(nombre, estado, modalidad, deporte))
+
+
+            if (nombre.Equals("") && estado.Equals("") && modalidad.Equals("") && deporte.Equals(""))
             {
                 MessageBox.Show("Debe ingresar al menos uno de los criterios de búsqueda", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else 
             {
                listaDtoCompetencia.Clear();
-               listaDtoCompetencia = gestorCompetencia.FiltrarCompetencias(nombre,estado,modalidad,deporte);
+               listaDtoCompetencia = gestorCompetencia.FiltrarCompetencias(nombre,estado,modalidad,deporte, dtoUsuarioForm);
                tablaDeCompetencias.Rows.Clear();
                cargarTabla(listaDtoCompetencia);
             }
