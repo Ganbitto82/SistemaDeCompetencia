@@ -15,12 +15,12 @@ namespace SistemaDeCompetencia.Vista
     public partial class VerCompentencia : Form
     {
         DtoCompetencia dtoCompetencia = new DtoCompetencia();
-        DtoUsuario usuarioForm=new DtoUsuario();
+        DtoUsuario dtoUsuario=new DtoUsuario();
 
         public VerCompentencia(DtoCompetencia dtocompetencia,DtoUsuario dtoUsuarioForm)
         {
             dtoCompetencia = dtocompetencia;
-            usuarioForm = dtoUsuarioForm;
+            dtoUsuario = dtoUsuarioForm;
             InitializeComponent();
             textBox_nombre.Text = dtoCompetencia.Nombre;
             textBox_Modalidad.Text = dtoCompetencia.Modalidad.ToString();
@@ -71,8 +71,15 @@ namespace SistemaDeCompetencia.Vista
 
         private void button_cancelar_Click(object sender, EventArgs e)
         {
-            Form frmPantallaPrincipal = new PantallaPrincipal(usuarioForm);
+            Form frmPantallaPrincipal = new PantallaPrincipal(dtoUsuario);
             frmPantallaPrincipal.Show();
+            this.Close();
+        }
+
+        private void button_participantes_Click(object sender, EventArgs e)
+        {
+            Form frmListarParticipante = new ListarParticipante(dtoCompetencia,dtoUsuario);
+            frmListarParticipante.Show();
             this.Close();
         }
     }

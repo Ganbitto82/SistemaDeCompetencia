@@ -367,6 +367,7 @@
             this.button_participantes.TabIndex = 42;
             this.button_participantes.Text = "VerParticipante";
             this.button_participantes.UseVisualStyleBackColor = true;
+            this.button_participantes.Click += new System.EventHandler(this.button_participantes_Click);
             // 
             // VerCompentencia
             // 

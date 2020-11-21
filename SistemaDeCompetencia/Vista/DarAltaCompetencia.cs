@@ -499,7 +499,7 @@ namespace SistemaDeCompetencia.Vista
                     /*Form frmListarComp = new ListarCompetencia(dtoUsuarioForm);
                     frmListarComp.Show();
                     this.Close();*/
-                    Form frmListarParticipante = new ListarParticipante(dtoCompetencia);
+                    Form frmListarParticipante = new ListarParticipante(dtoCompetencia,dtoUsuarioForm);
                     frmListarParticipante.Show();
                     this.Close();
                 }

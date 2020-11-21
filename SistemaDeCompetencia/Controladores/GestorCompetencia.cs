@@ -244,7 +244,7 @@ namespace SistemaDeCompetencia.Controladores
             }
             //eliminar();
 
-            competencia.Estado = Estado.CREADA;
+            //competencia.Estado = Estado.CREADA;
             Participante participante = new Participante();
 
             participante.Nombre = dtoParticipante.Nombre;

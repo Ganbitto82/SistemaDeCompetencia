@@ -40,7 +40,7 @@ namespace SistemaDeCompetencia.Modelo
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Participante>().HasRequired(t => t.ParticipanteId).WillCascadeOnDelete(false);
+         //   modelBuilder.Entity<Participante>().HasRequired(t => t.ParticipanteId).WillCascadeOnDelete(false);
 
 
 

@@ -78,8 +78,15 @@ namespace SistemaDeCompetencia.Dao
             try
             {
                 Competencia competencia = new Competencia();
-                competencia = context.Competencia.Where(c => c.CompetenciaId.Equals(competenciaId)).FirstOrDefault();
 
+                competencia = context.Competencia.Where(c => c.CompetenciaId.Equals(competenciaId)).FirstOrDefault();
+                
+                List<Participante> participante = new List<Participante>();
+                participante = context.Participante.Where(c => c.CompentenciaId.Equals(competenciaId)).ToList();
+                competencia.Participantes = participante;
+                          
+                     
+                    
                 return competencia;
             }
             catch 
@@ -90,9 +97,10 @@ namespace SistemaDeCompetencia.Dao
         }
       public Competencia modificarCompetencia(Competencia c) 
         {
-            context.Competencia.Add(c);
+            context.Entry(c).State = System.Data.Entity.EntityState.Modified;
             context.SaveChanges();
             return c;
+           
         }
 
     }

@@ -142,7 +142,6 @@
             this.tablaDeParticipantes.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.tablaDeParticipantes.Size = new System.Drawing.Size(424, 448);
             this.tablaDeParticipantes.TabIndex = 1;
-            this.tablaDeParticipantes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaDeParticipantes_CellContentClick);
             // 
             // Column1
             // 
@@ -184,6 +183,7 @@
             this.button_cancelar.TabIndex = 24;
             this.button_cancelar.Text = "Cancelar";
             this.button_cancelar.UseVisualStyleBackColor = true;
+            this.button_cancelar.Click += new System.EventHandler(this.button_cancelar_Click);
             // 
             // pictureBox1
             // 
@@ -207,7 +207,6 @@
             this.Name = "ListarParticipante";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listar participantes de Competencia ";
-            this.Load += new System.EventHandler(this.Form3_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaDeParticipantes)).EndInit();

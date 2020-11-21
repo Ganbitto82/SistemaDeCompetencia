@@ -49,6 +49,7 @@ namespace SistemaDeCompetencia.Modelo
         {
             Disponibilidades = new List<Disponibilidad>();
             DarDeBaja = false;
+            Participantes = new List<Participante>();
         }
 
     }

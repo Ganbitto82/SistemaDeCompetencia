@@ -1,4 +1,5 @@
-﻿using SistemaDeCompetencia.Dto;
+﻿using SistemaDeCompetencia.Controladores;
+using SistemaDeCompetencia.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,8 +15,14 @@ namespace SistemaDeCompetencia.Vista
 {
     public partial class DarAltaParticipante : Form
     {
-        public DarAltaParticipante(DtoCompetencia dtoCompetencia)
+        private DtoCompetencia dtocompetencia = new DtoCompetencia();
+        private DtoUsuario dtoUsuario = new DtoUsuario();
+
+        private GestorCompetencia gestorCompetencia= new GestorCompetencia();
+        public DarAltaParticipante(DtoCompetencia dtoCompetencia,DtoUsuario dtoUsuarioForm)
         {
+            dtoUsuario = dtoUsuarioForm;
+            dtocompetencia = dtoCompetencia;
             InitializeComponent();
         }
 
@@ -36,7 +43,25 @@ namespace SistemaDeCompetencia.Vista
 
         private void Aceptar_Click(object sender, EventArgs e)
         {
+            DtoParticipante dtoParticipante = new DtoParticipante();
+            dtoParticipante.Nombre = textBox_nombre.Text.ToUpper();
+            dtoParticipante.CorreoElectronico = textBoxCorreo.Text.ToUpper();
+            bool agregarParticipante = gestorCompetencia.DarDeAltaParticipante(dtoParticipante, dtocompetencia.CompetenciaId);
+            if(!agregarParticipante)
+                MessageBox.Show("No se pudo agregar el participante ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            textBox_nombre.Text = "";
+            textBoxCorreo.Text = "";
+        }
+
+   
+        private void Cancelar_Click(object sender, EventArgs e)
+        {
+            Form frm2 = new PantallaPrincipal(dtoUsuario);
+            frm2.Show();
+            this.Close();
 
         }
+
+      
     }
 }

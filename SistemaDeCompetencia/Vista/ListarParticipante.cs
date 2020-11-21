@@ -1,4 +1,5 @@
-﻿using SistemaDeCompetencia.Dto;
+﻿using SistemaDeCompetencia.Controladores;
+using SistemaDeCompetencia.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,43 +14,54 @@ namespace SistemaDeCompetencia.Vista
 {
     public partial class ListarParticipante : Form
     {
-       private DtoCompetencia dtocompetencia = new DtoCompetencia();
-        
-        public ListarParticipante(DtoCompetencia dtoCompetencia)
+        private DtoCompetencia dtocompetencia = new DtoCompetencia();
+        private DtoUsuario dtoUsuario = new DtoUsuario();
+        private GestorCompetencia gComp = new GestorCompetencia();
+        private List<DtoParticipante> listaDtoParticipante = new List<DtoParticipante>();
+        public ListarParticipante(DtoCompetencia dtoCompetencia,DtoUsuario dtoUsuarioForm)
         {
-            dtocompetencia = dtoCompetencia;
+
             InitializeComponent();
-
-            cargarTablaParticipante();
+            dtocompetencia = dtoCompetencia;
+            dtoUsuario = dtoUsuarioForm;
+            listaDtoParticipante.Clear();
+            listaDtoParticipante = gComp.listarParticipantesCompetencia(dtocompetencia.CompetenciaId);
+            cargarTablaParticipante(listaDtoParticipante);
+            
         }
 
-        private void tablaDeParticipantes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+   
+        private void cargarTablaParticipante(List<DtoParticipante> listadtoParticipante)
         {
+            int n;
+            foreach (var participante in listadtoParticipante)
+            {
+                n = tablaDeParticipantes.Rows.Add();
+                tablaDeParticipantes.Rows[n].Cells[0].Value = participante.Nombre;
+                tablaDeParticipantes.Rows[n].Cells[1].Value = participante.CorreoElectronico;
 
-        }
-
-        private void label_ordenacion_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form3_Load(object sender, EventArgs e)
-        {
-
-        }
-        private void cargarTablaParticipante() 
-        { 
+            }
         }
 
         private void button_agregar_Click(object sender, EventArgs e)
         {
-            Form frmDarAltaParticipante = new  DarAltaParticipante(dtocompetencia);
-            frmDarAltaParticipante.Show();
+
+            if (dtocompetencia.Estado.ToString().Equals("CREADA") || dtocompetencia.Estado.ToString().Equals("PLANIFICADA"))
+            {
+                Form frmDarAltaParticipante = new DarAltaParticipante(dtocompetencia,dtoUsuario);
+                frmDarAltaParticipante.Show();
+                this.Close();
+            }
+            else 
+            {
+                MessageBox.Show("No se puede agregar participante a la competencia", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void button_cancelar_Click(object sender, EventArgs e)
+        {
+            Form frm2 = new PantallaPrincipal(dtoUsuario);
+            frm2.Show();
             this.Close();
         }
     }

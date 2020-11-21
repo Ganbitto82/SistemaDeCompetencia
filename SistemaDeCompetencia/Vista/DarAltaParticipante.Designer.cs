@@ -31,7 +31,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxCorreo = new System.Windows.Forms.TextBox();
             this.textBox_nombre = new System.Windows.Forms.TextBox();
             this.label_deporte = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,7 +67,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.YellowGreen;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textBoxCorreo);
             this.panel1.Controls.Add(this.textBox_nombre);
             this.panel1.Controls.Add(this.label_deporte);
             this.panel1.Controls.Add(this.label1);
@@ -79,13 +79,14 @@
             this.panel1.Size = new System.Drawing.Size(610, 535);
             this.panel1.TabIndex = 21;
             // 
-            // textBox1
+            // textBoxCorreo
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox1.Location = new System.Drawing.Point(290, 120);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 20);
-            this.textBox1.TabIndex = 26;
+            this.textBoxCorreo.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBoxCorreo.Location = new System.Drawing.Point(290, 120);
+            this.textBoxCorreo.Name = "textBoxCorreo";
+            this.textBoxCorreo.Size = new System.Drawing.Size(238, 20);
+            this.textBoxCorreo.TabIndex = 26;
+            //this.textBoxCorreo.TextChanged += new System.EventHandler(this.textBoxCorreo_TextChanged);
             // 
             // textBox_nombre
             // 
@@ -94,6 +95,7 @@
             this.textBox_nombre.Name = "textBox_nombre";
             this.textBox_nombre.Size = new System.Drawing.Size(238, 20);
             this.textBox_nombre.TabIndex = 25;
+            //this.textBox_nombre.TextChanged += new System.EventHandler(this.textBox_nombre_TextChanged);
             // 
             // label_deporte
             // 
@@ -136,6 +138,7 @@
             this.Cancelar.TabIndex = 28;
             this.Cancelar.Text = "Cancelar";
             this.Cancelar.UseVisualStyleBackColor = true;
+            this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
             // 
             // Aceptar
             // 
@@ -180,7 +183,7 @@
         private System.Windows.Forms.Label label_nombre;
         private System.Windows.Forms.Label label_deporte;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxCorreo;
         private System.Windows.Forms.TextBox textBox_nombre;
         private System.Windows.Forms.Button Cancelar;
         private System.Windows.Forms.Button Aceptar;
