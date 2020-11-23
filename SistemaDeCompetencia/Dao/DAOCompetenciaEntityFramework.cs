@@ -77,16 +77,21 @@ namespace SistemaDeCompetencia.Dao
         {
             try
             {
-                Competencia competencia = new Competencia();
+                /*Competencia competencia = new Competencia();
 
                 competencia = context.Competencia.Where(c => c.CompetenciaId.Equals(competenciaId)).FirstOrDefault();
                 
                 List<Participante> participante = new List<Participante>();
                 participante = context.Participante.Where(c => c.CompentenciaId.Equals(competenciaId)).ToList();
-                competencia.Participantes = participante;
-                          
-                     
-                    
+                competencia.Participantes = participante;*/
+
+
+                //buscamos la competencia por id
+                var competencia = context.Competencia.Find(competenciaId);
+                //buscamos los participantes que son de esa competencia
+                List<Participante> participantes = context.Participante.Where(c => c.CompentenciaId == competenciaId).ToList();
+                //se asigna la lista de los participantes a la competencia
+                competencia.Participantes = participantes;
                 return competencia;
             }
             catch 
