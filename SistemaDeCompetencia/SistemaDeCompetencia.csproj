@@ -138,6 +138,18 @@
     <Compile Include="Migrations\202011100253211_actualizacion12.designer.cs">
       <DependentUpon>202011100253211_actualizacion12.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011241639439_actualizacion14.cs" />
+    <Compile Include="Migrations\202011241639439_actualizacion14.designer.cs">
+      <DependentUpon>202011241639439_actualizacion14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011242132302_actualizacion15.cs" />
+    <Compile Include="Migrations\202011242132302_actualizacion15.designer.cs">
+      <DependentUpon>202011242132302_actualizacion15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011270341132_actualizacion16.cs" />
+    <Compile Include="Migrations\202011270341132_actualizacion16.designer.cs">
+      <DependentUpon>202011270341132_actualizacion16.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Dto\DtoAuditoria.cs" />
     <Compile Include="Dto\DtoCompetencia.cs" />
@@ -286,6 +298,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011100253211_actualizacion12.resx">
       <DependentUpon>202011100253211_actualizacion12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011241639439_actualizacion14.resx">
+      <DependentUpon>202011241639439_actualizacion14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011242132302_actualizacion15.resx">
+      <DependentUpon>202011242132302_actualizacion15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011270341132_actualizacion16.resx">
+      <DependentUpon>202011270341132_actualizacion16.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

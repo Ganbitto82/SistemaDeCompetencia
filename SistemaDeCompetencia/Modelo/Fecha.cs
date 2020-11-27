@@ -15,7 +15,7 @@ namespace SistemaDeCompetencia.Modelo
         public int FechaId { get; set; }
         public string FechaCompentencia { get; set; } 
         [ForeignKey("Fixture")]
-        public int? FixtureId { get; set; }
+        public int FixtureId { get; set; }
         public Fixture Fixture { get; set; }
         public List<Enfrentamiento> Enfrentamientos { get; set; }
     }

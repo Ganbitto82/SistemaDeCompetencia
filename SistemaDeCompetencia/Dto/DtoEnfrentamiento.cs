@@ -19,6 +19,9 @@ namespace SistemaDeCompetencia.Dto
         public List<DtoEnfrentamiento> SucesorGanadores { get; set; }
         public List<DtoDatosResultado> Historicos { get; set; }
 
+        public DtoFecha Fecha { get; set; }
+        public DtoDatosResultado Actual { get; set; }
+
 
 
     }

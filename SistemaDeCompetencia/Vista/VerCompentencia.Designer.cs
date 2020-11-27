@@ -36,7 +36,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.salir = new System.Windows.Forms.Button();
             this.button_cancelar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label_nombre = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -61,10 +60,11 @@
             this.button_tablaPosicion = new System.Windows.Forms.Button();
             this.button_generar = new System.Windows.Forms.Button();
             this.button_participantes = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaEncuentro)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaParticipante)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -100,15 +100,6 @@
             this.button_cancelar.Text = "Cancelar";
             this.button_cancelar.UseVisualStyleBackColor = true;
             this.button_cancelar.Click += new System.EventHandler(this.button_cancelar_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.DarkGreen;
-            this.pictureBox1.Location = new System.Drawing.Point(-4, -2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(636, 661);
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
             // 
             // label_nombre
             // 
@@ -357,6 +348,7 @@
             this.button_generar.TabIndex = 41;
             this.button_generar.Text = "GenerarFixture";
             this.button_generar.UseVisualStyleBackColor = true;
+            this.button_generar.Click += new System.EventHandler(this.button_generar_Click);
             // 
             // button_participantes
             // 
@@ -368,6 +360,15 @@
             this.button_participantes.Text = "VerParticipante";
             this.button_participantes.UseVisualStyleBackColor = true;
             this.button_participantes.Click += new System.EventHandler(this.button_participantes_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.DarkGreen;
+            this.pictureBox1.Location = new System.Drawing.Point(-4, -2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(636, 661);
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
             // 
             // VerCompentencia
             // 
@@ -388,11 +389,11 @@
             this.Name = "VerCompentencia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  ";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaEncuentro)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TablaParticipante)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

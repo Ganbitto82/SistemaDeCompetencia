@@ -13,10 +13,7 @@ namespace SistemaDeCompetencia.Dto
     {
       
         public int FixtureId { get; set; }
-        
-        public string Tipo { get; set; }
-        public DtoCompetencia DtoCompetencia { get; set; }
-        public List<Fecha> Fechas { get; set; }
+        public List<DtoFecha> Fechas { get; set; }
 
     }
 }

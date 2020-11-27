@@ -22,6 +22,7 @@ namespace SistemaDeCompetencia.Modelo
         public Usuario Usuario { get; set; }
         public List<Disponibilidad> Disponibilidades  { get; set; }
         public List<DeporteLugar> DeportesLugares { get; set; }
-
+        
+       
     }
 }

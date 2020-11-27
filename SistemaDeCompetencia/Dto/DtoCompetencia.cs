@@ -34,7 +34,9 @@ namespace SistemaDeCompetencia.Dto
        public int FormaDePuntuacionId { get; set; }
        public DtoFormaDePuntuacion DtoFormaDePuntuacion { get; set; }
        public int FixtureId { get; set; }
-      
+       public DtoFixture DtoFixture { get; set; }
+
+
 
     }
 }

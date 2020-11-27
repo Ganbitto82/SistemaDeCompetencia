@@ -12,8 +12,7 @@ namespace SistemaDeCompetencia.Modelo
     {
         [Key]
         public int FixtureId { get; set; }
-        [Required]
-        public string Tipo { get; set; }
+      
         public List<Fecha> Fechas { get; set; }
        
 

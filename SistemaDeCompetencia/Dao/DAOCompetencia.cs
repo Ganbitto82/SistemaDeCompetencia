@@ -15,5 +15,7 @@ namespace SistemaDeCompetencia.Dao
         List<Competencia> buscarCompetencias(string nombreCompetencia, string stringEstado, string stringModalidad, string nombreDeporte, int usuarioId);
 
         Competencia modificarCompetencia(Competencia compentencia);
+
+        void eliminar(int fixtureId);
     }
 }

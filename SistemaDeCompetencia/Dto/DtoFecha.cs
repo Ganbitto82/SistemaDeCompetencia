@@ -15,6 +15,7 @@ namespace SistemaDeCompetencia.Dto
         public string FechaCompentencia { get; set; } 
         public int? FixtureId { get; set; }
         public DtoFixture DtoFixture { get; set; }
+        public List<DtoEnfrentamiento> Enfrentamientos { get; set; }
 
     }
 }

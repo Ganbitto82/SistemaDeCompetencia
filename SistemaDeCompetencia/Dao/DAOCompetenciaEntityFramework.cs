@@ -87,11 +87,33 @@ namespace SistemaDeCompetencia.Dao
 
 
                 //buscamos la competencia por id
-                var competencia = context.Competencia.Find(competenciaId);
+                var competencia = context.Competencia.Include("Fixture").Where(c => c.CompetenciaId.Equals(competenciaId)).FirstOrDefault();
+               // var competencia = context.Competencia.Include( c => c.Fixture).Where(c => c.CompetenciaId.Equals(competenciaId)).FirstOrDefault();
+                //var competencia = context.Competencia.Include("Participante").Where(c => c.CompetenciaId.Equals(competenciaId));
                 //buscamos los participantes que son de esa competencia
                 List<Participante> participantes = context.Participante.Where(c => c.CompentenciaId == competenciaId).ToList();
+                var fechas = (from p in context.Fechas
+                              where p.FixtureId == competencia.FixtureId
+                              select p);
+                //List<Fecha> fechas = context.Fechas.Where(f => f.FixtureId.Equals(competencia.FixtureId)).ToList();
                 //se asigna la lista de los participantes a la competencia
+                List<Fecha> f = fechas.ToList();
+                
+              foreach (var fecha in f) 
+                {
+                    var enfrentamientos = (from p in context.Enfrentamientos
+                                           where p.FechaId == fecha.FechaId
+                                           select p);
+                    List<Enfrentamiento> e = enfrentamientos.ToList();
+                    
+                   // fecha.Enfrentamientos.AddRange(e);
+                    
+                }
+                 
                 competencia.Participantes = participantes;
+                competencia.Fixture.Fechas = f;
+                
+
                 return competencia;
             }
             catch 
@@ -106,6 +128,19 @@ namespace SistemaDeCompetencia.Dao
             context.SaveChanges();
             return c;
            
+        }
+        public void eliminar(int fixtureId) 
+        {
+
+            /* var fixture = (from p in context.Fixture
+                          where p.FixtureId == fixtureId
+                          select p)..Single();*/
+            var fixture = context.Fixture.Find(fixtureId);
+            if (fixture != null)
+            {
+                context.Entry(fixture).State = System.Data.Entity.EntityState.Deleted;
+                context.SaveChanges();
+            }
         }
 
     }

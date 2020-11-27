@@ -64,5 +64,10 @@ namespace SistemaDeCompetencia.Vista
             frm2.Show();
             this.Close();
         }
+
+        private void salir_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

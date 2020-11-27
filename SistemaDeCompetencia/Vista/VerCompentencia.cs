@@ -1,4 +1,5 @@
-﻿using SistemaDeCompetencia.Dto;
+﻿using SistemaDeCompetencia.Controladores;
+using SistemaDeCompetencia.Dto;
 using SistemaDeCompetencia.Modelo;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace SistemaDeCompetencia.Vista
     {
         DtoCompetencia dtoCompetencia = new DtoCompetencia();
         DtoUsuario dtoUsuario=new DtoUsuario();
+        private GestorCompetencia gComp = new GestorCompetencia();
+        Competencia competencia = new Competencia();
 
         public VerCompentencia(DtoCompetencia dtocompetencia,DtoUsuario dtoUsuarioForm)
         {
@@ -26,6 +29,9 @@ namespace SistemaDeCompetencia.Vista
             textBox_Modalidad.Text = dtoCompetencia.Modalidad.ToString();
             textBox_Deporte.Text = dtoCompetencia.DtoDeporte.Nombre;
             textBox_Estado.Text = dtoCompetencia.Estado.ToString();
+
+            //gComp.bus;
+
 
         }
 
@@ -81,6 +87,12 @@ namespace SistemaDeCompetencia.Vista
             Form frmListarParticipante = new ListarParticipante(dtoCompetencia,dtoUsuario);
             frmListarParticipante.Show();
             this.Close();
+        }
+
+        private void button_generar_Click(object sender, EventArgs e)
+        {
+
+          //  competencia = gComp.b;
         }
     }
 }

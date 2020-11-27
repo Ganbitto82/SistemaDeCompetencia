@@ -47,17 +47,23 @@ namespace SistemaDeCompetencia.Vista
             dtoParticipante.Nombre = textBox_nombre.Text.ToUpper();
             dtoParticipante.CorreoElectronico = textBoxCorreo.Text.ToUpper();
             bool agregarParticipante = gestorCompetencia.DarDeAltaParticipante(dtoParticipante, dtocompetencia.CompetenciaId);
-            if(!agregarParticipante)
+            if (!agregarParticipante)
+            {
                 MessageBox.Show("No se pudo agregar el participante ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            textBox_nombre.Text = "";
-            textBoxCorreo.Text = "";
+                textBox_nombre.Text = "";
+                textBoxCorreo.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Participante agregado ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
    
         private void Cancelar_Click(object sender, EventArgs e)
         {
-            Form frm2 = new PantallaPrincipal(dtoUsuario);
-            frm2.Show();
+            Form frmVerCompetencia = new VerCompentencia(dtocompetencia, dtoUsuario);
+            frmVerCompetencia.Show();
             this.Close();
 
         }

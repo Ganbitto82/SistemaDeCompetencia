@@ -30,6 +30,8 @@ namespace SistemaDeCompetencia.Modelo
         public Fecha Fecha { get; set; }
         public DatosResultado Actual { get; set; }
 
+        public LugarDeRealizacion LugarDeRealizacion { get; set; }
+
 
     }
 }
