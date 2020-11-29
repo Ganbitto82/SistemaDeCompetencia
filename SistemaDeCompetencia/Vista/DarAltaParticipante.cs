@@ -56,6 +56,9 @@ namespace SistemaDeCompetencia.Vista
             else
             {
                 MessageBox.Show("Participante agregado ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                textBox_nombre.Text = "";
+                textBoxCorreo.Text = "";
+
             }
         }
 

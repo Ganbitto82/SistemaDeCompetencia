@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,26 +31,12 @@ namespace SistemaDeCompetencia.Dao
         }
         public Competencia insertarCompetencia(Competencia c)
         {
-            //creamos el context	
-            //CompetenciaContext context = new CompetenciaContext();	
-            /*	
-             context.FormaDePuntuacion.Add(c.FormaDePuntuacion);	
-             context.SaveChanges();	
-             c.FormaDePuntuacionId = c.FormaDePuntuacion.FormaDePuntuacionId;	
-            */
-
-            //context = new CompetenciaContext();	
+            	
 
             context.Competencia.Add(c);
             context.SaveChanges();
 
-            /* context = new CompetenciaContext();	
-             foreach (Disponibilidad d in c.Disponibilidades)	
-             {	
-                 d.CompetenciaId = c.CompetenciaId;	
-                 context.Disponibilidad.Add(d);	
-             }	
-            */
+           
           
             return c;
         }
@@ -63,13 +50,7 @@ namespace SistemaDeCompetencia.Dao
             if (!nombreDeporte.Equals("")) competencias = competencias.Where(c => c.Deporte.Nombre.Equals(nombreDeporte)).ToList();
              
 
-                /* Console.WriteLine(competencias.ElementAt(0).Estado.ToString());
-             Console.WriteLine(competencias.ElementAt(0).Modalidad.ToString());
-             Console.ReadLine();
-             foreach(var c in competencias){
-                Console.WriteLine(c.Nombre + c.Estado + c.Modalidad + c.DeporteId);
-                Console.ReadLine();
-            }*/
+            
                 return competencias;
         }
 
@@ -77,44 +58,19 @@ namespace SistemaDeCompetencia.Dao
         {
             try
             {
-                /*Competencia competencia = new Competencia();
 
-                competencia = context.Competencia.Where(c => c.CompetenciaId.Equals(competenciaId)).FirstOrDefault();
-                
-                List<Participante> participante = new List<Participante>();
-                participante = context.Participante.Where(c => c.CompentenciaId.Equals(competenciaId)).ToList();
-                competencia.Participantes = participante;*/
+               return context.Competencia
+              .Include(c => c.Fixture.Fechas.Select(f => f.Enfrentamientos.Select(e => e.Actual)))
+              .Include(c => c.Fixture.Fechas.Select(f => f.Enfrentamientos.Select(x=>x.ParticipanteX)))
+              .Include(c => c.Fixture.Fechas.Select(f => f.Enfrentamientos.Select(y=>y.ParticipanteY)))
+              .Include(c => c.Deporte)
+              .Include(c => c.Usuario)
+              .Include(c => c.FormaDePuntuacion)
+              .Include(c => c.Participantes)
+              .Include(c => c.Disponibilidades)
+              .Where(c => c.CompetenciaId.Equals(competenciaId)).FirstOrDefault();
 
-
-                //buscamos la competencia por id
-                var competencia = context.Competencia.Include("Fixture").Where(c => c.CompetenciaId.Equals(competenciaId)).FirstOrDefault();
-               // var competencia = context.Competencia.Include( c => c.Fixture).Where(c => c.CompetenciaId.Equals(competenciaId)).FirstOrDefault();
-                //var competencia = context.Competencia.Include("Participante").Where(c => c.CompetenciaId.Equals(competenciaId));
-                //buscamos los participantes que son de esa competencia
-                List<Participante> participantes = context.Participante.Where(c => c.CompentenciaId == competenciaId).ToList();
-                var fechas = (from p in context.Fechas
-                              where p.FixtureId == competencia.FixtureId
-                              select p);
-                //List<Fecha> fechas = context.Fechas.Where(f => f.FixtureId.Equals(competencia.FixtureId)).ToList();
-                //se asigna la lista de los participantes a la competencia
-                List<Fecha> f = fechas.ToList();
-                
-              foreach (var fecha in f) 
-                {
-                    var enfrentamientos = (from p in context.Enfrentamientos
-                                           where p.FechaId == fecha.FechaId
-                                           select p);
-                    List<Enfrentamiento> e = enfrentamientos.ToList();
                     
-                   // fecha.Enfrentamientos.AddRange(e);
-                    
-                }
-                 
-                competencia.Participantes = participantes;
-                competencia.Fixture.Fechas = f;
-                
-
-                return competencia;
             }
             catch 
             {
@@ -131,16 +87,10 @@ namespace SistemaDeCompetencia.Dao
         }
         public void eliminar(int fixtureId) 
         {
-
-            /* var fixture = (from p in context.Fixture
-                          where p.FixtureId == fixtureId
-                          select p)..Single();*/
             var fixture = context.Fixture.Find(fixtureId);
-            if (fixture != null)
-            {
-                context.Entry(fixture).State = System.Data.Entity.EntityState.Deleted;
-                context.SaveChanges();
-            }
+            context.Entry(fixture).State = System.Data.Entity.EntityState.Deleted;
+            context.SaveChanges();
+            
         }
 
     }

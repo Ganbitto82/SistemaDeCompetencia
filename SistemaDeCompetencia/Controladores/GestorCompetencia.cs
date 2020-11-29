@@ -18,7 +18,7 @@ namespace SistemaDeCompetencia.Controladores
         DAOUsuario daoUsuario = new DAOUsuarioEntityFramework();
         DAOLugarDeRealizacion daoLugar = new DAOLugarDeRealizacionEntityFramework();
         DAOParticipante daoParticipante = new DAOParticipanteEntityFramework();
-        private int[,,] fixtureEnteros;
+        // private int[,,] fixtureEnteros;
 
         public List<DtoDeporte> listarDeportes()
         {
@@ -194,7 +194,7 @@ namespace SistemaDeCompetencia.Controladores
                     dtoDeporte.DeporteId = competencia.DeporteId;
                     dtoDeporte.Nombre = competencia.Deporte.Nombre;
                     dtoCompetencia.DtoDeporte = dtoDeporte;
-                   
+
                     listaDtoCompetencia.Add(dtoCompetencia);
 
                 }
@@ -298,31 +298,89 @@ namespace SistemaDeCompetencia.Controladores
             return listaDtoParticipante;
         }
 
-        private Fixture generarFixture(int competenciaId)
+        private Competencia generarFixture(int competenciaId)
         {
             Competencia competencia = dAOCompetencia.buscarPorId(competenciaId);
+
+            //int[,,] fixtureEnteros = new int[5,5,5];
 
             if (competencia.Estado.Equals(Estado.ENDISPUTA) || competencia.Estado.Equals(Estado.FINALIZADA))
             {
                 MessageBox.Show("No se puede generar un fixture", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return competencia.Fixture; 
+                return competencia;
             }
-               
 
-                Fixture fixture = new Fixture();
-              // fixtureEnteros = genererarEnfrentamientos(competencia.Participantes.Count());
-            
 
-               return fixture;
+            Fixture fixture = new Fixture();
+            int[,,] fixtureEnteros = genererarEnfrentamientos(competencia.Participantes.Count());
+
+
+
+            for (int i = 1; i <= fixtureEnteros.GetLength(0); i++)
+            {
+                Fecha fecha = new Fecha();
+                fecha.FechaCompentencia = i.ToString();
+
+                List<Disponibilidad> listaAuxDisp = new List<Disponibilidad>();
+                foreach (var d in competencia.Disponibilidades)
+                {
+                    Disponibilidad disponibilidad = new Disponibilidad();
+                    disponibilidad.DisponibilidadId = d.DisponibilidadId;
+                    disponibilidad.Disponible = d.Disponible;
+
+                    disponibilidad.LugarDeRealizacion = d.LugarDeRealizacion;
+                    listaAuxDisp.Add(disponibilidad);
+                }
+                for (int j = 1; j <= fixtureEnteros.GetLength(1); j++)
+                {
+                    Enfrentamiento enfrentamiento = new Enfrentamiento();
+
+                    enfrentamiento.ParticipanteX = competencia.Participantes.ElementAt(fixtureEnteros[i, j, 0]);
+                    enfrentamiento.ParticipanteY = competencia.Participantes.ElementAt(fixtureEnteros[i, j, 1]);
+
+                    if (listaAuxDisp.Count().Equals(0))
+                    {
+                        listaAuxDisp.Remove(listaAuxDisp.First());
+                    }
+
+                    enfrentamiento.LugarDeRealizacion = listaAuxDisp.First().LugarDeRealizacion;
+
+                    listaAuxDisp.First().Disponible--;
+                    fecha.Enfrentamientos.Add(enfrentamiento);
+                }
+
+                fixture.Fechas.Add(fecha);
+
+            }
+
+            competencia.Fixture = fixture;
+            competencia.Estado = Estado.PLANIFICADA;
+            competencia = dAOCompetencia.modificarCompetencia(competencia);
+
+
+
+            return competencia;
 
         }
-      public DtoCompetencia VerCompetencia(DtoCompetencia dtoCompetencia)
+
+       
+        public DtoCompetencia VerCompetencia(int compentenciaId)
         {
             Competencia competencia = new Competencia();
-            //DtoCompetencia dtocomp = new DtoCompetencia();
-            competencia= dAOCompetencia.buscarPorId(dtoCompetencia.CompetenciaId);
+            DtoCompetencia dtocompetencia = new DtoCompetencia();
+            competencia = dAOCompetencia.buscarPorId(compentenciaId);
+            dtocompetencia.CompetenciaId = competencia.CompetenciaId;
+            dtocompetencia.Nombre = competencia.Nombre;
+            dtocompetencia.Modalidad = competencia.Modalidad;
+            dtocompetencia.Estado = competencia.Estado;
+            DtoDeporte dtoDeporte = new DtoDeporte();
+            dtoDeporte.DeporteId = competencia.DeporteId;
+            dtoDeporte.Nombre = competencia.Deporte.Nombre;
 
-            if (dtoCompetencia.Estado.Equals("PLANICFICADA") || dtoCompetencia.Estado.Equals("ENDISPUTA"))
+            dtocompetencia.DtoDeporte = dtoDeporte;
+
+
+            if (dtocompetencia.Estado.Equals("PLANICFICADA") || dtocompetencia.Estado.Equals("ENDISPUTA"))
             {
                 Fecha fecha = proximaFecha(competencia);
 
@@ -335,7 +393,9 @@ namespace SistemaDeCompetencia.Controladores
 
                     dtoparticipanteX.Nombre = enfrentamiento.ParticipanteX.Nombre;
                     dtoparticipanteY.Nombre = enfrentamiento.ParticipanteY.Nombre;
+
                     DtoEnfrentamiento dtoEnfrentamiento = new DtoEnfrentamiento();
+
                     dtoEnfrentamiento.ParticipanteX = dtoparticipanteX;
                     dtoEnfrentamiento.ParticipanteY = dtoparticipanteY;
                     dtoFecha.Enfrentamientos.Add(dtoEnfrentamiento);
@@ -344,25 +404,25 @@ namespace SistemaDeCompetencia.Controladores
                 DtoFixture dtofixture = new DtoFixture();
                 dtofixture.Fechas.Add(dtoFecha);
 
-                dtoCompetencia.DtoFixture.Fechas = dtofixture.Fechas;
-                dtoCompetencia.DtoFixture.FixtureId = competencia.CompetenciaId;
+                dtocompetencia.DtoFixture.Fechas = dtofixture.Fechas;
+                dtocompetencia.DtoFixture.FixtureId = competencia.CompetenciaId;
 
                 List<DtoParticipante> listadtoParticipantes = new List<DtoParticipante>();
 
-                foreach (var participante in competencia.Participantes) 
+                foreach (var participante in competencia.Participantes)
                 {
                     DtoParticipante dtoParticipante = new DtoParticipante();
                     dtoParticipante.Nombre = participante.Nombre;
                     dtoParticipante.ParticipanteId = participante.ParticipanteId;
                     listadtoParticipantes.Add(dtoParticipante);
                 }
-               
-                dtoCompetencia.Participantes=listadtoParticipantes;
+
+                dtocompetencia.Participantes = listadtoParticipantes;
 
             }
 
 
-            return dtoCompetencia;
+            return dtocompetencia;
         }
 
         private Fecha proximaFecha(Competencia competencia)
@@ -370,20 +430,118 @@ namespace SistemaDeCompetencia.Controladores
             throw new NotImplementedException();
         }
 
-        /* private static int [,,]  genererarEnfrentamientos(int cantidadPaticipantes) 
-         { 
-          for(int i = 1; i <= cantidadPaticipantes % 2; i++) 
-              {
-
-                 Fecha fecha = new Fecha();
-                // fecha.
+        private static int[,,] genererarEnfrentamientos(int cantidadPaticipantes)
+        {            
 
 
-                 }
-             return fixtureEnteros;
+            return calcularLiga(cantidadPaticipantes);
 
-         }*/
+        }
 
+        static private int[,,] calcularLiga(int numEquipos)
+        {
+            if (numEquipos % 2 == 0)
+                return calcularLigaNumEquiposPar(numEquipos);
+            else
+                return calcularLigaNumEquiposImPar(numEquipos);
+        }
+
+        private static int[,,] calcularLigaNumEquiposImPar(int numEquipos)
+        {
+            int numRondas = numEquipos;
+            int numPartidosPorRonda = numEquipos / 2;
+
+
+            int[,,] rondas = new int[numRondas, numPartidosPorRonda, 2];
+
+            for (int i = 0, k = 0; i < numRondas; i++)
+            {
+                for (int j = -1; j < numPartidosPorRonda; j++)
+                {
+                    if (j >= 0)
+                    {
+
+                        rondas[i, j, 0] = k;
+                    }
+
+                    k++;
+
+                    if (k == numRondas)
+                        k = 0;
+                }
+            }
+
+            int equipoMasAlto = numEquipos - 1;
+
+            for (int i = 0, k = equipoMasAlto; i < numRondas; i++)
+            {
+                for (int j = 0; j < numPartidosPorRonda; j++)
+                {
+                    rondas[i, j, 1] = k;
+
+                    k--;
+
+                    if (k == -1)
+                        k = equipoMasAlto;
+                }
+            }
+
+            return rondas;
+        }
+
+        private static int[,,] calcularLigaNumEquiposPar(int numEquipos)
+        {
+            int numRondas = numEquipos - 1;
+            int numPartidosPorRonda = numEquipos / 2;
+
+            int[,,] rondas = new int[numRondas, numPartidosPorRonda, 2];
+
+            for (int i = 0, k = 0; i < numRondas; i++)
+            {
+                for (int j = 0; j < numPartidosPorRonda; j++)
+                {
+
+
+                    rondas[i, j, 0] = k;
+
+                    k++;
+
+                    if (k == numRondas)
+                        k = 0;
+                }
+            }
+
+            for (int i = 0; i < numRondas; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    rondas[i, 0, 1] = numEquipos - 1;
+                }
+                else
+                {
+                    rondas[i, 0, 1] = rondas[i, 0, 0];
+                    rondas[i, 0, 0] = numEquipos - 1;
+                }
+            }
+
+            int equipoMasAlto = numEquipos - 1;
+            int equipoImparMasAlto = equipoMasAlto - 1;
+
+            for (int i = 0, k = equipoImparMasAlto; i < numRondas; i++)
+            {
+                for (int j = 1; j < numPartidosPorRonda; j++)
+                {
+                    rondas[i, j, 1] = k;
+
+                    k--;
+
+                    if (k == -1)
+                        k = equipoImparMasAlto;
+                }
+            }
+
+            return rondas;
+        }
     }
      
 }
