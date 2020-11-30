@@ -18,7 +18,7 @@ namespace SistemaDeCompetencia.Vista
         DtoCompetencia dtoCompetencia = new DtoCompetencia();
         DtoUsuario dtoUsuario=new DtoUsuario();
         private GestorCompetencia gComp = new GestorCompetencia();
-        Competencia competencia = new Competencia();
+        DtoCompetencia dtocompetencia = new DtoCompetencia();
 
         public VerCompentencia(DtoCompetencia dtocompetencia,DtoUsuario dtoUsuarioForm)
         {
@@ -92,7 +92,19 @@ namespace SistemaDeCompetencia.Vista
         private void button_generar_Click(object sender, EventArgs e)
         {
 
-          //  competencia = gComp.b;
+            if (gComp.generarFixture(dtoCompetencia.CompetenciaId))
+            {
+                MessageBox.Show("Fixture generado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Form frmVerCompetencia = new VerCompentencia(dtoCompetencia, dtoUsuario);
+                frmVerCompetencia.Show();
+                this.Close();
+            }
+            else 
+            {
+                MessageBox.Show("Fixture NO generado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
+                   
         }
     }
 }

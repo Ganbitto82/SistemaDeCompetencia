@@ -298,16 +298,18 @@ namespace SistemaDeCompetencia.Controladores
             return listaDtoParticipante;
         }
 
-        private Competencia generarFixture(int competenciaId)
+        public bool generarFixture(int competenciaId)
         {
             Competencia competencia = dAOCompetencia.buscarPorId(competenciaId);
+            DtoCompetencia dtoCompetencia = new DtoCompetencia();
 
-            //int[,,] fixtureEnteros = new int[5,5,5];
+
+            
 
             if (competencia.Estado.Equals(Estado.ENDISPUTA) || competencia.Estado.Equals(Estado.FINALIZADA))
             {
                 MessageBox.Show("No se puede generar un fixture", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return competencia;
+                return false;
             }
 
 
@@ -316,10 +318,12 @@ namespace SistemaDeCompetencia.Controladores
 
 
 
-            for (int i = 1; i <= fixtureEnteros.GetLength(0); i++)
+            for (int i = 0; i < fixtureEnteros.GetLength(0); i++)
             {
                 Fecha fecha = new Fecha();
-                fecha.FechaCompentencia = i.ToString();
+               // List<Enfrentamiento> enfrentamientos = new List<Enfrentamiento>();
+                //List<Fecha> fechas = new List<Fecha>();
+                fecha.FechaCompentencia = (i+1).ToString();
 
                 List<Disponibilidad> listaAuxDisp = new List<Disponibilidad>();
                 foreach (var d in competencia.Disponibilidades)
@@ -331,7 +335,7 @@ namespace SistemaDeCompetencia.Controladores
                     disponibilidad.LugarDeRealizacion = d.LugarDeRealizacion;
                     listaAuxDisp.Add(disponibilidad);
                 }
-                for (int j = 1; j <= fixtureEnteros.GetLength(1); j++)
+                for (int j = 0; j < fixtureEnteros.GetLength(1); j++)
                 {
                     Enfrentamiento enfrentamiento = new Enfrentamiento();
 
@@ -346,7 +350,13 @@ namespace SistemaDeCompetencia.Controladores
                     enfrentamiento.LugarDeRealizacion = listaAuxDisp.First().LugarDeRealizacion;
 
                     listaAuxDisp.First().Disponible--;
+                    // enfrentamientos.Add(enfrentamiento);
                     fecha.Enfrentamientos.Add(enfrentamiento);
+
+
+                    //  fecha.Enfrentamientos = enfrentamientos;
+                    //fechas.Add(fecha);
+                   
                 }
 
                 fixture.Fechas.Add(fecha);
@@ -356,10 +366,57 @@ namespace SistemaDeCompetencia.Controladores
             competencia.Fixture = fixture;
             competencia.Estado = Estado.PLANIFICADA;
             competencia = dAOCompetencia.modificarCompetencia(competencia);
+            
+         /*   DtoFixture dtoFixture = new DtoFixture();
+            List<DtoFecha> listaDtofechas = new List<DtoFecha>();
+            
+          
+            foreach (var fecha in competencia.Fixture.Fechas)
+            {
+                DtoFecha dtoFecha = new DtoFecha();
+                dtoFecha.FechaId = fecha.FechaId;
+                dtoFecha.FechaCompentencia = fecha.FechaCompentencia;
+
+                foreach (var enfrentamiento in fecha.Enfrentamientos)
+                {
+                    DtoEnfrentamiento dtoEnfrentamiento = new DtoEnfrentamiento();
+
+                    DtoParticipante participanteX = new DtoParticipante();
+                    DtoParticipante participanteY = new DtoParticipante();
+                    DtoDatosResultado dtoActual = new DtoDatosResultado();
+
+                    participanteX.ParticipanteId = enfrentamiento.ParticipanteX.ParticipanteId;
+                    participanteX.Nombre = enfrentamiento.ParticipanteX.Nombre;
+                    participanteX.CorreoElectronico = enfrentamiento.ParticipanteX.CorreoElectronico;
+                    dtoEnfrentamiento.ParticipanteX = participanteX;
+
+                    participanteY.ParticipanteId = enfrentamiento.ParticipanteY.ParticipanteId;
+                    participanteY.Nombre = enfrentamiento.ParticipanteY.Nombre;
+                    participanteY.CorreoElectronico = enfrentamiento.ParticipanteY.CorreoElectronico;
+                    dtoEnfrentamiento.ParticipanteY = participanteY;
+         
+
+                    dtoFecha.Enfrentamientos.Add(dtoEnfrentamiento);
+                    
+                }
+                
+                listaDtofechas.Add(dtoFecha);
+
+            }
+            
+
+            dtoFixture.FixtureId = competencia.Fixture.FixtureId;
+            dtoFixture.Fechas = listaDtofechas;
+
+            dtoCompetencia.DtoFixture = dtoFixture;
+            
+
+            dtoCompetencia.Estado = competencia.Estado;*/
 
 
 
-            return competencia;
+
+            return true;
 
         }
 
@@ -493,7 +550,7 @@ namespace SistemaDeCompetencia.Controladores
         {
             int numRondas = numEquipos - 1;
             int numPartidosPorRonda = numEquipos / 2;
-
+            //fijarse cantidad de participantes
             int[,,] rondas = new int[numRondas, numPartidosPorRonda, 2];
 
             for (int i = 0, k = 0; i < numRondas; i++)

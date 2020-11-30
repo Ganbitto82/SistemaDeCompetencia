@@ -65,8 +65,8 @@ namespace SistemaDeCompetencia.Vista
    
         private void Cancelar_Click(object sender, EventArgs e)
         {
-            Form frmVerCompetencia = new VerCompentencia(dtocompetencia, dtoUsuario);
-            frmVerCompetencia.Show();
+            Form frmListarParticipante = new ListarParticipante(dtocompetencia, dtoUsuario);
+            frmListarParticipante.Show();
             this.Close();
 
         }

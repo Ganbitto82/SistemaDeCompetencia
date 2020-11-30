@@ -14,9 +14,10 @@ namespace SistemaDeCompetencia.Dto
   
         public int DatosResultadoId { get; set; }
         public bool GanadorX { get; set; }
-        public bool Ganador { get; set; }
+        public bool GanadorY { get; set; }
         public bool Empate { get; set; }
         public bool ParticipanteXPresente { get; set; }
+        public bool ParticipanteYPresente { get; set; }
         public DtoEnfrentamiento Historico { get; set; }
         public DtoEnfrentamiento Actual { get; set; }
         public List<DtoResultado> Resultados { get; set; }

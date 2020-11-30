@@ -60,8 +60,8 @@ namespace SistemaDeCompetencia.Vista
 
         private void button_cancelar_Click(object sender, EventArgs e)
         {
-            Form frm2 = new PantallaPrincipal(dtoUsuario);
-            frm2.Show();
+            Form frmVerCompetencia = new VerCompentencia(dtocompetencia, dtoUsuario);
+            frmVerCompetencia.Show();
             this.Close();
         }
 

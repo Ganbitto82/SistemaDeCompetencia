@@ -55,8 +55,7 @@ go
 /* Turn Identity Insert OFF  */
 SET IDENTITY_INSERT competencia OFF
 GO
-
-select *from Competencia;
+                                 
 select *from deporte;
 select *from fixture;
 select *from fecha;

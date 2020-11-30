@@ -18,5 +18,10 @@ namespace SistemaDeCompetencia.Modelo
         public int FixtureId { get; set; }
         public Fixture Fixture { get; set; }
         public List<Enfrentamiento> Enfrentamientos { get; set; }
+
+        public Fecha()
+        {
+            Enfrentamientos = new List<Enfrentamiento>();
+        }
     }
 }

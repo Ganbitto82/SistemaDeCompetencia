@@ -40,7 +40,6 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label_nombre = new System.Windows.Forms.Label();
-            this.salir = new System.Windows.Forms.Button();
             this.button_cancelar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -164,17 +163,6 @@
             this.label_nombre.TabIndex = 0;
             this.label_nombre.Text = "Datos de Participantes";
             // 
-            // salir
-            // 
-            this.salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.salir.Location = new System.Drawing.Point(430, 626);
-            this.salir.Name = "salir";
-            this.salir.Size = new System.Drawing.Size(84, 23);
-            this.salir.TabIndex = 25;
-            this.salir.Text = "Salir";
-            this.salir.UseVisualStyleBackColor = true;
-            this.salir.Click += new System.EventHandler(this.salir_Click);
-            // 
             // button_cancelar
             // 
             this.button_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -200,7 +188,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 661);
-            this.Controls.Add(this.salir);
             this.Controls.Add(this.button_cancelar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label7);
@@ -223,7 +210,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label_nombre;
-        private System.Windows.Forms.Button salir;
         private System.Windows.Forms.Button button_cancelar;
         private System.Windows.Forms.DataGridView tablaDeParticipantes;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
