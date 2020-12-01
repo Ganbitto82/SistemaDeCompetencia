@@ -15,7 +15,7 @@ namespace SistemaDeCompetencia.Vista
 {
     public partial class VerCompentencia : Form
     {
-        DtoCompetencia dtoCompetencia = new DtoCompetencia();
+        DtoCompetencia dtoComp = new DtoCompetencia();
         DtoUsuario dtoUsuario=new DtoUsuario();
         private GestorCompetencia gComp = new GestorCompetencia();
         
@@ -23,30 +23,30 @@ namespace SistemaDeCompetencia.Vista
         {
             dtoUsuario = dtoUsuarioForm;
 
-            dtoCompetencia = gComp.VerCompetencia(dtocompetencia.CompetenciaId);
+            dtoComp = gComp.VerCompetencia(dtocompetencia.CompetenciaId);
             InitializeComponent();
-            textBox_nombre.Text = dtoCompetencia.Nombre;
-            textBox_Modalidad.Text = dtoCompetencia.Modalidad.ToString();
-            textBox_Deporte.Text = dtoCompetencia.DtoDeporte.Nombre;
-            textBox_Estado.Text = dtoCompetencia.Estado.ToString();
-            cargarTablaParticipante(dtoCompetencia.Participantes);
-            if (dtocompetencia.DtoFixture!=null)
+            textBox_nombre.Text = dtoComp.Nombre;
+            textBox_Modalidad.Text = dtoComp.Modalidad.ToString();
+            textBox_Deporte.Text = dtoComp.DtoDeporte.Nombre;
+            textBox_Estado.Text = dtoComp.Estado.ToString();
+            cargarTablaParticipante(dtoComp.Participantes);
+            if (dtoComp.DtoFixture!=null)
 
-            cargarTablaEncuentro(dtoCompetencia);
+            cargarTablaEncuentro(dtoComp);
 
 
         }
 
         private void cargarTablaParticipante(List<DtoParticipante> listaParticipante)
         {
-            
+            TablaParticipante.ClearSelection();
             foreach (var participante in listaParticipante)
             {
                 int n = TablaParticipante.Rows.Add();
                 TablaParticipante.Rows[n].Cells[0].Value = participante.Nombre;
 
             }
-            TablaParticipante.ClearSelection();
+            
         }
 
         private void cargarTablaEncuentro(DtoCompetencia dtoCompetencia)
@@ -67,32 +67,40 @@ namespace SistemaDeCompetencia.Vista
 
         private void button_cancelar_Click(object sender, EventArgs e)
         {
-            Form frmPantallaPrincipal = new PantallaPrincipal(dtoUsuario);
-            frmPantallaPrincipal.Show();
+            Form frmListarComp = new ListarCompetencia(dtoUsuario);
+            frmListarComp.Show();
             this.Close();
         }
 
         private void button_participantes_Click(object sender, EventArgs e)
         {
-            Form frmListarParticipante = new ListarParticipante(dtoCompetencia,dtoUsuario);
+            Form frmListarParticipante = new ListarParticipante(dtoComp,dtoUsuario);
             frmListarParticipante.Show();
             this.Close();
         }
 
         private void button_generar_Click(object sender, EventArgs e)
         {
-
-            if (gComp.generarFixture(dtoCompetencia.CompetenciaId))
+            try
             {
-                MessageBox.Show("Fixture generado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Form frmVerCompetencia = new VerCompentencia(dtoCompetencia, dtoUsuario);
-                frmVerCompetencia.Show();
-                this.Close();
+                if (gComp.generarFixture(dtoComp.CompetenciaId))
+                {
+                    MessageBox.Show("Fixture generado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Form frmVerCompetencia = new VerCompentencia(dtoComp, dtoUsuario);
+                    frmVerCompetencia.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Fixture NO generado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else 
+            catch (Exception ex) 
             {
-                MessageBox.Show("Fixture NO generado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message , "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            
+           
             
                    
         }

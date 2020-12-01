@@ -257,7 +257,7 @@ namespace SistemaDeCompetencia.Controladores
 
             competencia = dAOCompetencia.modificarCompetencia(competencia);
 
-            
+            //dAOCompetencia.eliminar();
 
             return true;
         }
@@ -304,70 +304,79 @@ namespace SistemaDeCompetencia.Controladores
 
         public bool generarFixture(int competenciaId)
         {
-            Competencia competencia = dAOCompetencia.buscarPorId(competenciaId);
-            DtoCompetencia dtoCompetencia = new DtoCompetencia();
 
-
-            
-
-            if (competencia.Estado.Equals(Estado.ENDISPUTA) || competencia.Estado.Equals(Estado.FINALIZADA))
+            try
             {
-                MessageBox.Show("No se puede generar un fixture", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-
-            Fixture fixture = new Fixture();
-            int[,,] fixtureEnteros = genererarEnfrentamientos(competencia.Participantes.Count());
+                Competencia competencia = dAOCompetencia.buscarPorId(competenciaId);
+                DtoCompetencia dtoCompetencia = new DtoCompetencia();
 
 
 
-            for (int i = 0; i < fixtureEnteros.GetLength(0); i++)
-            {
-                Fecha fecha = new Fecha();
-              
-                fecha.FechaCompentencia = (i+1).ToString();
 
-                List<Disponibilidad> listaAuxDisp = new List<Disponibilidad>();
-                foreach (var d in competencia.Disponibilidades)
+                if (competencia.Estado.Equals(Estado.ENDISPUTA) || competencia.Estado.Equals(Estado.FINALIZADA))
                 {
-                    Disponibilidad disponibilidad = new Disponibilidad();
-                    disponibilidad.DisponibilidadId = d.DisponibilidadId;
-                    disponibilidad.Disponible = d.Disponible;
-
-                    disponibilidad.LugarDeRealizacion = d.LugarDeRealizacion;
-                    listaAuxDisp.Add(disponibilidad);
+                    MessageBox.Show("No se puede generar un fixture", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
                 }
-                for (int j = 0; j < fixtureEnteros.GetLength(1); j++)
+
+
+                Fixture fixture = new Fixture();
+                int[,,] fixtureEnteros = genererarEnfrentamientos(competencia.Participantes.Count());
+
+
+
+                for (int i = 0; i < fixtureEnteros.GetLength(0); i++)
                 {
-                    Enfrentamiento enfrentamiento = new Enfrentamiento();
+                    Fecha fecha = new Fecha();
 
-                    enfrentamiento.ParticipanteX = competencia.Participantes.ElementAt(fixtureEnteros[i, j, 0]);
-                    enfrentamiento.ParticipanteY = competencia.Participantes.ElementAt(fixtureEnteros[i, j, 1]);
+                    fecha.FechaCompentencia = (i + 1).ToString();
 
-                    if (listaAuxDisp.Count().Equals(0))
+                    List<Disponibilidad> listaAuxDisp = new List<Disponibilidad>();
+                    foreach (var d in competencia.Disponibilidades)
                     {
-                        listaAuxDisp.Remove(listaAuxDisp.First());
+                        Disponibilidad disponibilidad = new Disponibilidad();
+                        disponibilidad.DisponibilidadId = d.DisponibilidadId;
+                        disponibilidad.Disponible = d.Disponible;
+
+                        disponibilidad.LugarDeRealizacion = d.LugarDeRealizacion;
+                        listaAuxDisp.Add(disponibilidad);
+                    }
+                    for (int j = 0; j < fixtureEnteros.GetLength(1); j++)
+                    {
+                        Enfrentamiento enfrentamiento = new Enfrentamiento();
+
+                        enfrentamiento.ParticipanteX = competencia.Participantes.ElementAt(fixtureEnteros[i, j, 0]);
+                        enfrentamiento.ParticipanteY = competencia.Participantes.ElementAt(fixtureEnteros[i, j, 1]);
+
+                        if (listaAuxDisp.Count().Equals(0))
+                        {
+                            listaAuxDisp.Remove(listaAuxDisp.First());
+                        }
+
+                        enfrentamiento.LugarDeRealizacion = listaAuxDisp.First().LugarDeRealizacion;
+
+                        listaAuxDisp.First().Disponible--;
+
+                        fecha.Enfrentamientos.Add(enfrentamiento);
+
+
                     }
 
-                    enfrentamiento.LugarDeRealizacion = listaAuxDisp.First().LugarDeRealizacion;
+                    fixture.Fechas.Add(fecha);
 
-                    listaAuxDisp.First().Disponible--;
-                  
-                    fecha.Enfrentamientos.Add(enfrentamiento);
-                                       
-                   
                 }
 
-                fixture.Fechas.Add(fecha);
+                competencia.Fixture = fixture;
+                competencia.Estado = Estado.PLANIFICADA;
+                competencia = dAOCompetencia.modificarCompetencia(competencia);
 
+                return true;
             }
-
-            competencia.Fixture = fixture;
-            competencia.Estado = Estado.PLANIFICADA;
-            competencia = dAOCompetencia.modificarCompetencia(competencia);
-            
-             return true;
+            catch (Exception e) 
+            { 
+                throw e; 
+            }
+           
 
         }
 
@@ -388,7 +397,7 @@ namespace SistemaDeCompetencia.Controladores
 
             dtocompetencia.DtoDeporte = dtoDeporte;
 
-          //  Console.WriteLine( dtocompetencia.Estado);
+         
             if (dtocompetencia.Estado.ToString().Equals("PLANIFICADA") || dtocompetencia.Estado.ToString().Equals("ENDISPUTA"))
             {
                 Fecha fecha = proximaFecha(competencia);
@@ -416,19 +425,20 @@ namespace SistemaDeCompetencia.Controladores
                 dtocompetencia.DtoFixture =dtofixture;
                 dtocompetencia.DtoFixture.FixtureId = competencia.Fixture.FixtureId;
 
-                List<DtoParticipante> listadtoParticipantes = new List<DtoParticipante>();
-
-                foreach (var participante in competencia.Participantes)
-                {
-                    DtoParticipante dtoParticipante = new DtoParticipante();
-                    dtoParticipante.Nombre = participante.Nombre;
-                    dtoParticipante.ParticipanteId = participante.ParticipanteId;
-                    listadtoParticipantes.Add(dtoParticipante);
-                }
-
-                dtocompetencia.Participantes = listadtoParticipantes;
+                
 
             }
+            List<DtoParticipante> listadtoParticipantes = new List<DtoParticipante>();
+
+            foreach (var participante in competencia.Participantes)
+            {
+                DtoParticipante dtoParticipante = new DtoParticipante();
+                dtoParticipante.Nombre = participante.Nombre;
+                dtoParticipante.ParticipanteId = participante.ParticipanteId;
+                listadtoParticipantes.Add(dtoParticipante);
+            }
+
+            dtocompetencia.Participantes = listadtoParticipantes;
 
 
             return dtocompetencia;
@@ -461,23 +471,42 @@ namespace SistemaDeCompetencia.Controladores
         }
 
         private static int[,,] genererarEnfrentamientos(int cantidadPaticipantes)
-        {            
+        {
 
-
-            return calcularLiga(cantidadPaticipantes);
-
+            try 
+            {
+                return calcularLiga(cantidadPaticipantes);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            
         }
 
         static private int[,,] calcularLiga(int numEquipos)
         {
-            if (numEquipos % 2 == 0)
-                return calcularLigaNumEquiposPar(numEquipos);
-            else
-                return calcularLigaNumEquiposImPar(numEquipos);
+            try
+            {
+                if (numEquipos % 2 == 0)
+                    return calcularLigaNumEquiposPar(numEquipos);
+                else
+                    return calcularLigaNumEquiposImPar(numEquipos);
+            }
+            catch ( Exception e)
+            {
+                throw e;
+            }
+           
         }
 
         private static int[,,] calcularLigaNumEquiposImPar(int numEquipos)
         {
+
+            if (numEquipos < 2) 
+            {
+                throw new Exception("No se puede generar fixture por falta de participante");
+            }
             int numRondas = numEquipos;
             int numPartidosPorRonda = numEquipos / 2;
 
@@ -521,56 +550,65 @@ namespace SistemaDeCompetencia.Controladores
 
         private static int[,,] calcularLigaNumEquiposPar(int numEquipos)
         {
-            int numRondas = numEquipos - 1;
-            int numPartidosPorRonda = numEquipos / 2;
-            //fijarse cantidad de participantes
-            int[,,] rondas = new int[numRondas, numPartidosPorRonda, 2];
-
-            for (int i = 0, k = 0; i < numRondas; i++)
+            try 
             {
-                for (int j = 0; j < numPartidosPorRonda; j++)
+                int numRondas = numEquipos - 1;
+                int numPartidosPorRonda = numEquipos / 2;
+                //fijarse cantidad de participantes
+                int[,,] rondas = new int[numRondas, numPartidosPorRonda, 2];
+
+                for (int i = 0, k = 0; i < numRondas; i++)
                 {
+                    for (int j = 0; j < numPartidosPorRonda; j++)
+                    {
 
 
-                    rondas[i, j, 0] = k;
+                        rondas[i, j, 0] = k;
 
-                    k++;
+                        k++;
 
-                    if (k == numRondas)
-                        k = 0;
+                        if (k == numRondas)
+                            k = 0;
+                    }
                 }
-            }
 
-            for (int i = 0; i < numRondas; i++)
+                for (int i = 0; i < numRondas; i++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        rondas[i, 0, 1] = numEquipos - 1;
+                    }
+                    else
+                    {
+                        rondas[i, 0, 1] = rondas[i, 0, 0];
+                        rondas[i, 0, 0] = numEquipos - 1;
+                    }
+                }
+
+                int equipoMasAlto = numEquipos - 1;
+                int equipoImparMasAlto = equipoMasAlto - 1;
+
+                for (int i = 0, k = equipoImparMasAlto; i < numRondas; i++)
+                {
+                    for (int j = 1; j < numPartidosPorRonda; j++)
+                    {
+                        rondas[i, j, 1] = k;
+
+                        k--;
+
+                        if (k == -1)
+                            k = equipoImparMasAlto;
+                    }
+                }
+
+                return rondas;
+            }
+            catch  
             {
-                if (i % 2 == 0)
-                {
-                    rondas[i, 0, 1] = numEquipos - 1;
-                }
-                else
-                {
-                    rondas[i, 0, 1] = rondas[i, 0, 0];
-                    rondas[i, 0, 0] = numEquipos - 1;
-                }
+
+                throw new Exception("No se puede generar fixture por falta de participante");
             }
-
-            int equipoMasAlto = numEquipos - 1;
-            int equipoImparMasAlto = equipoMasAlto - 1;
-
-            for (int i = 0, k = equipoImparMasAlto; i < numRondas; i++)
-            {
-                for (int j = 1; j < numPartidosPorRonda; j++)
-                {
-                    rondas[i, j, 1] = k;
-
-                    k--;
-
-                    if (k == -1)
-                        k = equipoImparMasAlto;
-                }
-            }
-
-            return rondas;
+            
         }
     }
      

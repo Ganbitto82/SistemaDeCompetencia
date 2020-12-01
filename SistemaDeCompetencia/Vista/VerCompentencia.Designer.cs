@@ -88,7 +88,6 @@
             this.salir.TabIndex = 36;
             this.salir.Text = "Salir";
             this.salir.UseVisualStyleBackColor = true;
-          //  this.salir.Click += new System.EventHandler(this.salir_Click);
             // 
             // button_cancelar
             // 
@@ -169,7 +168,6 @@
             this.textBox_nombre.Name = "textBox_nombre";
             this.textBox_nombre.Size = new System.Drawing.Size(238, 20);
             this.textBox_nombre.TabIndex = 29;
-            //this.textBox_nombre.TextChanged += new System.EventHandler(this.textBox_nombre_TextChanged);
             // 
             // textBox_Modalidad
             // 
@@ -179,7 +177,6 @@
             this.textBox_Modalidad.Name = "textBox_Modalidad";
             this.textBox_Modalidad.Size = new System.Drawing.Size(238, 20);
             this.textBox_Modalidad.TabIndex = 30;
-        //    this.textBox_Modalidad.TextChanged += new System.EventHandler(this.textBox_Modalidad_TextChanged);
             // 
             // textBox_Deporte
             // 
@@ -189,7 +186,6 @@
             this.textBox_Deporte.Name = "textBox_Deporte";
             this.textBox_Deporte.Size = new System.Drawing.Size(238, 20);
             this.textBox_Deporte.TabIndex = 31;
-         //   this.textBox_Deporte.TextChanged += new System.EventHandler(this.textBox_Deporte_TextChanged);
             // 
             // textBox_Estado
             // 
@@ -227,6 +223,8 @@
             // TablaEncuentro
             // 
             this.TablaEncuentro.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.TablaEncuentro.AllowUserToAddRows = false;
+            this.TablaEncuentro.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
             this.TablaEncuentro.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.TablaEncuentro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -236,6 +234,7 @@
             this.EncuentroParticipante2});
             this.TablaEncuentro.Location = new System.Drawing.Point(58, 387);
             this.TablaEncuentro.Name = "TablaEncuentro";
+            this.TablaEncuentro.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -254,20 +253,25 @@
             this.encuentroParticipante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.encuentroParticipante.HeaderText = "Participante";
             this.encuentroParticipante.Name = "encuentroParticipante";
+            this.encuentroParticipante.ReadOnly = true;
             // 
             // Vs
             // 
             this.Vs.HeaderText = "Vs";
             this.Vs.Name = "Vs";
+            this.Vs.ReadOnly = true;
             // 
             // EncuentroParticipante2
             // 
             this.EncuentroParticipante2.HeaderText = "Participante";
             this.EncuentroParticipante2.Name = "EncuentroParticipante2";
+            this.EncuentroParticipante2.ReadOnly = true;
             // 
             // TablaParticipante
             // 
             this.TablaParticipante.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.TablaParticipante.AllowUserToAddRows = false;
+            this.TablaParticipante.AllowUserToDeleteRows = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
             this.TablaParticipante.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.TablaParticipante.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -275,18 +279,19 @@
             this.Participante});
             this.TablaParticipante.Location = new System.Drawing.Point(56, 259);
             this.TablaParticipante.Name = "TablaParticipante";
+            this.TablaParticipante.ReadOnly = true;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TablaParticipante.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.TablaParticipante.Size = new System.Drawing.Size(367, 93);
             this.TablaParticipante.TabIndex = 38;
-           // this.TablaParticipante.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaParticipante_CellContentClick);
             // 
             // Participante
             // 
             this.Participante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Participante.HeaderText = "Participantes";
             this.Participante.Name = "Participante";
+            this.Participante.ReadOnly = true;
             // 
             // label8
             // 
@@ -297,7 +302,6 @@
             this.label8.Size = new System.Drawing.Size(156, 16);
             this.label8.TabIndex = 36;
             this.label8.Text = "Proximos encuentros:";
-         //   this.label8.Click += new System.EventHandler(this.label8_Click_1);
             // 
             // button_modificar
             // 

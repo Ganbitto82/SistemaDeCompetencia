@@ -17,6 +17,7 @@ namespace SistemaDeCompetencia.Vista
     {
         private DtoCompetencia dtocompetencia = new DtoCompetencia();
         private DtoUsuario dtoUsuario = new DtoUsuario();
+        int flag = 0;
 
         private GestorCompetencia gestorCompetencia= new GestorCompetencia();
         public DarAltaParticipante(DtoCompetencia dtoCompetencia,DtoUsuario dtoUsuarioForm)
@@ -26,40 +27,48 @@ namespace SistemaDeCompetencia.Vista
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_deporte_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form4_Load(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void Aceptar_Click(object sender, EventArgs e)
         {
-            DtoParticipante dtoParticipante = new DtoParticipante();
-            dtoParticipante.Nombre = textBox_nombre.Text.ToUpper();
-            dtoParticipante.CorreoElectronico = textBoxCorreo.Text.ToUpper();
-            bool agregarParticipante = gestorCompetencia.DarDeAltaParticipante(dtoParticipante, dtocompetencia.CompetenciaId);
-            if (!agregarParticipante)
+            if (textBox_nombre.Text.Equals("") || textBoxCorreo.Text.Equals("")) 
             {
-                MessageBox.Show("No se pudo agregar el participante ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                textBox_nombre.Text = "";
-                textBoxCorreo.Text = "";
-            }
-            else
-            {
-                MessageBox.Show("Participante agregado ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                textBox_nombre.Text = "";
-                textBoxCorreo.Text = "";
+                MessageBox.Show(" Los campos nombre y correo no pueden estar vacios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
+            else {
+                DtoParticipante dtoParticipante = new DtoParticipante();
+                dtoParticipante.Nombre = textBox_nombre.Text.ToUpper();
+                dtoParticipante.CorreoElectronico = textBoxCorreo.Text.ToUpper();
+
+                bool agregarParticipante = gestorCompetencia.DarDeAltaParticipante(dtoParticipante, dtocompetencia.CompetenciaId);
+                if (!agregarParticipante)
+                {
+                    MessageBox.Show("No se pudo agregar el participante ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    textBox_nombre.Text = "";
+                    textBoxCorreo.Text = "";
+                }
+                else
+                {
+
+                    //bandera solo para mostrar por unica vez que se elimino el fixture
+                    if (flag == 0)
+                    {
+                        if (dtocompetencia.Estado.ToString().Equals("PLANIFICADA"))
+                        {
+                            MessageBox.Show("Se elimino el fixture ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+
+                    flag = 1;
+                    MessageBox.Show("Participante agregado ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    textBox_nombre.Text = "";
+                    textBoxCorreo.Text = "";
+
+                }
+            }
+
+            
         }
 
    

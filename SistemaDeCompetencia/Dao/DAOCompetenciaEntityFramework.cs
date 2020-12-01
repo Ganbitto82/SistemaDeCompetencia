@@ -31,27 +31,38 @@ namespace SistemaDeCompetencia.Dao
         }
         public Competencia insertarCompetencia(Competencia c)
         {
-            	
-
-            context.Competencia.Add(c);
-            context.SaveChanges();
-
+            try 
+            {
+                context.Competencia.Add(c);
+                context.SaveChanges();
+                return c;
+            }
+            catch 
+            {
+                throw new Exception("Error al buscar Competencia en la Base de datos.");
+            }
+            
            
           
-            return c;
+            
         }
 
         public List<Competencia> buscarCompetencias(string nombreCompetencia, string stringEstado, string stringModalidad, string nombreDeporte, int usuarioId)
         {
-            List<Competencia> competencias = context.Competencia.Include("Deporte").Where(c => c.UsuarioId == usuarioId ).ToList();
-            if (!nombreCompetencia.Equals("")) competencias =competencias.Where(c => c.Nombre.Contains(nombreCompetencia)).ToList();
-            if (!stringEstado.Equals("")) competencias = competencias.Where(c => c.Estado.ToString().Equals(stringEstado)).ToList();
-            if (!stringModalidad.Equals("")) competencias = competencias.Where(c => c.Modalidad.ToString().Equals(stringModalidad)).ToList();
-            if (!nombreDeporte.Equals("")) competencias = competencias.Where(c => c.Deporte.Nombre.Equals(nombreDeporte)).ToList();
-             
+            try 
+            {
+                List<Competencia> competencias = context.Competencia.Include("Deporte").Where(c => c.UsuarioId == usuarioId).ToList();
+                if (!nombreCompetencia.Equals("")) competencias = competencias.Where(c => c.Nombre.Contains(nombreCompetencia)).ToList();
+                if (!stringEstado.Equals("")) competencias = competencias.Where(c => c.Estado.ToString().Equals(stringEstado)).ToList();
+                if (!stringModalidad.Equals("")) competencias = competencias.Where(c => c.Modalidad.ToString().Equals(stringModalidad)).ToList();
+                if (!nombreDeporte.Equals("")) competencias = competencias.Where(c => c.Deporte.Nombre.Equals(nombreDeporte)).ToList();
 
-            
+
+
                 return competencias;
+            }
+            catch { throw new Exception("Error al buscar Competencia en la Base de datos."); }
+            
         }
 
        public  Competencia buscarPorId(int competenciaId) 
@@ -80,16 +91,29 @@ namespace SistemaDeCompetencia.Dao
         }
       public Competencia modificarCompetencia(Competencia c) 
         {
-            context.Entry(c).State = System.Data.Entity.EntityState.Modified;
-            context.SaveChanges();
-            return c;
-           
+            try
+            {
+                context.Entry(c).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+                return c;
+            }
+            catch
+            {
+                throw new Exception("Error al buscar Competencia en la Base de datos.");
+            }
         }
+           
+           
+        
         public void eliminar(int fixtureId) 
         {
-            var fixture = context.Fixture.Find(fixtureId);
-            context.Entry(fixture).State = System.Data.Entity.EntityState.Deleted;
-            context.SaveChanges();
+            try {
+                var fixture = context.Fixture.Find(fixtureId);
+                context.Entry(fixture).State = System.Data.Entity.EntityState.Deleted;
+                context.SaveChanges();
+            }
+            catch { throw new Exception("Error al buscar Competencia en la Base de datos."); }
+            
             
         }
 

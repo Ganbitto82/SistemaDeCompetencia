@@ -42,6 +42,10 @@ namespace SistemaDeCompetencia.Dao
             //CompetenciaContext context = new CompetenciaContext();
             try
             {
+              /*  return context.LugarDeRealizacion.Include("DeporteLugar").Where(l=>l.UsuarioId ==usuarioId).ToList()
+                    .Select(l=>l.DeportesLugares.ForEach(c=>c.Deporte)) ;*/
+
+
 
                 //obtenemos la lista de DeporteLugar
                 listaDeporteLugar.AddRange(context.DeporteLugar);

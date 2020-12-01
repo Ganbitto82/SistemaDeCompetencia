@@ -14,7 +14,7 @@ namespace SistemaDeCompetencia.Vista
 {
     public partial class ListarParticipante : Form
     {
-        private DtoCompetencia dtocompetencia = new DtoCompetencia();
+        private DtoCompetencia dtocomp = new DtoCompetencia();
         private DtoUsuario dtoUsuario = new DtoUsuario();
         private GestorCompetencia gComp = new GestorCompetencia();
         private List<DtoParticipante> listaDtoParticipante = new List<DtoParticipante>();
@@ -22,10 +22,10 @@ namespace SistemaDeCompetencia.Vista
         {
 
             InitializeComponent();
-            dtocompetencia = dtoCompetencia;
+            dtocomp = dtoCompetencia;
             dtoUsuario = dtoUsuarioForm;
             listaDtoParticipante.Clear();
-            listaDtoParticipante = gComp.listarParticipantesCompetencia(dtocompetencia.CompetenciaId);
+            listaDtoParticipante = gComp.listarParticipantesCompetencia(dtocomp.CompetenciaId);
             cargarTablaParticipante(listaDtoParticipante);
             
         }
@@ -46,9 +46,9 @@ namespace SistemaDeCompetencia.Vista
         private void button_agregar_Click(object sender, EventArgs e)
         {
 
-            if (dtocompetencia.Estado.ToString().Equals("CREADA") || dtocompetencia.Estado.ToString().Equals("PLANIFICADA"))
+            if (dtocomp.Estado.ToString().Equals("CREADA") || dtocomp.Estado.ToString().Equals("PLANIFICADA"))
             {
-                Form frmDarAltaParticipante = new DarAltaParticipante(dtocompetencia,dtoUsuario);
+                Form frmDarAltaParticipante = new DarAltaParticipante(dtocomp,dtoUsuario);
                 frmDarAltaParticipante.Show();
                 this.Close();
             }
@@ -60,7 +60,7 @@ namespace SistemaDeCompetencia.Vista
 
         private void button_cancelar_Click(object sender, EventArgs e)
         {
-            Form frmVerCompetencia = new VerCompentencia(dtocompetencia, dtoUsuario);
+            Form frmVerCompetencia = new VerCompentencia(dtocomp, dtoUsuario);
             frmVerCompetencia.Show();
             this.Close();
         }
