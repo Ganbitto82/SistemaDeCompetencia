@@ -243,9 +243,11 @@ namespace SistemaDeCompetencia.Controladores
 
 
             }
-            //eliminar();
+            
 
-            //competencia.Estado = Estado.CREADA;
+            competencia.Estado = Estado.CREADA;
+            competencia.FixtureId = null;
+
             Participante participante = new Participante();
 
             participante.Nombre = dtoParticipante.Nombre;
@@ -254,6 +256,8 @@ namespace SistemaDeCompetencia.Controladores
             competencia.Participantes.Add(participante);
 
             competencia = dAOCompetencia.modificarCompetencia(competencia);
+
+            
 
             return true;
         }
@@ -321,8 +325,7 @@ namespace SistemaDeCompetencia.Controladores
             for (int i = 0; i < fixtureEnteros.GetLength(0); i++)
             {
                 Fecha fecha = new Fecha();
-               // List<Enfrentamiento> enfrentamientos = new List<Enfrentamiento>();
-                //List<Fecha> fechas = new List<Fecha>();
+              
                 fecha.FechaCompentencia = (i+1).ToString();
 
                 List<Disponibilidad> listaAuxDisp = new List<Disponibilidad>();
@@ -350,12 +353,9 @@ namespace SistemaDeCompetencia.Controladores
                     enfrentamiento.LugarDeRealizacion = listaAuxDisp.First().LugarDeRealizacion;
 
                     listaAuxDisp.First().Disponible--;
-                    // enfrentamientos.Add(enfrentamiento);
+                  
                     fecha.Enfrentamientos.Add(enfrentamiento);
-
-
-                    //  fecha.Enfrentamientos = enfrentamientos;
-                    //fechas.Add(fecha);
+                                       
                    
                 }
 
@@ -367,56 +367,7 @@ namespace SistemaDeCompetencia.Controladores
             competencia.Estado = Estado.PLANIFICADA;
             competencia = dAOCompetencia.modificarCompetencia(competencia);
             
-         /*   DtoFixture dtoFixture = new DtoFixture();
-            List<DtoFecha> listaDtofechas = new List<DtoFecha>();
-            
-          
-            foreach (var fecha in competencia.Fixture.Fechas)
-            {
-                DtoFecha dtoFecha = new DtoFecha();
-                dtoFecha.FechaId = fecha.FechaId;
-                dtoFecha.FechaCompentencia = fecha.FechaCompentencia;
-
-                foreach (var enfrentamiento in fecha.Enfrentamientos)
-                {
-                    DtoEnfrentamiento dtoEnfrentamiento = new DtoEnfrentamiento();
-
-                    DtoParticipante participanteX = new DtoParticipante();
-                    DtoParticipante participanteY = new DtoParticipante();
-                    DtoDatosResultado dtoActual = new DtoDatosResultado();
-
-                    participanteX.ParticipanteId = enfrentamiento.ParticipanteX.ParticipanteId;
-                    participanteX.Nombre = enfrentamiento.ParticipanteX.Nombre;
-                    participanteX.CorreoElectronico = enfrentamiento.ParticipanteX.CorreoElectronico;
-                    dtoEnfrentamiento.ParticipanteX = participanteX;
-
-                    participanteY.ParticipanteId = enfrentamiento.ParticipanteY.ParticipanteId;
-                    participanteY.Nombre = enfrentamiento.ParticipanteY.Nombre;
-                    participanteY.CorreoElectronico = enfrentamiento.ParticipanteY.CorreoElectronico;
-                    dtoEnfrentamiento.ParticipanteY = participanteY;
-         
-
-                    dtoFecha.Enfrentamientos.Add(dtoEnfrentamiento);
-                    
-                }
-                
-                listaDtofechas.Add(dtoFecha);
-
-            }
-            
-
-            dtoFixture.FixtureId = competencia.Fixture.FixtureId;
-            dtoFixture.Fechas = listaDtofechas;
-
-            dtoCompetencia.DtoFixture = dtoFixture;
-            
-
-            dtoCompetencia.Estado = competencia.Estado;*/
-
-
-
-
-            return true;
+             return true;
 
         }
 
@@ -424,8 +375,9 @@ namespace SistemaDeCompetencia.Controladores
         public DtoCompetencia VerCompetencia(int compentenciaId)
         {
             Competencia competencia = new Competencia();
-            DtoCompetencia dtocompetencia = new DtoCompetencia();
             competencia = dAOCompetencia.buscarPorId(compentenciaId);
+            DtoCompetencia dtocompetencia = new DtoCompetencia();
+            
             dtocompetencia.CompetenciaId = competencia.CompetenciaId;
             dtocompetencia.Nombre = competencia.Nombre;
             dtocompetencia.Modalidad = competencia.Modalidad;
@@ -436,8 +388,8 @@ namespace SistemaDeCompetencia.Controladores
 
             dtocompetencia.DtoDeporte = dtoDeporte;
 
-
-            if (dtocompetencia.Estado.Equals("PLANICFICADA") || dtocompetencia.Estado.Equals("ENDISPUTA"))
+          //  Console.WriteLine( dtocompetencia.Estado);
+            if (dtocompetencia.Estado.ToString().Equals("PLANIFICADA") || dtocompetencia.Estado.ToString().Equals("ENDISPUTA"))
             {
                 Fecha fecha = proximaFecha(competencia);
 
@@ -461,8 +413,8 @@ namespace SistemaDeCompetencia.Controladores
                 DtoFixture dtofixture = new DtoFixture();
                 dtofixture.Fechas.Add(dtoFecha);
 
-                dtocompetencia.DtoFixture.Fechas = dtofixture.Fechas;
-                dtocompetencia.DtoFixture.FixtureId = competencia.CompetenciaId;
+                dtocompetencia.DtoFixture =dtofixture;
+                dtocompetencia.DtoFixture.FixtureId = competencia.Fixture.FixtureId;
 
                 List<DtoParticipante> listadtoParticipantes = new List<DtoParticipante>();
 
@@ -484,7 +436,28 @@ namespace SistemaDeCompetencia.Controladores
 
         private Fecha proximaFecha(Competencia competencia)
         {
-            throw new NotImplementedException();
+            Fecha f = new Fecha();
+            
+
+            foreach (var fecha in competencia.Fixture.Fechas) 
+            {
+                int flag = 0;
+
+                foreach (var enfrentamiento in fecha.Enfrentamientos) 
+                {
+                    if (enfrentamiento.Actual != null) 
+                    {
+                       flag = 1;
+                    }
+                               
+                }
+
+                if (flag == 0)
+                    return fecha;
+            }
+
+            return f;
+            
         }
 
         private static int[,,] genererarEnfrentamientos(int cantidadPaticipantes)

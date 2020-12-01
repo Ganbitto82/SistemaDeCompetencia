@@ -88,7 +88,7 @@
             this.salir.TabIndex = 36;
             this.salir.Text = "Salir";
             this.salir.UseVisualStyleBackColor = true;
-            this.salir.Click += new System.EventHandler(this.salir_Click);
+          //  this.salir.Click += new System.EventHandler(this.salir_Click);
             // 
             // button_cancelar
             // 
@@ -169,7 +169,7 @@
             this.textBox_nombre.Name = "textBox_nombre";
             this.textBox_nombre.Size = new System.Drawing.Size(238, 20);
             this.textBox_nombre.TabIndex = 29;
-            this.textBox_nombre.TextChanged += new System.EventHandler(this.textBox_nombre_TextChanged);
+            //this.textBox_nombre.TextChanged += new System.EventHandler(this.textBox_nombre_TextChanged);
             // 
             // textBox_Modalidad
             // 
@@ -179,7 +179,7 @@
             this.textBox_Modalidad.Name = "textBox_Modalidad";
             this.textBox_Modalidad.Size = new System.Drawing.Size(238, 20);
             this.textBox_Modalidad.TabIndex = 30;
-            this.textBox_Modalidad.TextChanged += new System.EventHandler(this.textBox_Modalidad_TextChanged);
+        //    this.textBox_Modalidad.TextChanged += new System.EventHandler(this.textBox_Modalidad_TextChanged);
             // 
             // textBox_Deporte
             // 
@@ -189,7 +189,7 @@
             this.textBox_Deporte.Name = "textBox_Deporte";
             this.textBox_Deporte.Size = new System.Drawing.Size(238, 20);
             this.textBox_Deporte.TabIndex = 31;
-            this.textBox_Deporte.TextChanged += new System.EventHandler(this.textBox_Deporte_TextChanged);
+         //   this.textBox_Deporte.TextChanged += new System.EventHandler(this.textBox_Deporte_TextChanged);
             // 
             // textBox_Estado
             // 
@@ -280,7 +280,7 @@
             this.TablaParticipante.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.TablaParticipante.Size = new System.Drawing.Size(367, 93);
             this.TablaParticipante.TabIndex = 38;
-            this.TablaParticipante.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaParticipante_CellContentClick);
+           // this.TablaParticipante.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaParticipante_CellContentClick);
             // 
             // Participante
             // 
@@ -297,7 +297,7 @@
             this.label8.Size = new System.Drawing.Size(156, 16);
             this.label8.TabIndex = 36;
             this.label8.Text = "Proximos encuentros:";
-            this.label8.Click += new System.EventHandler(this.label8_Click_1);
+         //   this.label8.Click += new System.EventHandler(this.label8_Click_1);
             // 
             // button_modificar
             // 

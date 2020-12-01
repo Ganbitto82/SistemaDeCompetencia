@@ -17,5 +17,9 @@ namespace SistemaDeCompetencia.Dto
         public DtoFixture DtoFixture { get; set; }
         public List<DtoEnfrentamiento> Enfrentamientos { get; set; }
 
+        public DtoFecha() 
+        {
+            Enfrentamientos = new List<DtoEnfrentamiento>();
+        }
     }
 }

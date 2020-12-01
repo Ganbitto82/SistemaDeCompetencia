@@ -536,6 +536,11 @@ namespace SistemaDeCompetencia.Vista
            // textBoxReglamento.Text = "   ";
 
         }
+
+        private void TablaLugares_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

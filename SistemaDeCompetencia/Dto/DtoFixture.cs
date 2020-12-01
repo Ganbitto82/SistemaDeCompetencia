@@ -14,6 +14,12 @@ namespace SistemaDeCompetencia.Dto
       
         public int FixtureId { get; set; }
         public List<DtoFecha> Fechas { get; set; }
+        public DtoFixture() 
+        {
+            Fechas = new List<DtoFecha>();
+
+
+        }
 
     }
 }

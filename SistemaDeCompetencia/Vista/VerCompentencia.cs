@@ -18,62 +18,52 @@ namespace SistemaDeCompetencia.Vista
         DtoCompetencia dtoCompetencia = new DtoCompetencia();
         DtoUsuario dtoUsuario=new DtoUsuario();
         private GestorCompetencia gComp = new GestorCompetencia();
-        DtoCompetencia dtocompetencia = new DtoCompetencia();
-
+        
         public VerCompentencia(DtoCompetencia dtocompetencia,DtoUsuario dtoUsuarioForm)
         {
-            dtoCompetencia = dtocompetencia;
             dtoUsuario = dtoUsuarioForm;
+
+            dtoCompetencia = gComp.VerCompetencia(dtocompetencia.CompetenciaId);
             InitializeComponent();
             textBox_nombre.Text = dtoCompetencia.Nombre;
             textBox_Modalidad.Text = dtoCompetencia.Modalidad.ToString();
             textBox_Deporte.Text = dtoCompetencia.DtoDeporte.Nombre;
             textBox_Estado.Text = dtoCompetencia.Estado.ToString();
+            cargarTablaParticipante(dtoCompetencia.Participantes);
+            if (dtocompetencia.DtoFixture!=null)
 
-            //gComp.bus;
+            cargarTablaEncuentro(dtoCompetencia);
 
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
 
         }
 
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void salir_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TablaParticipante_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void textBox_nombre_TextChanged(object sender, EventArgs e)
+        private void cargarTablaParticipante(List<DtoParticipante> listaParticipante)
         {
             
+            foreach (var participante in listaParticipante)
+            {
+                int n = TablaParticipante.Rows.Add();
+                TablaParticipante.Rows[n].Cells[0].Value = participante.Nombre;
+
+            }
+            TablaParticipante.ClearSelection();
         }
 
-        private void textBox_Modalidad_TextChanged(object sender, EventArgs e)
+        private void cargarTablaEncuentro(DtoCompetencia dtoCompetencia)
         {
-           
+
+            foreach (var enfrentamiento in dtoCompetencia.DtoFixture.Fechas.First().Enfrentamientos)
+            {
+
+                int n = TablaEncuentro.Rows.Add();
+                TablaEncuentro.Rows[n].Cells[0].Value = enfrentamiento.ParticipanteX.Nombre;
+                TablaEncuentro.Rows[n].Cells[1].Value= "VS" ;
+                TablaEncuentro.Rows[n].Cells[2].Value = enfrentamiento.ParticipanteY.Nombre;
+            }
+
         }
 
-        private void textBox_Deporte_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+   
 
         private void button_cancelar_Click(object sender, EventArgs e)
         {

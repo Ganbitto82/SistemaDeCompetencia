@@ -106,7 +106,7 @@
             this.label_deporte.Size = new System.Drawing.Size(122, 16);
             this.label_deporte.TabIndex = 24;
             this.label_deporte.Text = "Correo Electronico:";
-            this.label_deporte.Click += new System.EventHandler(this.label_deporte_Click);
+           // this.label_deporte.Click += new System.EventHandler(this.label_deporte_Click);
             // 
             // label1
             // 
@@ -117,7 +117,7 @@
             this.label1.Size = new System.Drawing.Size(213, 16);
             this.label1.TabIndex = 23;
             this.label1.Text = "Nombre de Equipo o Participante: ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+           // this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label_nombre
             // 
@@ -166,7 +166,7 @@
             this.Name = "DarAltaParticipante";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dar de Alta Participante";
-            this.Load += new System.EventHandler(this.Form4_Load);
+           // this.Load += new System.EventHandler(this.Form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
