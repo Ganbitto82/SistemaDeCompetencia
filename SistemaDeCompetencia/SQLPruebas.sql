@@ -20,7 +20,7 @@ INSERT into DeporteLugar(LugarId ,DeporteId ) VALUES (2,4),(3,2),(4,3),(1,1);
 insert into DeporteLugar(LugarId ,DeporteId ) VALUES (2,2);
 insert into DeporteLugar(LugarId ,DeporteId ) VALUES (3,1);
 
-delete from Disponibilidad;
+
 SELECT * FROM Deporte;
 SELECT  *FROM LugarDeRealizacion ;
 

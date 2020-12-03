@@ -29,10 +29,12 @@ namespace SistemaDeCompetencia.Dao
                 throw new Exception("Error al buscar Competencia en la Base de datos.");
             }
         }
+        //crea una competencia
         public Competencia insertarCompetencia(Competencia c)
         {
             try 
             {
+                
                 context.Competencia.Add(c);
                 context.SaveChanges();
                 return c;
@@ -46,7 +48,7 @@ namespace SistemaDeCompetencia.Dao
           
             
         }
-
+        //busca una competencia por distintos filtros
         public List<Competencia> buscarCompetencias(string nombreCompetencia, string stringEstado, string stringModalidad, string nombreDeporte, int usuarioId)
         {
             try 
@@ -65,6 +67,8 @@ namespace SistemaDeCompetencia.Dao
             
         }
 
+        //buscar una competencia trayendo el fixture, las fechas ,los enfrentamiento por fecha
+        //el usuario, las forma de puntuacion ,los participantes y las disponibilidades
        public  Competencia buscarPorId(int competenciaId) 
         {
             try
@@ -74,7 +78,7 @@ namespace SistemaDeCompetencia.Dao
               .Include(c => c.Fixture.Fechas.Select(f => f.Enfrentamientos.Select(e => e.Actual)))
               .Include(c => c.Fixture.Fechas.Select(f => f.Enfrentamientos.Select(x=>x.ParticipanteX)))
               .Include(c => c.Fixture.Fechas.Select(f => f.Enfrentamientos.Select(y=>y.ParticipanteY)))
-              .Include(c => c.Deporte)
+               
               .Include(c => c.Usuario)
               .Include(c => c.FormaDePuntuacion)
               .Include(c => c.Participantes)
@@ -89,6 +93,7 @@ namespace SistemaDeCompetencia.Dao
             }
                         
         }
+        //modifica la competencia
       public Competencia modificarCompetencia(Competencia c) 
         {
             try
@@ -104,7 +109,7 @@ namespace SistemaDeCompetencia.Dao
         }
            
            
-        
+        //elimina el fixture
         public void eliminar(int fixtureId) 
         {
             try {

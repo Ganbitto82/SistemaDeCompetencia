@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace SistemaDeCompetencia.Dao
 {
@@ -29,44 +30,32 @@ namespace SistemaDeCompetencia.Dao
 
         public List<LugarDeRealizacion> listarLugar(int deporteId, int usuarioId)
         {
-
-            List<DeporteLugar> listaDeporteLugar = new List<DeporteLugar>();
-
-            List<DeporteLugar> listaID = new List<DeporteLugar>();
-
-            List<LugarDeRealizacion> listaTodosLugares = new List<LugarDeRealizacion>();
-
-            List<LugarDeRealizacion> listaLugares = new List<LugarDeRealizacion>();
-            
-            CompetenciaContext context = DAOCompetenciaEntityFramework.context;
-            //CompetenciaContext context = new CompetenciaContext();
+                   
+          
             try
             {
-              /*  return context.LugarDeRealizacion.Include("DeporteLugar").Where(l=>l.UsuarioId ==usuarioId).ToList()
-                    .Select(l=>l.DeportesLugares.ForEach(c=>c.Deporte)) ;*/
+                CompetenciaContext context = DAOCompetenciaEntityFramework.context;
 
-
-
-                //obtenemos la lista de DeporteLugar
-                listaDeporteLugar.AddRange(context.DeporteLugar);
-                //obtenemos la lista de DeporteLugar
-                listaTodosLugares.AddRange(context.LugarDeRealizacion);
-
-                //agregamos al set listaDeportes los idDelugares que haya utilizado el usuario en algun LugarDeRealizacion
-                foreach (var deporteLugar in listaDeporteLugar)
+                List<LugarDeRealizacion> listaLugares = new List<LugarDeRealizacion>();
+                //buscamos los deporteLugar con el deporteId
+                var a = context.DeporteLugar.Where(c => c.DeporteId == deporteId).ToList();
+                //buscamos los lugares de realizacion con usuarioId
+                var b = context.LugarDeRealizacion.Where(l => l.UsuarioId == usuarioId).ToList();
+                
+                // recorre lo deporteLugar y los lugaresDeRealizacion con el LugarId
+                //cargando una lista de lugares
+                foreach (var dl in a) 
                 {
-                    if (deporteLugar.DeporteId.Equals(deporteId))
+                    foreach (var l in b) 
+                    {
+                        if (l.LugarId == dl.LugarId)
 
-                        listaID.Add(deporteLugar);
+                            listaLugares.Add(l);
+                    }
+                         
+                
                 }
-
-                foreach (var Lugar in listaID)
-                {
-                    listaLugares.Add(context.LugarDeRealizacion.Where(l => l.LugarId == Lugar.LugarId && l.UsuarioId == usuarioId).FirstOrDefault());
-                }
-
-                //retornamos la lista de deportes
-                return listaLugares.ToList();
+                return listaLugares;
 
 
             }

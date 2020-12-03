@@ -220,7 +220,7 @@ namespace SistemaDeCompetencia.Controladores
 
         public bool DarDeAltaParticipante(DtoParticipante dtoParticipante, int competenciaId)
         {
-            if (!validarParticipante(dtoParticipante, competenciaId))
+           if (!validarParticipante(dtoParticipante, competenciaId))
             {
                 return false;
             }
@@ -243,8 +243,6 @@ namespace SistemaDeCompetencia.Controladores
 
 
             }
-            
-
             competencia.Estado = Estado.CREADA;
             competencia.FixtureId = null;
 
@@ -271,7 +269,7 @@ namespace SistemaDeCompetencia.Controladores
             }
             else
             {
-                if (daoParticipante.existeNombre(dtoParticipante.Nombre, competenciaId) || daoParticipante.existeCorreo(dtoParticipante.CorreoElectronico, competenciaId))
+               /* if (daoParticipante.existeNombre(dtoParticipante.Nombre, competenciaId) || daoParticipante.existeCorreo(dtoParticipante.CorreoElectronico, competenciaId))
                 {
                     MessageBox.Show(" Ya existe ese nombre o correo en la competencia ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
@@ -279,8 +277,8 @@ namespace SistemaDeCompetencia.Controladores
                 else
                 {
                     return true;
-                }
-
+                }*/
+                return true;
             }
         }
 
