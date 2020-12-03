@@ -82,7 +82,22 @@ namespace SistemaDeCompetencia.Vista
         private void button_generar_Click(object sender, EventArgs e)
         {
             try
+
+
             {
+                if (!dtoComp.Modalidad.Equals("SISTEMA_DE_LIGA")) 
+                {
+                    throw new Exception("SOLO SE PUEDE GENERAR FIXTURE PARA SISTEMA DE LIGA");
+                
+                }
+                if (dtoComp.Estado.Equals(Estado.ENDISPUTA) || dtoComp.Estado.Equals(Estado.FINALIZADA))
+                {
+
+                    throw new Exception("No se puede generar un fixture");
+                  
+                    
+                }
+
                 if (gComp.generarFixture(dtoComp.CompetenciaId))
                 {
                     MessageBox.Show("Fixture generado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -104,5 +119,27 @@ namespace SistemaDeCompetencia.Vista
             
                    
         }
+
+        private void button_modificar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionalidad no disponible", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void button_DarDeBaja_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionalidad no disponible", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void button_fixture_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionalidad no disponible", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void button_tablaPosicion_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionalidad no disponible", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
     }
-}
+    }
+    
+

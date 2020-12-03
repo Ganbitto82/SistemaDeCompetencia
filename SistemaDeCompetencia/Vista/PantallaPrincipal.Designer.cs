@@ -62,6 +62,7 @@
             this.button_cu07.TabIndex = 20;
             this.button_cu07.Text = "Modificar datos de Usuario";
             this.button_cu07.UseVisualStyleBackColor = false;
+            this.button_cu07.Click += new System.EventHandler(this.button_cu07_Click);
             // 
             // button_cu13
             // 
@@ -75,6 +76,7 @@
             this.button_cu13.TabIndex = 21;
             this.button_cu13.Text = "Listar Lugares de Realizacion";
             this.button_cu13.UseVisualStyleBackColor = false;
+            this.button_cu13.Click += new System.EventHandler(this.button_cu13_Click);
             // 
             // button1
             // 

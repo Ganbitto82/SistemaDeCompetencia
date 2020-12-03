@@ -69,5 +69,15 @@ namespace SistemaDeCompetencia.Vista
         {
 
         }
+
+        private void button_modificar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionalidad no disponible", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void button_eliminar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionalidad no disponible", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
     }
 }

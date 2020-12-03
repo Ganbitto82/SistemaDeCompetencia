@@ -18,6 +18,7 @@ namespace SistemaDeCompetencia.Vista
         private DtoCompetencia dtocompetencia = new DtoCompetencia();
         private DtoUsuario dtoUsuario = new DtoUsuario();
         int flag = 0;
+        string nombreParticipante;
 
         private GestorCompetencia gestorCompetencia= new GestorCompetencia();
         public DarAltaParticipante(DtoCompetencia dtoCompetencia,DtoUsuario dtoUsuarioForm)
@@ -27,7 +28,21 @@ namespace SistemaDeCompetencia.Vista
             InitializeComponent();
         }
 
-       
+        private void textBox_nombre_TextChanged(object sender, EventArgs e)
+        {
+            //carga el nombre  de la compencia ingresado
+            nombreParticipante = textBox_nombre.Text.ToUpper();
+        }
+        private void textBox_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //valida caracter por caracter que se ingresa si es un letra 
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
 
         private void Aceptar_Click(object sender, EventArgs e)
         {

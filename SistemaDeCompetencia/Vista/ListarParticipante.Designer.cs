@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button_eliminar = new System.Windows.Forms.Button();
@@ -84,6 +84,7 @@
             this.button_eliminar.TabIndex = 27;
             this.button_eliminar.Text = "Eliminar";
             this.button_eliminar.UseVisualStyleBackColor = true;
+            this.button_eliminar.Click += new System.EventHandler(this.button_eliminar_Click);
             // 
             // button_modificar
             // 
@@ -94,6 +95,7 @@
             this.button_modificar.TabIndex = 26;
             this.button_modificar.Text = "Modificar";
             this.button_modificar.UseVisualStyleBackColor = true;
+            this.button_modificar.Click += new System.EventHandler(this.button_modificar_Click);
             // 
             // button_agregar
             // 
@@ -109,8 +111,8 @@
             // tablaDeParticipantes
             // 
             this.tablaDeParticipantes.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
-            this.tablaDeParticipantes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkGray;
+            this.tablaDeParticipantes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.tablaDeParticipantes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -127,18 +129,18 @@
             this.tablaDeParticipantes.Location = new System.Drawing.Point(38, 78);
             this.tablaDeParticipantes.Name = "tablaDeParticipantes";
             this.tablaDeParticipantes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaDeParticipantes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaDeParticipantes.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.tablaDeParticipantes.RowHeadersVisible = false;
             this.tablaDeParticipantes.RowHeadersWidth = 35;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Silver;
-            this.tablaDeParticipantes.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Silver;
+            this.tablaDeParticipantes.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.tablaDeParticipantes.Size = new System.Drawing.Size(424, 448);
             this.tablaDeParticipantes.TabIndex = 1;
             // 

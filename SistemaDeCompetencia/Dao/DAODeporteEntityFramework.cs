@@ -73,8 +73,6 @@ namespace SistemaDeCompetencia.Dao
 
             try
             {
-
-
                 //retornamos la lista de deportes
                 return context.Deporte.ToList();
             }

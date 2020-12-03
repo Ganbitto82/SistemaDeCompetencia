@@ -146,16 +146,19 @@ namespace SistemaDeCompetencia.Vista
 
                     break;
                 case "SISTEMA_DE_ELIMINACION_DOBLE":
-                    numericUpDown_partGanados.Enabled = true;
-                    numericUpDown_presencia.Enabled = true;
+                    numericUpDown_partGanados.Enabled = false;
+                    numericUpDown_presencia.Enabled = false;
                     comboBox_formaPutuacion.Enabled = true;
+                    comboBox_permiso.Text = "NO";
                     modalidadDto = Modalidad.SISTEMA_DE_ELIMINACION_DOBLE;
 
                     break;
                 case "SISTEMA_DE_ELIMINACION_SIMPLE":
-                    numericUpDown_partGanados.Enabled = true;
-                    numericUpDown_presencia.Enabled = true;
+                    
+                    numericUpDown_partGanados.Enabled = false;
+                    numericUpDown_presencia.Enabled =false;
                     comboBox_formaPutuacion.Enabled = true;
+                    comboBox_permiso.Text = "NO";
                     modalidadDto = Modalidad.SISTEMA_DE_ELIMINACION_SIMPLE;
                     break;
             }
@@ -317,13 +320,17 @@ namespace SistemaDeCompetencia.Vista
                 {
                     valor = row.Cells["Disponibilidad"].Value.ToString();
                     valorEntero = int.Parse(valor);
-                    
-                    DtoDisponibilidad dtoDisponibilidad = new DtoDisponibilidad();
-                    dtoDisponibilidad.Disponible = valorEntero;
-                    dtoDisponibilidad.LugarId = listaDtoLugares.ElementAt(posicion).LugarId;
-                    listaDtoDisponibilidad.Add(dtoDisponibilidad);
+                    if(valorEntero > 0) 
+                    {
+                        DtoDisponibilidad dtoDisponibilidad = new DtoDisponibilidad();
+                        dtoDisponibilidad.Disponible = valorEntero;
+                        dtoDisponibilidad.LugarId = listaDtoLugares.ElementAt(posicion).LugarId;
+                        listaDtoDisponibilidad.Add(dtoDisponibilidad);
+                        
+                    }
                     posicion++;
-                                   
+
+
                 }
                 return true;
             }

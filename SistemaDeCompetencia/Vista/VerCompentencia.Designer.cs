@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
-            this.salir = new System.Windows.Forms.Button();
             this.button_cancelar = new System.Windows.Forms.Button();
             this.label_nombre = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -78,16 +77,6 @@
             this.label7.Size = new System.Drawing.Size(405, 25);
             this.label7.TabIndex = 21;
             this.label7.Text = "Sistema de Competencias Deportivas";
-            // 
-            // salir
-            // 
-            this.salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.salir.Location = new System.Drawing.Point(451, 620);
-            this.salir.Name = "salir";
-            this.salir.Size = new System.Drawing.Size(77, 29);
-            this.salir.TabIndex = 36;
-            this.salir.Text = "Salir";
-            this.salir.UseVisualStyleBackColor = true;
             // 
             // button_cancelar
             // 
@@ -225,8 +214,8 @@
             this.TablaEncuentro.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.TablaEncuentro.AllowUserToAddRows = false;
             this.TablaEncuentro.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            this.TablaEncuentro.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.Silver;
+            this.TablaEncuentro.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.TablaEncuentro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablaEncuentro.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.encuentroParticipante,
@@ -235,16 +224,16 @@
             this.TablaEncuentro.Location = new System.Drawing.Point(58, 387);
             this.TablaEncuentro.Name = "TablaEncuentro";
             this.TablaEncuentro.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaEncuentro.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TablaEncuentro.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaEncuentro.RowHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TablaEncuentro.RowsDefaultCellStyle = dataGridViewCellStyle23;
             this.TablaEncuentro.Size = new System.Drawing.Size(364, 121);
             this.TablaEncuentro.TabIndex = 39;
             // 
@@ -272,17 +261,17 @@
             this.TablaParticipante.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.TablaParticipante.AllowUserToAddRows = false;
             this.TablaParticipante.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
-            this.TablaParticipante.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.Silver;
+            this.TablaParticipante.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle24;
             this.TablaParticipante.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablaParticipante.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Participante});
             this.TablaParticipante.Location = new System.Drawing.Point(56, 259);
             this.TablaParticipante.Name = "TablaParticipante";
             this.TablaParticipante.ReadOnly = true;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TablaParticipante.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TablaParticipante.RowsDefaultCellStyle = dataGridViewCellStyle25;
             this.TablaParticipante.Size = new System.Drawing.Size(367, 93);
             this.TablaParticipante.TabIndex = 38;
             // 
@@ -312,6 +301,7 @@
             this.button_modificar.TabIndex = 37;
             this.button_modificar.Text = "Modificar";
             this.button_modificar.UseVisualStyleBackColor = true;
+            this.button_modificar.Click += new System.EventHandler(this.button_modificar_Click);
             // 
             // button_DarDeBaja
             // 
@@ -322,6 +312,7 @@
             this.button_DarDeBaja.TabIndex = 38;
             this.button_DarDeBaja.Text = "DardeBaja";
             this.button_DarDeBaja.UseVisualStyleBackColor = true;
+            this.button_DarDeBaja.Click += new System.EventHandler(this.button_DarDeBaja_Click);
             // 
             // button_fixture
             // 
@@ -332,6 +323,7 @@
             this.button_fixture.TabIndex = 39;
             this.button_fixture.Text = "VerFixture";
             this.button_fixture.UseVisualStyleBackColor = true;
+            this.button_fixture.Click += new System.EventHandler(this.button_fixture_Click);
             // 
             // button_tablaPosicion
             // 
@@ -342,6 +334,7 @@
             this.button_tablaPosicion.TabIndex = 40;
             this.button_tablaPosicion.Text = "TablaPosicion";
             this.button_tablaPosicion.UseVisualStyleBackColor = true;
+            this.button_tablaPosicion.Click += new System.EventHandler(this.button_tablaPosicion_Click);
             // 
             // button_generar
             // 
@@ -385,7 +378,6 @@
             this.Controls.Add(this.button_fixture);
             this.Controls.Add(this.button_DarDeBaja);
             this.Controls.Add(this.button_modificar);
-            this.Controls.Add(this.salir);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button_cancelar);
             this.Controls.Add(this.label7);
@@ -405,7 +397,6 @@
 
         #endregion
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button salir;
         private System.Windows.Forms.Button button_cancelar;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label_nombre;

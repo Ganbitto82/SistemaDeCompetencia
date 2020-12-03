@@ -34,5 +34,15 @@ namespace SistemaDeCompetencia.Vista
             frmListarComp.Show();
             this.Close();
         }
+
+        private void button_cu13_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcion no habilitada", "Titulo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button_cu07_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcion no habilitada", "Titulo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
