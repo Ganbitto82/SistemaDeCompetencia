@@ -85,7 +85,7 @@ namespace SistemaDeCompetencia.Vista
 
 
             {
-                if (!dtoComp.Modalidad.Equals("SISTEMA_DE_LIGA")) 
+                if (!dtoComp.Modalidad.ToString().Equals("SISTEMA_DE_LIGA")) 
                 {
                     throw new Exception("SOLO SE PUEDE GENERAR FIXTURE PARA SISTEMA DE LIGA");
                 

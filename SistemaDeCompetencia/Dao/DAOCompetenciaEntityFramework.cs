@@ -110,12 +110,17 @@ namespace SistemaDeCompetencia.Dao
            
            
         //elimina el fixture
-        public void eliminar(int fixtureId) 
+        public void eliminar(int competenciaId) 
         {
             try {
-                var fixture = context.Fixture.Find(fixtureId);
-                context.Entry(fixture).State = System.Data.Entity.EntityState.Deleted;
+                var competencia = context.Competencia.Find(competenciaId);
+                var fixture = context.Fixture.Find(competencia.FixtureId);
+                competencia.FixtureId = null;
                 context.SaveChanges();
+                
+                context.Fixture.Remove(fixture);
+                context.SaveChanges();
+
             }
             catch { throw new Exception("Error al buscar Competencia en la Base de datos."); }
             

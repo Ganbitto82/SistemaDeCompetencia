@@ -243,9 +243,11 @@ namespace SistemaDeCompetencia.Controladores
 
 
             }
-            competencia.Estado = Estado.CREADA;
-            competencia.FixtureId = null;
+            eliminarFixture(competencia);
 
+            competencia.Estado = Estado.CREADA;
+           
+            
             Participante participante = new Participante();
 
             participante.Nombre = dtoParticipante.Nombre;
@@ -255,9 +257,17 @@ namespace SistemaDeCompetencia.Controladores
 
             competencia = dAOCompetencia.modificarCompetencia(competencia);
 
-            //dAOCompetencia.eliminar();
+            
 
             return true;
+        }
+
+        private void eliminarFixture(Competencia competencia)
+        {
+            if (competencia.Estado.Equals(Estado.PLANIFICADA))
+                {
+                     dAOCompetencia.eliminar(competencia.CompetenciaId);
+                }
         }
 
         bool validarParticipante(DtoParticipante dtoParticipante, int competenciaId)
@@ -269,15 +279,7 @@ namespace SistemaDeCompetencia.Controladores
             }
             else
             {
-               /* if (daoParticipante.existeNombre(dtoParticipante.Nombre, competenciaId) || daoParticipante.existeCorreo(dtoParticipante.CorreoElectronico, competenciaId))
-                {
-                    MessageBox.Show(" Ya existe ese nombre o correo en la competencia ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }*/
+              
                 return true;
             }
         }

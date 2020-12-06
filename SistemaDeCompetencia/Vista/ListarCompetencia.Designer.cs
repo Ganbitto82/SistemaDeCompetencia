@@ -53,7 +53,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button_cancelar = new System.Windows.Forms.Button();
-            this.salir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.Competicion.SuspendLayout();
@@ -269,7 +268,6 @@
             this.tablaDeCompetencias.Size = new System.Drawing.Size(484, 306);
             this.tablaDeCompetencias.TabIndex = 28;
             this.tablaDeCompetencias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaDeCompetencias_CellClick);
-           // this.tablaDeCompetencias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaDeCompetencias_CellContentClick);
             // 
             // Column1
             // 
@@ -325,23 +323,11 @@
             this.button_cancelar.UseVisualStyleBackColor = true;
             this.button_cancelar.Click += new System.EventHandler(this.button_cancelar_Click);
             // 
-            // salir
-            // 
-            this.salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.salir.Location = new System.Drawing.Point(448, 620);
-            this.salir.Name = "salir";
-            this.salir.Size = new System.Drawing.Size(77, 29);
-            this.salir.TabIndex = 23;
-            this.salir.Text = "Salir";
-            this.salir.UseVisualStyleBackColor = true;
-            this.salir.Click += new System.EventHandler(this.salir_Click);
-            // 
             // ListarCompetencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 661);
-            this.Controls.Add(this.salir);
             this.Controls.Add(this.button_cancelar);
             this.Controls.Add(this.Competicion);
             this.Controls.Add(this.panel1);
@@ -379,7 +365,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button_cancelar;
-        private System.Windows.Forms.Button salir;
         private System.Windows.Forms.DataGridView tablaDeCompetencias;
         private System.Windows.Forms.Button button_nueva;
         private System.Windows.Forms.Button button_detalles;

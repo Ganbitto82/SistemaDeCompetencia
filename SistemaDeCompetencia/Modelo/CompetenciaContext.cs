@@ -39,9 +39,7 @@ namespace SistemaDeCompetencia.Modelo
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
-         
-
+            
         }
 
     }
