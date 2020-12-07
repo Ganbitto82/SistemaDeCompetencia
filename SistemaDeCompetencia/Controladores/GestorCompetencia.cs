@@ -244,7 +244,6 @@ namespace SistemaDeCompetencia.Controladores
 
             }
             eliminarFixture(competencia);
-
             competencia.Estado = Estado.CREADA;
            
             
@@ -318,13 +317,19 @@ namespace SistemaDeCompetencia.Controladores
                     MessageBox.Show("No se puede generar un fixture", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-
+            
 
                 Fixture fixture = new Fixture();
                 int[,,] fixtureEnteros = genererarEnfrentamientos(competencia.Participantes.Count());
 
 
+                if (!validarLugaresDisponibles(competencia.Disponibilidades, fixtureEnteros.GetLength(1))) 
+                {
+                    MessageBox.Show("No se puede generar un fixture por falta de lugares disponibles", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
 
+                }
+                
                 for (int i = 0; i < fixtureEnteros.GetLength(0); i++)
                 {
                     Fecha fecha = new Fecha();
@@ -380,7 +385,19 @@ namespace SistemaDeCompetencia.Controladores
 
         }
 
-       
+        private bool validarLugaresDisponibles(List<Disponibilidad> disponibilidades, int cantidadEnfrentamientos)
+        {
+            int sumaDisponible = 0;
+            foreach (var d in disponibilidades)
+            {
+                sumaDisponible += d.Disponible;
+            }
+            if (sumaDisponible >= cantidadEnfrentamientos)
+                return true;
+            else
+                return false;
+
+        }
         public DtoCompetencia VerCompetencia(int compentenciaId)
         {
             Competencia competencia = new Competencia();
