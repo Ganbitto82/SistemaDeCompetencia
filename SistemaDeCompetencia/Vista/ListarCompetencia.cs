@@ -37,6 +37,7 @@ namespace SistemaDeCompetencia.Vista
         private void cargarModalidad()
         { //carga en el comboBox las modalidades
             comboBox_modalidad.Text = "--Seleccione--";
+            comboBox_modalidad.Items.Add("--Seleccione--");
             comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_LIGA);
             comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_ELIMINACION_SIMPLE);
             comboBox_modalidad.Items.Add(Modalidad.SISTEMA_DE_ELIMINACION_DOBLE);
@@ -47,6 +48,8 @@ namespace SistemaDeCompetencia.Vista
 
             listaDeporte = gestorCompetencia.listarDeportes();
             comboBox_deporte.Text = "--Seleccione--";
+            comboBox_deporte.Items.Add("--Seleccione--");
+
             foreach (var deporte in listaDeporte)
             {
                 comboBox_deporte.Items.Add(deporte.Nombre);
@@ -191,6 +194,8 @@ namespace SistemaDeCompetencia.Vista
             }
         }
 
-    
+        private void comboBox_deporte_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
     }
 }

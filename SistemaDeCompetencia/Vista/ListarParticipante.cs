@@ -79,5 +79,15 @@ namespace SistemaDeCompetencia.Vista
         {
             MessageBox.Show("Funcionalidad no disponible", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tablaDeParticipantes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

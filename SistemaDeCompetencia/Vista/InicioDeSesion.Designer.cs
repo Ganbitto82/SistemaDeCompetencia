@@ -42,7 +42,7 @@
             this.textBoxCorreo.Location = new System.Drawing.Point(272, 168);
             this.textBoxCorreo.Name = "textBoxCorreo";
             this.textBoxCorreo.Size = new System.Drawing.Size(192, 20);
-            this.textBoxCorreo.TabIndex = 23;
+            this.textBoxCorreo.TabIndex = 0;
             this.textBoxCorreo.TextChanged += new System.EventHandler(this.textBoxCorreo_TextChanged);
             // 
             // textBoxContraseña
@@ -52,7 +52,7 @@
             this.textBoxContraseña.Name = "textBoxContraseña";
             this.textBoxContraseña.PasswordChar = '*';
             this.textBoxContraseña.Size = new System.Drawing.Size(192, 20);
-            this.textBoxContraseña.TabIndex = 24;
+            this.textBoxContraseña.TabIndex = 1;
             this.textBoxContraseña.TextChanged += new System.EventHandler(this.textBoxCorreo_TextChanged);
             // 
             // buttonIngresar
@@ -61,7 +61,7 @@
             this.buttonIngresar.Location = new System.Drawing.Point(164, 305);
             this.buttonIngresar.Name = "buttonIngresar";
             this.buttonIngresar.Size = new System.Drawing.Size(95, 33);
-            this.buttonIngresar.TabIndex = 25;
+            this.buttonIngresar.TabIndex = 2;
             this.buttonIngresar.Text = "INGRESAR";
             this.buttonIngresar.UseVisualStyleBackColor = true;
             this.buttonIngresar.Click += new System.EventHandler(this.buttonIngresar_Click);
@@ -72,7 +72,7 @@
             this.buttonSalir.Location = new System.Drawing.Point(293, 305);
             this.buttonSalir.Name = "buttonSalir";
             this.buttonSalir.Size = new System.Drawing.Size(95, 35);
-            this.buttonSalir.TabIndex = 26;
+            this.buttonSalir.TabIndex = 3;
             this.buttonSalir.Text = "SALIR";
             this.buttonSalir.UseVisualStyleBackColor = true;
             this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
