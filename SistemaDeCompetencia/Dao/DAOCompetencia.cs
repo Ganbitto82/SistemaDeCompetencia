@@ -16,6 +16,6 @@ namespace SistemaDeCompetencia.Dao
 
         Competencia modificarCompetencia(Competencia compentencia);
 
-        void eliminar(int competenciaId);
+        void eliminarFixture(int competenciaId);
     }
 }

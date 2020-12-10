@@ -265,7 +265,7 @@ namespace SistemaDeCompetencia.Controladores
         {
             if (competencia.Estado.Equals(Estado.PLANIFICADA))
                 {
-                     dAOCompetencia.eliminar(competencia.CompetenciaId);
+                     dAOCompetencia.eliminarFixture(competencia.CompetenciaId);
                 }
         }
 
@@ -370,7 +370,7 @@ namespace SistemaDeCompetencia.Controladores
                     fixture.Fechas.Add(fecha);
 
                 }
-
+                eliminarFixture(competencia);
                 competencia.Fixture = fixture;
                 competencia.Estado = Estado.PLANIFICADA;
                 competencia = dAOCompetencia.modificarCompetencia(competencia);
