@@ -37,7 +37,7 @@ namespace SistemaDeCompetencia.Migrations
                  new Modelo.Usuario() { Nombre = "JUAN", Apellido = "PEREZ", NumeroDocumento = 3333333, TipoDocumentoId = 1, DireccionId = 3 }
                   ); 
              context.Login.AddOrUpdate(
-                 new Modelo.Login() { UsuarioId = 4, correoElectronico ="JUANPEREZ@GMAIL.COM",Contraseña="123" }
+                 new Modelo.Login() { UsuarioId = 4, correoElectronico ="A@GMAIL.COM",Contraseña="123" }
 
                  );
          }*/

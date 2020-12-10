@@ -110,7 +110,7 @@ namespace SistemaDeCompetencia.Dao
            
            
         //elimina el fixture
-        public void eliminar(int competenciaId) 
+        public void eliminarFixture(int competenciaId) 
         {
             try {
                 var competencia = context.Competencia.Find(competenciaId);
