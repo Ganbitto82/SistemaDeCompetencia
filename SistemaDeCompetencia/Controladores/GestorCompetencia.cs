@@ -220,7 +220,7 @@ namespace SistemaDeCompetencia.Controladores
 
         public bool DarDeAltaParticipante(DtoParticipante dtoParticipante, int competenciaId)
         {
-           if (!validarParticipante(dtoParticipante, competenciaId))
+           if (!validarParticipante(dtoParticipante))
             {
                 return false;
             }
@@ -230,7 +230,8 @@ namespace SistemaDeCompetencia.Controladores
 
             if (competencia.Estado.Equals(Estado.ENDISPUTA) || competencia.Estado.Equals(Estado.FINALIZADA))
             {
-                MessageBox.Show("No se puede agregar participante", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No se puede agregar participante en una competencia ENDISPUTA o FINALIZADA", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
             foreach (var p in competencia.Participantes)
             {
@@ -269,7 +270,7 @@ namespace SistemaDeCompetencia.Controladores
                 }
         }
 
-        bool validarParticipante(DtoParticipante dtoParticipante, int competenciaId)
+        bool validarParticipante(DtoParticipante dtoParticipante)
         {
             if (dtoParticipante == null && dtoParticipante.CorreoElectronico.Equals("") && dtoParticipante.Nombre.Equals(""))
             {
@@ -301,28 +302,33 @@ namespace SistemaDeCompetencia.Controladores
             return listaDtoParticipante;
         }
 
+        /* Genera un fixture en la competencia con el idCompetencia recibido
+         * si se genera correctamente retorna True, sino retorna False con mensaje de error
+         * 
+         * */
         public bool generarFixture(int competenciaId)
         {
 
             try
             {
+                // Se busca la competencia en el DAOCompetencia
                 Competencia competencia = dAOCompetencia.buscarPorId(competenciaId);
-                DtoCompetencia dtoCompetencia = new DtoCompetencia();
-
-
-
-
+                
+                // Se verifica que no esté EN DISPUTA O FINALIZADA
                 if (competencia.Estado.Equals(Estado.ENDISPUTA) || competencia.Estado.Equals(Estado.FINALIZADA))
                 {
-                    MessageBox.Show("No se puede generar un fixture", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No se puede generar un fixture si una competencia se encuentra ENDISPUTA O FINALIZADA", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             
-
+                // Se crea un fixture vacio
                 Fixture fixture = new Fixture();
+
+                // Se generan los enfrentamientos en una matriz de enteros teniendo en cuenta la cantidad de participantes
                 int[,,] fixtureEnteros = genererarEnfrentamientos(competencia.Participantes.Count());
 
 
+                // Se valida que la cantidad de disponibilidades total sea mayor o igual a la cantidad de enfrentamientos por fecha
                 if (!validarLugaresDisponibles(competencia.Disponibilidades, fixtureEnteros.GetLength(1))) 
                 {
                     MessageBox.Show("No se puede generar un fixture por falta de lugares disponibles", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -330,13 +336,18 @@ namespace SistemaDeCompetencia.Controladores
 
                 }
                 
+                // Se recorre el primer Nivel de la matriz que representa las Fechas
                 for (int i = 0; i < fixtureEnteros.GetLength(0); i++)
                 {
+                    //Se crea una nueva fecha vacia
                     Fecha fecha = new Fecha();
-
+                    //Se le setea el nombre a la Fecha
                     fecha.FechaCompentencia = (i + 1).ToString();
-
+                    //Se crea una lista auxiliar de disponibilidades
                     List<Disponibilidad> listaAuxDisp = new List<Disponibilidad>();
+
+                    //Se carga la lista auxiliar de disponibilidades 
+                    //con las mismas disponibilidades que posee la competencia
                     foreach (var d in competencia.Disponibilidades)
                     {
                         Disponibilidad disponibilidad = new Disponibilidad();
@@ -346,35 +357,52 @@ namespace SistemaDeCompetencia.Controladores
                         disponibilidad.LugarDeRealizacion = d.LugarDeRealizacion;
                         listaAuxDisp.Add(disponibilidad);
                     }
+
+                    // Se recorre el nivel de la matriz que representa los Enfrentamientos
                     for (int j = 0; j < fixtureEnteros.GetLength(1); j++)
                     {
+                        //Se crea un enfrentamiento vacio
                         Enfrentamiento enfrentamiento = new Enfrentamiento();
 
+                        /* Se setean los participantes teniendo en cuenta que 
+                        * fixtureEnteros[i][j][0] representa la posicion del 
+                        * participanteX en la lista de participantes de la competencia
+                        * y fixtureEnteros[i][j][1] representa la posicion del
+                        * participanteY en la lista de participantes de la competencia
+                        * */
                         enfrentamiento.ParticipanteX = competencia.Participantes.ElementAt(fixtureEnteros[i, j, 0]);
                         enfrentamiento.ParticipanteY = competencia.Participantes.ElementAt(fixtureEnteros[i, j, 1]);
 
-                        if (listaAuxDisp.Count().Equals(0))
+                        // Si la cantidad de lugares disponibles de la primer disponibilidad
+                        // es cero se elimina la disponibilidad de la lista auxiliar
+                        if (listaAuxDisp.First().Disponible.Equals(0))
                         {
                             listaAuxDisp.Remove(listaAuxDisp.First());
                         }
 
+                        // Se le setea el lugar de realizacion al enfrentamiento
                         enfrentamiento.LugarDeRealizacion = listaAuxDisp.First().LugarDeRealizacion;
-
+                        // Se resta uno a la cantidad de lugares disponibles de la primer disponibilidad
                         listaAuxDisp.First().Disponible--;
-
+                        // Se agrega el enfrentamiento a la fecha
                         fecha.Enfrentamientos.Add(enfrentamiento);
 
 
                     }
-
+                    // Se agrega la fecha al fixture
                     fixture.Fechas.Add(fecha);
 
                 }
+                // Se elimina fixture si es necesario
                 eliminarFixture(competencia);
+                // Se setea el fixture nuevo a la competencia
                 competencia.Fixture = fixture;
+                // Se setea la competencia en PLANIFICADA
                 competencia.Estado = Estado.PLANIFICADA;
+                // Se guarda la competencia en la base de datos
                 competencia = dAOCompetencia.modificarCompetencia(competencia);
 
+                // Se retorna que la operacion se realizó con éxito
                 return true;
             }
             catch (Exception e) 
@@ -384,14 +412,17 @@ namespace SistemaDeCompetencia.Controladores
            
 
         }
-
+        // Valida que la cantidad de disponibilidades total sea mayor o igual a la cantidad de enfrentamientos pasados como parámetro
         private bool validarLugaresDisponibles(List<Disponibilidad> disponibilidades, int cantidadEnfrentamientos)
         {
+
             int sumaDisponible = 0;
+            // Se suma la cantidad de disponibilidades Totales
             foreach (var d in disponibilidades)
             {
                 sumaDisponible += d.Disponible;
             }
+            // Se valida que sean mayor o igual a la cantidad de enfrentamientos pasados por parámetro
             if (sumaDisponible >= cantidadEnfrentamientos)
                 return true;
             else
@@ -486,8 +517,9 @@ namespace SistemaDeCompetencia.Controladores
             return f;
             
         }
-
-        private static int[,,] genererarEnfrentamientos(int cantidadPaticipantes)
+        // Devuelve una matriz de enteros que representa las fechas y enfrentamientos 
+        // dependiendo de la cantidad de participantes que se ingrese
+        private int[,,] genererarEnfrentamientos(int cantidadPaticipantes)
         {
 
             try 
@@ -501,10 +533,13 @@ namespace SistemaDeCompetencia.Controladores
             
         }
 
-        static private int[,,] calcularLiga(int numEquipos)
+        //Rutina guia que devuelve la matriz de fechas y enfrentamientos
+        private int[,,] calcularLiga(int numEquipos)
         {
             try
             {
+                // si el número de participantes es par calcula la liga de una forma,
+                // si es impar la calcula de otra
                 if (numEquipos % 2 == 0)
                     return calcularLigaNumEquiposPar(numEquipos);
                 else
@@ -564,16 +599,24 @@ namespace SistemaDeCompetencia.Controladores
 
             return rondas;
         }
-
-        private static int[,,] calcularLigaNumEquiposPar(int numEquipos)
+        // Calcula la matriz de fechas y enfrentamientos si la cantidad de equipos es par 
+        private int[,,] calcularLigaNumEquiposPar(int numEquipos)
         {
             try 
-            {
+            {   
+                // Se inicializa el número de fechas
                 int numRondas = numEquipos - 1;
+                // Se inicializa la cantidad de enfrentamientos por fecha
                 int numPartidosPorRonda = numEquipos / 2;
-                //fijarse cantidad de participantes
+                // Se crea la matriz de enteros con la cantidad de numero de fechas,
+                // la cantidad de enfrentamientos por fecha y la cantidad de participantes
+                // por enfrentamiento (en este caso 2)
                 int[,,] rondas = new int[numRondas, numPartidosPorRonda, 2];
 
+                /*
+                 * Se toman todos los participantes, excepto el ultimo, y se setean en orden ascendente
+                 * en el espacio del participanteX en todos los encuentros
+                 */
                 for (int i = 0, k = 0; i < numRondas; i++)
                 {
                     for (int j = 0; j < numPartidosPorRonda; j++)
@@ -588,15 +631,19 @@ namespace SistemaDeCompetencia.Controladores
                             k = 0;
                     }
                 }
-
+                // Se setea el ultimo participante en el primer encuentro de cada fecha
+                                   
                 for (int i = 0; i < numRondas; i++)
                 {
                     if (i % 2 == 0)
                     {
+                        // Si la fecha es par se setea en la posicion del participanteY
                         rondas[i, 0, 1] = numEquipos - 1;
                     }
                     else
                     {
+                        // Si la fecha es impar se setea en la posicion del participanteX
+                        // pero antes se guarda el valor anterior del participanteX en la posicion del participanteY
                         rondas[i, 0, 1] = rondas[i, 0, 0];
                         rondas[i, 0, 0] = numEquipos - 1;
                     }
@@ -604,7 +651,10 @@ namespace SistemaDeCompetencia.Controladores
 
                 int equipoMasAlto = numEquipos - 1;
                 int equipoImparMasAlto = equipoMasAlto - 1;
-
+                /*
+                * Se toman todos los participantes, excepto el ultimo, y se setean en orden descendiente
+                * en los espacios que faltan del participanteY
+                */
                 for (int i = 0, k = equipoImparMasAlto; i < numRondas; i++)
                 {
                     for (int j = 1; j < numPartidosPorRonda; j++)
