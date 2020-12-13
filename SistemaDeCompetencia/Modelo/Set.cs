@@ -10,6 +10,7 @@ namespace SistemaDeCompetencia.Modelo
 {   [Table ("Set")]
     public class Set :FormaDePuntuacion
     {
-       public int Cantidad { get; set; }
+       
+        public int Cantidad { get; set; }
     }
 }

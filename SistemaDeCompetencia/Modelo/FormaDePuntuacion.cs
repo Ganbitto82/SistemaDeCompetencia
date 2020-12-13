@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace SistemaDeCompetencia.Modelo
 {  [Table("FormaDePuntuacion")]
-    public class FormaDePuntuacion
+    public abstract class FormaDePuntuacion
     {   [Key]
-        public int FormaDePuntuacionId { get; set; }
+        public  int FormaDePuntuacionId { get; set; }
         
     }
 }

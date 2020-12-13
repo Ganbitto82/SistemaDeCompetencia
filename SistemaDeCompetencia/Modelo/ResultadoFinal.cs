@@ -10,6 +10,7 @@ namespace SistemaDeCompetencia.Modelo
 {[Table("ResultadoFinal")]
     public class ResultadoFinal : FormaDePuntuacion
     {
+        
         public int Resultado { get; set; }
     }
 }
