@@ -59,7 +59,7 @@ namespace SistemaDeCompetencia.Vista
         }
         private void cargarDeportes()
         { //funcion que carga los deportes en el comboBox 
-            listaDeporte = gComp.listarDeportes();
+            listaDeporte = gComp.listarDeportes(dtoUsuarioForm.DtoUsuarioId);
             comboBox_deporte.Text = "--Seleccione--";
             foreach (var deporte in listaDeporte)
             {

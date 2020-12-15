@@ -40,8 +40,6 @@
             this.Cancelar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TablaLugares = new System.Windows.Forms.DataGridView();
-            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Disponibilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label_tituloLugar = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.comboBox_modalidad = new System.Windows.Forms.ComboBox();
@@ -63,6 +61,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBoxReglamento = new System.Windows.Forms.TextBox();
+            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Disponibilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TablaLugares)).BeginInit();
             this.panel3.SuspendLayout();
@@ -169,7 +169,6 @@
             this.TablaLugares.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.TablaLugares.AllowUserToAddRows = false;
             this.TablaLugares.AllowUserToDeleteRows = false;
-            this.TablaLugares.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
             this.TablaLugares.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.TablaLugares.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
@@ -197,19 +196,6 @@
             this.TablaLugares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaLugares_CellContentClick);
             this.TablaLugares.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaLugares_CellValidated);
             this.TablaLugares.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.TablaLugares_CellValidating);
-            // 
-            // Lugar
-            // 
-            this.Lugar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Lugar.HeaderText = "Lugar";
-            this.Lugar.Name = "Lugar";
-            // 
-            // Disponibilidad
-            // 
-            this.Disponibilidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Disponibilidad.HeaderText = "Disponibilidad";
-            this.Disponibilidad.Name = "Disponibilidad";
-            this.Disponibilidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // label_tituloLugar
             // 
@@ -440,6 +426,20 @@
     " reglamento";
             this.textBoxReglamento.TextChanged += new System.EventHandler(this.textBoxReglamento_TextChanged);
             // 
+            // Lugar
+            // 
+            this.Lugar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Lugar.HeaderText = "Lugar";
+            this.Lugar.Name = "Lugar";
+            this.Lugar.ReadOnly = true;
+            // 
+            // Disponibilidad
+            // 
+            this.Disponibilidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Disponibilidad.HeaderText = "Disponibilidad";
+            this.Disponibilidad.Name = "Disponibilidad";
+            this.Disponibilidad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
             // DarAltaCompetencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -504,9 +504,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label_tituloLugar;
         private System.Windows.Forms.DataGridView TablaLugares;
+        private System.Windows.Forms.TextBox textBoxReglamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lugar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Disponibilidad;
-        private System.Windows.Forms.TextBox textBoxReglamento;
     }
 }
 

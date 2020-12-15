@@ -85,8 +85,7 @@
             this.textBoxCorreo.Location = new System.Drawing.Point(290, 120);
             this.textBoxCorreo.Name = "textBoxCorreo";
             this.textBoxCorreo.Size = new System.Drawing.Size(238, 20);
-            this.textBoxCorreo.TabIndex = 26;
-            //this.textBoxCorreo.TextChanged += new System.EventHandler(this.textBoxCorreo_TextChanged);
+            this.textBoxCorreo.TabIndex = 1;
             // 
             // textBox_nombre
             // 
@@ -94,8 +93,7 @@
             this.textBox_nombre.Location = new System.Drawing.Point(290, 73);
             this.textBox_nombre.Name = "textBox_nombre";
             this.textBox_nombre.Size = new System.Drawing.Size(238, 20);
-            this.textBox_nombre.TabIndex = 25;
-            //this.textBox_nombre.TextChanged += new System.EventHandler(this.textBox_nombre_TextChanged);
+            this.textBox_nombre.TabIndex = 0;
             // 
             // label_deporte
             // 
@@ -106,7 +104,6 @@
             this.label_deporte.Size = new System.Drawing.Size(122, 16);
             this.label_deporte.TabIndex = 24;
             this.label_deporte.Text = "Correo Electronico:";
-           // this.label_deporte.Click += new System.EventHandler(this.label_deporte_Click);
             // 
             // label1
             // 
@@ -117,7 +114,6 @@
             this.label1.Size = new System.Drawing.Size(213, 16);
             this.label1.TabIndex = 23;
             this.label1.Text = "Nombre de Equipo o Participante: ";
-           // this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label_nombre
             // 
@@ -135,7 +131,7 @@
             this.Cancelar.Location = new System.Drawing.Point(544, 626);
             this.Cancelar.Name = "Cancelar";
             this.Cancelar.Size = new System.Drawing.Size(78, 23);
-            this.Cancelar.TabIndex = 28;
+            this.Cancelar.TabIndex = 3;
             this.Cancelar.Text = "Cancelar";
             this.Cancelar.UseVisualStyleBackColor = true;
             this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
@@ -148,7 +144,7 @@
             this.Aceptar.Location = new System.Drawing.Point(439, 626);
             this.Aceptar.Name = "Aceptar";
             this.Aceptar.Size = new System.Drawing.Size(84, 23);
-            this.Aceptar.TabIndex = 27;
+            this.Aceptar.TabIndex = 2;
             this.Aceptar.Text = "Aceptar";
             this.Aceptar.UseVisualStyleBackColor = false;
             this.Aceptar.Click += new System.EventHandler(this.Aceptar_Click);
@@ -166,7 +162,6 @@
             this.Name = "DarAltaParticipante";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dar de Alta Participante";
-           // this.Load += new System.EventHandler(this.Form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

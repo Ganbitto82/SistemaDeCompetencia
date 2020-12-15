@@ -20,16 +20,17 @@ namespace SistemaDeCompetencia.Controladores
         DAOParticipante daoParticipante = new DAOParticipanteEntityFramework();
         // private int[,,] fixtureEnteros;
 
-        public List<DtoDeporte> listarDeportes()
+        public List<DtoDeporte> listarDeportes(int usuarioId)
         {
 
             //inicializamos listaDTODeportes
             List<DtoDeporte> listaDtoDeportes = new List<DtoDeporte>();
+
             //capturamos la excepcion por si hay problemas al obtener los deportes
             try
             {
                 //obtenemos la lista de deportes del usuario
-                List<Deporte> listaDeportes = daoDeporte.listarDeportes();
+                List<Deporte> listaDeportes = daoDeporte.listarDeportes(usuarioId);
                 //iteramos por los deportes y los pasamos a dto, luego los agregamos a la listaDtoDeportes
                 foreach (var deporte in listaDeportes)
                 {

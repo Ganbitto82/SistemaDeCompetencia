@@ -46,7 +46,7 @@ namespace SistemaDeCompetencia.Vista
 
         { //funcion que carga los deportes en el comboBox
 
-            listaDeporte = gestorCompetencia.listarDeportes();
+            listaDeporte = gestorCompetencia.listarDeportes(dtoUsuarioForm.DtoUsuarioId);
             comboBox_deporte.Text = "--Seleccione--";
             comboBox_deporte.Items.Add("--Seleccione--");
 
@@ -154,15 +154,24 @@ namespace SistemaDeCompetencia.Vista
         }
         private void tablaDeCompetencias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            nombreCompetencia = tablaDeCompetencias.Rows[e.RowIndex].Cells["Column1"].Value.ToString();
-            foreach (var dtoCompetencia in listaDtoCompetencia)
+            try
             {
-                if (dtoCompetencia.Nombre.Equals(nombreCompetencia))
+                nombreCompetencia = tablaDeCompetencias.Rows[e.RowIndex].Cells["Column1"].Value.ToString();
+                foreach (var dtoCompetencia in listaDtoCompetencia)
                 {
-                    dtoCompetenciaSeleccionado = dtoCompetencia;
-                }
+                    if (dtoCompetencia.Nombre.Equals(nombreCompetencia))
+                    {
+                        dtoCompetenciaSeleccionado = dtoCompetencia;
+                    }
 
+                }
             }
+            catch  (Exception ex)
+            {
+                MessageBox.Show(ex.Message , "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
+           
         }
 
         private void button_nueva_Click(object sender, EventArgs e)

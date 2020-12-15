@@ -30,8 +30,7 @@ namespace SistemaDeCompetencia.Dao
 
         public List<LugarDeRealizacion> listarLugar(int deporteId, int usuarioId)
         {
-                   
-          
+                             
             try
             {
                 CompetenciaContext context = DAOCompetenciaEntityFramework.context;

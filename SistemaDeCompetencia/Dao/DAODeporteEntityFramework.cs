@@ -38,13 +38,12 @@ namespace SistemaDeCompetencia.Dao
             //CompetenciaContext context = new CompetenciaContext();
             CompetenciaContext context = DAOCompetenciaEntityFramework.context;
 
-
+            
             try
             {
 
-
                 //obtenemos la lista de DeporteLugar
-                listaDeporteLugares.AddRange(context.DeporteLugar);
+                listaDeporteLugares.AddRange(context.DeporteLugar.Include("LugarDeRealizacion").Include("Deporte"));
 
                 //agregamos al set listaDeportes los deportes que haya utilizado el usuario en algun LugarDeRealizacion
                 foreach (var deporteLugar in listaDeporteLugares)
@@ -54,6 +53,9 @@ namespace SistemaDeCompetencia.Dao
 
                 //retornamos la lista de deportes
                 return listaDeportes.ToList();
+
+               
+            
             }
             catch (Exception)
             {
