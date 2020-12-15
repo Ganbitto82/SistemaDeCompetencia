@@ -129,7 +129,7 @@
             this.comboBox_estado.FormattingEnabled = true;
             this.comboBox_estado.Items.AddRange(new object[] {
             "CREADA",
-            "PLANIFICACION",
+            "PLANIFICADA",
             "EN DISPUTA",
             "FINALIZADA"});
             this.comboBox_estado.Location = new System.Drawing.Point(383, 59);
