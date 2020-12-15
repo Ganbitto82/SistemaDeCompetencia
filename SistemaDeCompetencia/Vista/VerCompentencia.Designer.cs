@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label7 = new System.Windows.Forms.Label();
             this.button_cancelar = new System.Windows.Forms.Button();
             this.label_nombre = new System.Windows.Forms.Label();
@@ -84,7 +84,7 @@
             this.button_cancelar.Location = new System.Drawing.Point(545, 620);
             this.button_cancelar.Name = "button_cancelar";
             this.button_cancelar.Size = new System.Drawing.Size(77, 29);
-            this.button_cancelar.TabIndex = 35;
+            this.button_cancelar.TabIndex = 12;
             this.button_cancelar.Text = "Cancelar";
             this.button_cancelar.UseVisualStyleBackColor = true;
             this.button_cancelar.Click += new System.EventHandler(this.button_cancelar_Click);
@@ -156,7 +156,7 @@
             this.textBox_nombre.Location = new System.Drawing.Point(219, 63);
             this.textBox_nombre.Name = "textBox_nombre";
             this.textBox_nombre.Size = new System.Drawing.Size(238, 20);
-            this.textBox_nombre.TabIndex = 29;
+            this.textBox_nombre.TabIndex = 0;
             // 
             // textBox_Modalidad
             // 
@@ -165,7 +165,7 @@
             this.textBox_Modalidad.Location = new System.Drawing.Point(219, 104);
             this.textBox_Modalidad.Name = "textBox_Modalidad";
             this.textBox_Modalidad.Size = new System.Drawing.Size(238, 20);
-            this.textBox_Modalidad.TabIndex = 30;
+            this.textBox_Modalidad.TabIndex = 1;
             // 
             // textBox_Deporte
             // 
@@ -174,7 +174,7 @@
             this.textBox_Deporte.Location = new System.Drawing.Point(219, 146);
             this.textBox_Deporte.Name = "textBox_Deporte";
             this.textBox_Deporte.Size = new System.Drawing.Size(238, 20);
-            this.textBox_Deporte.TabIndex = 31;
+            this.textBox_Deporte.TabIndex = 2;
             // 
             // textBox_Estado
             // 
@@ -183,7 +183,7 @@
             this.textBox_Estado.Location = new System.Drawing.Point(219, 187);
             this.textBox_Estado.Name = "textBox_Estado";
             this.textBox_Estado.Size = new System.Drawing.Size(238, 20);
-            this.textBox_Estado.TabIndex = 32;
+            this.textBox_Estado.TabIndex = 3;
             // 
             // panel1
             // 
@@ -214,8 +214,8 @@
             this.TablaEncuentro.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.TablaEncuentro.AllowUserToAddRows = false;
             this.TablaEncuentro.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.Silver;
-            this.TablaEncuentro.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            this.TablaEncuentro.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.TablaEncuentro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablaEncuentro.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.encuentroParticipante,
@@ -224,18 +224,18 @@
             this.TablaEncuentro.Location = new System.Drawing.Point(58, 387);
             this.TablaEncuentro.Name = "TablaEncuentro";
             this.TablaEncuentro.ReadOnly = true;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaEncuentro.RowHeadersDefaultCellStyle = dataGridViewCellStyle22;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TablaEncuentro.RowsDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TablaEncuentro.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TablaEncuentro.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.TablaEncuentro.Size = new System.Drawing.Size(364, 121);
-            this.TablaEncuentro.TabIndex = 39;
+            this.TablaEncuentro.TabIndex = 5;
             // 
             // encuentroParticipante
             // 
@@ -261,19 +261,19 @@
             this.TablaParticipante.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.TablaParticipante.AllowUserToAddRows = false;
             this.TablaParticipante.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.Silver;
-            this.TablaParticipante.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
+            this.TablaParticipante.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.TablaParticipante.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TablaParticipante.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Participante});
             this.TablaParticipante.Location = new System.Drawing.Point(56, 259);
             this.TablaParticipante.Name = "TablaParticipante";
             this.TablaParticipante.ReadOnly = true;
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TablaParticipante.RowsDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TablaParticipante.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.TablaParticipante.Size = new System.Drawing.Size(367, 93);
-            this.TablaParticipante.TabIndex = 38;
+            this.TablaParticipante.TabIndex = 4;
             // 
             // Participante
             // 
@@ -298,7 +298,7 @@
             this.button_modificar.Location = new System.Drawing.Point(520, 86);
             this.button_modificar.Name = "button_modificar";
             this.button_modificar.Size = new System.Drawing.Size(102, 29);
-            this.button_modificar.TabIndex = 37;
+            this.button_modificar.TabIndex = 6;
             this.button_modificar.Text = "Modificar";
             this.button_modificar.UseVisualStyleBackColor = true;
             this.button_modificar.Click += new System.EventHandler(this.button_modificar_Click);
@@ -309,7 +309,7 @@
             this.button_DarDeBaja.Location = new System.Drawing.Point(520, 129);
             this.button_DarDeBaja.Name = "button_DarDeBaja";
             this.button_DarDeBaja.Size = new System.Drawing.Size(102, 29);
-            this.button_DarDeBaja.TabIndex = 38;
+            this.button_DarDeBaja.TabIndex = 7;
             this.button_DarDeBaja.Text = "DardeBaja";
             this.button_DarDeBaja.UseVisualStyleBackColor = true;
             this.button_DarDeBaja.Click += new System.EventHandler(this.button_DarDeBaja_Click);
@@ -320,7 +320,7 @@
             this.button_fixture.Location = new System.Drawing.Point(520, 170);
             this.button_fixture.Name = "button_fixture";
             this.button_fixture.Size = new System.Drawing.Size(102, 29);
-            this.button_fixture.TabIndex = 39;
+            this.button_fixture.TabIndex = 8;
             this.button_fixture.Text = "VerFixture";
             this.button_fixture.UseVisualStyleBackColor = true;
             this.button_fixture.Click += new System.EventHandler(this.button_fixture_Click);
@@ -331,7 +331,7 @@
             this.button_tablaPosicion.Location = new System.Drawing.Point(520, 212);
             this.button_tablaPosicion.Name = "button_tablaPosicion";
             this.button_tablaPosicion.Size = new System.Drawing.Size(102, 29);
-            this.button_tablaPosicion.TabIndex = 40;
+            this.button_tablaPosicion.TabIndex = 9;
             this.button_tablaPosicion.Text = "TablaPosicion";
             this.button_tablaPosicion.UseVisualStyleBackColor = true;
             this.button_tablaPosicion.Click += new System.EventHandler(this.button_tablaPosicion_Click);
@@ -342,7 +342,7 @@
             this.button_generar.Location = new System.Drawing.Point(520, 253);
             this.button_generar.Name = "button_generar";
             this.button_generar.Size = new System.Drawing.Size(102, 29);
-            this.button_generar.TabIndex = 41;
+            this.button_generar.TabIndex = 10;
             this.button_generar.Text = "GenerarFixture";
             this.button_generar.UseVisualStyleBackColor = true;
             this.button_generar.Click += new System.EventHandler(this.button_generar_Click);
@@ -353,7 +353,7 @@
             this.button_participantes.Location = new System.Drawing.Point(520, 293);
             this.button_participantes.Name = "button_participantes";
             this.button_participantes.Size = new System.Drawing.Size(102, 29);
-            this.button_participantes.TabIndex = 42;
+            this.button_participantes.TabIndex = 11;
             this.button_participantes.Text = "VerParticipante";
             this.button_participantes.UseVisualStyleBackColor = true;
             this.button_participantes.Click += new System.EventHandler(this.button_participantes_Click);

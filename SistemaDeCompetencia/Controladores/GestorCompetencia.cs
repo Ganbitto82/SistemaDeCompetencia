@@ -119,14 +119,12 @@ namespace SistemaDeCompetencia.Controladores
 
             }
             // inicializamos la forma de puntuacion dependiendo lo elegido
-           //FormaDePuntuacion f = new FormaDePuntuacion();
-            
+           
             switch (dtoCompetencia.DtoFormaDePuntuacion)
             {
                 case DtoPuntuacion punt:
                     {
-                        // f = new Puntuacion();
-                       // ((Puntuacion)f).TantosOtorgados = punt.TantosOtorgados;
+                        
                         Puntuacion p = new Puntuacion();
                         p.TantosOtorgados = punt.TantosOtorgados;
                         c.FormaDePuntuacion = p;
@@ -134,8 +132,7 @@ namespace SistemaDeCompetencia.Controladores
                     break;
                 case DtoSet set:
                     {
-                        //  f = new Set();
-                        //((Set)f).Cantidad = set.Cantidad;
+                        
                         Set s = new Set();
                         s.Cantidad = set.Cantidad;
                         c.FormaDePuntuacion = s;
@@ -143,7 +140,7 @@ namespace SistemaDeCompetencia.Controladores
                     break;
                 case DtoResultadoFinal resFin:
                     {
-                        //f = new ResultadoFinal();
+                        
                         ResultadoFinal rf = new ResultadoFinal();
                         c.FormaDePuntuacion = rf;
 

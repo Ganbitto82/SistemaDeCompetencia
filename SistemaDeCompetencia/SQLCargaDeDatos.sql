@@ -21,46 +21,5 @@ insert into DeporteLugar(LugarId ,DeporteId ) VALUES (2,2);
 insert into DeporteLugar(LugarId ,DeporteId ) VALUES (3,1);
 
 
-SELECT * FROM Deporte;
-SELECT  *FROM LugarDeRealizacion ;
 
-select * from Participante;
-select * from Fecha;
-select * from competencia;
-select * from Fixture;
-
-SET IDENTITY_INSERT Fixture ON
-GO
-INSERT INTO Fixture(FixtureId )
-VALUES ( 1)
-GO
-/* Turn Identity Insert OFF  */
-SET IDENTITY_INSERT Fixture OFF
-GO
-
-SET IDENTITY_INSERT Fecha ON
-GO
-insert into Fecha(FechaId,FechaCompentencia,FixtureId) values (1,'FECHA1',1),(2,'FECHA2',1),(3,'FECHA3',1);
-go
-/* Turn Identity Insert OFF  */
-SET IDENTITY_INSERT Fecha OFF
-GO
-insert into Enfrentamiento(ParticipanteXId,ParticipanteYId,FechaId) values(1,2,1),(3,4,1),(1,3,2),(2,4,2),(1,4,3),(2,3,3);    
-
-
-SET IDENTITY_INSERT Competencia ON
-GO
-insert into Competencia(CompetenciaId,Nombre,FixtureId,DeporteId,PermisoDeEmpate,UsuarioId,FormaDePuntuacionId) values (2,'LIBERTADORES',1,1,0,1,1);
-go
-/* Turn Identity Insert OFF  */
-SET IDENTITY_INSERT competencia OFF
-GO
-                                 
-select *from deporte;
-select *from fixture;
-select *from fecha;
-select *from Enfrentamiento;
-select * from FormaDePuntuacion;
-delete from fixture ;
-select * from participante;
 

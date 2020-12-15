@@ -123,6 +123,8 @@ namespace SistemaDeCompetencia.Vista
             panel16.Visible = false;
             button18.Enabled = true;
         }
+
+        
     }
 
 }

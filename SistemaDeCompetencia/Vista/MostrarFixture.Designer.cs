@@ -207,11 +207,11 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label2.Location = new System.Drawing.Point(172, 29);
+            this.label2.Location = new System.Drawing.Point(140, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(309, 25);
+            this.label2.Size = new System.Drawing.Size(372, 25);
             this.label2.TabIndex = 40;
-            this.label2.Text = "Torneo \"NOMBRE TORNEO\"";
+            this.label2.Text = "Competencia \"NOMBRE TORNEO\"";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button17
@@ -221,7 +221,7 @@
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(110, 25);
             this.button17.TabIndex = 51;
-            this.button17.Text = "Pagina Anterior";
+            this.button17.Text = "Página Anterior";
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
@@ -232,7 +232,7 @@
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(110, 25);
             this.button18.TabIndex = 47;
-            this.button18.Text = "Siguiente Pagina";
+            this.button18.Text = "Siguiente Página";
             this.button18.UseVisualStyleBackColor = true;
             this.button18.Click += new System.EventHandler(this.button18_Click);
             // 

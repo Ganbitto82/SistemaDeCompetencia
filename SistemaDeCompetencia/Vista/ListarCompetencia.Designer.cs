@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -109,7 +109,7 @@
             this.buscar.Location = new System.Drawing.Point(506, 102);
             this.buscar.Name = "buscar";
             this.buscar.Size = new System.Drawing.Size(77, 29);
-            this.buscar.TabIndex = 22;
+            this.buscar.TabIndex = 4;
             this.buscar.Text = "Buscar";
             this.buscar.UseVisualStyleBackColor = false;
             this.buscar.Click += new System.EventHandler(this.button1_Click);
@@ -121,7 +121,7 @@
             this.comboBox_modalidad.Location = new System.Drawing.Point(383, 20);
             this.comboBox_modalidad.Name = "comboBox_modalidad";
             this.comboBox_modalidad.Size = new System.Drawing.Size(200, 21);
-            this.comboBox_modalidad.TabIndex = 21;
+            this.comboBox_modalidad.TabIndex = 1;
             // 
             // comboBox_estado
             // 
@@ -135,7 +135,7 @@
             this.comboBox_estado.Location = new System.Drawing.Point(383, 59);
             this.comboBox_estado.Name = "comboBox_estado";
             this.comboBox_estado.Size = new System.Drawing.Size(200, 21);
-            this.comboBox_estado.TabIndex = 8;
+            this.comboBox_estado.TabIndex = 3;
             // 
             // label4
             // 
@@ -163,7 +163,7 @@
             this.textBox_nombre.Location = new System.Drawing.Point(79, 21);
             this.textBox_nombre.Name = "textBox_nombre";
             this.textBox_nombre.Size = new System.Drawing.Size(200, 20);
-            this.textBox_nombre.TabIndex = 4;
+            this.textBox_nombre.TabIndex = 0;
             // 
             // comboBox_deporte
             // 
@@ -172,7 +172,7 @@
             this.comboBox_deporte.Location = new System.Drawing.Point(79, 59);
             this.comboBox_deporte.Name = "comboBox_deporte";
             this.comboBox_deporte.Size = new System.Drawing.Size(200, 21);
-            this.comboBox_deporte.TabIndex = 3;
+            this.comboBox_deporte.TabIndex = 2;
             this.comboBox_deporte.SelectedIndexChanged += new System.EventHandler(this.comboBox_deporte_SelectedIndexChanged);
             // 
             // label2
@@ -221,7 +221,7 @@
             this.button_nueva.Location = new System.Drawing.Point(515, 112);
             this.button_nueva.Name = "button_nueva";
             this.button_nueva.Size = new System.Drawing.Size(77, 29);
-            this.button_nueva.TabIndex = 29;
+            this.button_nueva.TabIndex = 7;
             this.button_nueva.Text = "Nueva";
             this.button_nueva.UseVisualStyleBackColor = false;
             this.button_nueva.Click += new System.EventHandler(this.button_nueva_Click);
@@ -234,7 +234,7 @@
             this.button_detalles.Location = new System.Drawing.Point(515, 58);
             this.button_detalles.Name = "button_detalles";
             this.button_detalles.Size = new System.Drawing.Size(77, 29);
-            this.button_detalles.TabIndex = 24;
+            this.button_detalles.TabIndex = 6;
             this.button_detalles.Text = "Detalles";
             this.button_detalles.UseVisualStyleBackColor = false;
             this.button_detalles.Click += new System.EventHandler(this.button_detalles_Click);
@@ -243,8 +243,8 @@
             // 
             this.tablaDeCompetencias.AllowUserToAddRows = false;
             this.tablaDeCompetencias.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkGray;
-            this.tablaDeCompetencias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
+            this.tablaDeCompetencias.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tablaDeCompetencias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -263,11 +263,11 @@
             this.tablaDeCompetencias.Name = "tablaDeCompetencias";
             this.tablaDeCompetencias.ReadOnly = true;
             this.tablaDeCompetencias.RowHeadersWidth = 35;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Silver;
-            this.tablaDeCompetencias.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
+            this.tablaDeCompetencias.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaDeCompetencias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaDeCompetencias.Size = new System.Drawing.Size(484, 306);
-            this.tablaDeCompetencias.TabIndex = 28;
+            this.tablaDeCompetencias.TabIndex = 5;
             this.tablaDeCompetencias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaDeCompetencias_CellClick);
             // 
             // Column1
@@ -319,7 +319,7 @@
             this.button_cancelar.Location = new System.Drawing.Point(545, 620);
             this.button_cancelar.Name = "button_cancelar";
             this.button_cancelar.Size = new System.Drawing.Size(77, 29);
-            this.button_cancelar.TabIndex = 22;
+            this.button_cancelar.TabIndex = 8;
             this.button_cancelar.Text = "Cancelar";
             this.button_cancelar.UseVisualStyleBackColor = true;
             this.button_cancelar.Click += new System.EventHandler(this.button_cancelar_Click);

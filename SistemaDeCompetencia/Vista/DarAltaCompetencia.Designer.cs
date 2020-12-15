@@ -90,7 +90,7 @@
             this.textBox_nombre.Location = new System.Drawing.Point(102, 15);
             this.textBox_nombre.Name = "textBox_nombre";
             this.textBox_nombre.Size = new System.Drawing.Size(174, 20);
-            this.textBox_nombre.TabIndex = 1;
+            this.textBox_nombre.TabIndex = 0;
             this.textBox_nombre.TextChanged += new System.EventHandler(this.textBox_nombre_TextChanged);
             this.textBox_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_nombre_KeyPress);
             // 
@@ -121,7 +121,7 @@
             this.comboBox_deporte.Location = new System.Drawing.Point(426, 18);
             this.comboBox_deporte.Name = "comboBox_deporte";
             this.comboBox_deporte.Size = new System.Drawing.Size(174, 21);
-            this.comboBox_deporte.TabIndex = 6;
+            this.comboBox_deporte.TabIndex = 1;
             this.comboBox_deporte.SelectedIndexChanged += new System.EventHandler(this.comboBox_deporte_SelectedIndexChanged);
             // 
             // Aceptar
@@ -132,7 +132,7 @@
             this.Aceptar.Location = new System.Drawing.Point(440, 631);
             this.Aceptar.Name = "Aceptar";
             this.Aceptar.Size = new System.Drawing.Size(84, 23);
-            this.Aceptar.TabIndex = 7;
+            this.Aceptar.TabIndex = 12;
             this.Aceptar.Text = "Aceptar";
             this.Aceptar.UseVisualStyleBackColor = false;
             this.Aceptar.Click += new System.EventHandler(this.Aceptar_Click);
@@ -143,7 +143,7 @@
             this.Cancelar.Location = new System.Drawing.Point(544, 631);
             this.Cancelar.Name = "Cancelar";
             this.Cancelar.Size = new System.Drawing.Size(78, 23);
-            this.Cancelar.TabIndex = 8;
+            this.Cancelar.TabIndex = 13;
             this.Cancelar.Text = "Cancelar";
             this.Cancelar.UseVisualStyleBackColor = true;
             this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
@@ -193,7 +193,7 @@
             this.TablaLugares.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.TablaLugares.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.TablaLugares.Size = new System.Drawing.Size(551, 91);
-            this.TablaLugares.TabIndex = 7;
+            this.TablaLugares.TabIndex = 2;
             this.TablaLugares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaLugares_CellContentClick);
             this.TablaLugares.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.TablaLugares_CellValidated);
             this.TablaLugares.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.TablaLugares_CellValidating);
@@ -253,7 +253,7 @@
             this.comboBox_modalidad.Location = new System.Drawing.Point(102, 12);
             this.comboBox_modalidad.Name = "comboBox_modalidad";
             this.comboBox_modalidad.Size = new System.Drawing.Size(200, 21);
-            this.comboBox_modalidad.TabIndex = 20;
+            this.comboBox_modalidad.TabIndex = 3;
             this.comboBox_modalidad.SelectedIndexChanged += new System.EventHandler(this.comboBox_modalidad_SelectedIndexChanged);
             // 
             // comboBox_formaPutuacion
@@ -268,7 +268,7 @@
             this.comboBox_formaPutuacion.Location = new System.Drawing.Point(183, 134);
             this.comboBox_formaPutuacion.Name = "comboBox_formaPutuacion";
             this.comboBox_formaPutuacion.Size = new System.Drawing.Size(92, 21);
-            this.comboBox_formaPutuacion.TabIndex = 19;
+            this.comboBox_formaPutuacion.TabIndex = 8;
             this.comboBox_formaPutuacion.SelectedIndexChanged += new System.EventHandler(this.comboBox_formaPutuacion_SelectedIndexChanged);
             // 
             // numericUpDown_tantos
@@ -278,7 +278,7 @@
             this.numericUpDown_tantos.Location = new System.Drawing.Point(492, 162);
             this.numericUpDown_tantos.Name = "numericUpDown_tantos";
             this.numericUpDown_tantos.Size = new System.Drawing.Size(45, 20);
-            this.numericUpDown_tantos.TabIndex = 18;
+            this.numericUpDown_tantos.TabIndex = 10;
             // 
             // label_tantos
             // 
@@ -296,7 +296,7 @@
             this.numericUpDown_sets.Location = new System.Drawing.Point(228, 161);
             this.numericUpDown_sets.Name = "numericUpDown_sets";
             this.numericUpDown_sets.Size = new System.Drawing.Size(47, 20);
-            this.numericUpDown_sets.TabIndex = 16;
+            this.numericUpDown_sets.TabIndex = 9;
             this.numericUpDown_sets.ValueChanged += new System.EventHandler(this.numericUpDown_sets_ValueChanged);
             // 
             // label_sets
@@ -324,7 +324,7 @@
             this.numericUpDown_presencia.Location = new System.Drawing.Point(228, 108);
             this.numericUpDown_presencia.Name = "numericUpDown_presencia";
             this.numericUpDown_presencia.Size = new System.Drawing.Size(47, 20);
-            this.numericUpDown_presencia.TabIndex = 13;
+            this.numericUpDown_presencia.TabIndex = 7;
             this.numericUpDown_presencia.ValueChanged += new System.EventHandler(this.numericUpDown_presencia_ValueChanged);
             // 
             // label_presencia
@@ -343,7 +343,7 @@
             this.numericUpDown_partEmpatados.Location = new System.Drawing.Point(492, 80);
             this.numericUpDown_partEmpatados.Name = "numericUpDown_partEmpatados";
             this.numericUpDown_partEmpatados.Size = new System.Drawing.Size(45, 20);
-            this.numericUpDown_partEmpatados.TabIndex = 11;
+            this.numericUpDown_partEmpatados.TabIndex = 6;
             this.numericUpDown_partEmpatados.ValueChanged += new System.EventHandler(this.numericUpDown_partEmpatados_ValueChanged);
             // 
             // label_partEmpatados
@@ -366,7 +366,7 @@
             this.comboBox_permiso.Location = new System.Drawing.Point(183, 79);
             this.comboBox_permiso.Name = "comboBox_permiso";
             this.comboBox_permiso.Size = new System.Drawing.Size(92, 21);
-            this.comboBox_permiso.TabIndex = 9;
+            this.comboBox_permiso.TabIndex = 5;
             this.comboBox_permiso.SelectedIndexChanged += new System.EventHandler(this.comboBox_permiso_SelectedIndexChanged);
             // 
             // label_permiso
@@ -385,7 +385,7 @@
             this.numericUpDown_partGanados.Location = new System.Drawing.Point(228, 52);
             this.numericUpDown_partGanados.Name = "numericUpDown_partGanados";
             this.numericUpDown_partGanados.Size = new System.Drawing.Size(47, 20);
-            this.numericUpDown_partGanados.TabIndex = 7;
+            this.numericUpDown_partGanados.TabIndex = 4;
             this.numericUpDown_partGanados.ValueChanged += new System.EventHandler(this.numericUpDown_partGanados_ValueChanged);
             // 
             // label_partGanados
@@ -435,7 +435,7 @@
             this.textBoxReglamento.Multiline = true;
             this.textBoxReglamento.Name = "textBoxReglamento";
             this.textBoxReglamento.Size = new System.Drawing.Size(610, 179);
-            this.textBoxReglamento.TabIndex = 20;
+            this.textBoxReglamento.TabIndex = 1;
             this.textBoxReglamento.Text = "                                                                          Ingrese" +
     " reglamento";
             this.textBoxReglamento.TextChanged += new System.EventHandler(this.textBoxReglamento_TextChanged);

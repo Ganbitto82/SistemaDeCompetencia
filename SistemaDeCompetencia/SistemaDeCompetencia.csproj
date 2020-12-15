@@ -372,7 +372,7 @@
     <Content Include="Resources\inicio1.png" />
     <Content Include="Resources\inicio2.png" />
     <Content Include="Resources\WhatsApp Image 2020-04-11 at 18.11.53 %281%29.jpeg" />
-    <Content Include="SQLPruebas.sql" />
+    <Content Include="SQLCargaDeDatos.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
