@@ -46,42 +46,52 @@ namespace SistemaDeCompetencia.Vista
 
         private void Aceptar_Click(object sender, EventArgs e)
         {
-            if (textBox_nombre.Text.Equals("") || textBoxCorreo.Text.Equals("")) 
+            try
             {
-                MessageBox.Show(" Los campos nombre y correo no pueden estar vacios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            else {
-                DtoParticipante dtoParticipante = new DtoParticipante();
-                dtoParticipante.Nombre = textBox_nombre.Text.ToUpper();
-                dtoParticipante.CorreoElectronico = textBoxCorreo.Text.ToUpper();
-
-                bool agregarParticipante = gestorCompetencia.DarDeAltaParticipante(dtoParticipante, dtocompetencia.CompetenciaId);
-                if (!agregarParticipante)
+                if (textBox_nombre.Text.Equals("") || textBoxCorreo.Text.Equals(""))
                 {
-                    MessageBox.Show("No se pudo agregar el participante ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    textBox_nombre.Text = "";
-                    textBoxCorreo.Text = "";
+                    MessageBox.Show(" Los campos nombre y correo no pueden estar vacios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 else
                 {
+                    DtoParticipante dtoParticipante = new DtoParticipante();
+                    dtoParticipante.Nombre = textBox_nombre.Text.ToUpper();
+                    dtoParticipante.CorreoElectronico = textBoxCorreo.Text.ToUpper();
 
-                    //bandera solo para mostrar por unica vez que se elimino el fixture
-                    if (flag == 0)
+                    bool agregarParticipante = gestorCompetencia.DarDeAltaParticipante(dtoParticipante, dtocompetencia.CompetenciaId);
+                    if (!agregarParticipante)
                     {
-                        if (dtocompetencia.Estado.ToString().Equals("PLANIFICADA"))
-                        {
-                            MessageBox.Show("Se elimino el fixture ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
+                        MessageBox.Show("No se pudo agregar el participante ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        textBox_nombre.Text = "";
+                        textBoxCorreo.Text = "";
                     }
+                    else
+                    {
 
-                    flag = 1;
-                    MessageBox.Show("Participante agregado ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    textBox_nombre.Text = "";
-                    textBoxCorreo.Text = "";
+                        //bandera solo para mostrar por unica vez que se elimino el fixture
+                        if (flag == 0)
+                        {
+                            if (dtocompetencia.Estado.ToString().Equals("PLANIFICADA"))
+                            {
+                                MessageBox.Show("Se elimino el fixture ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                        }
 
+                        flag = 1;
+                        MessageBox.Show("Participante agregado ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        textBox_nombre.Text = "";
+                        textBoxCorreo.Text = "";
+
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
 
             
         }

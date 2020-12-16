@@ -61,7 +61,7 @@ namespace SistemaDeCompetencia.Dao
             catch (Exception)
             {
 
-                throw new Exception("Error al Buscar Deporte en la Base de Datos");
+                throw new Exception("Error al Buscar Lugar en la Base de Datos");
             }
 
 

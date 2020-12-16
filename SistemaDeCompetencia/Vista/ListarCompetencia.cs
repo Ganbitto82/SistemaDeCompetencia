@@ -45,15 +45,23 @@ namespace SistemaDeCompetencia.Vista
         private void cargarDeportes()
 
         { //funcion que carga los deportes en el comboBox
-
-            listaDeporte = gestorCompetencia.listarDeportes(dtoUsuarioForm.DtoUsuarioId);
-            comboBox_deporte.Text = "--Seleccione--";
-            comboBox_deporte.Items.Add("--Seleccione--");
-
-            foreach (var deporte in listaDeporte)
+            try
             {
-                comboBox_deporte.Items.Add(deporte.Nombre);
+                listaDeporte = gestorCompetencia.listarDeportes(dtoUsuarioForm.DtoUsuarioId);
+                comboBox_deporte.Text = "--Seleccione--";
+                comboBox_deporte.Items.Add("--Seleccione--");
+
+                foreach (var deporte in listaDeporte)
+                {
+                    comboBox_deporte.Items.Add(deporte.Nombre);
+                }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
 
         }
             
@@ -64,48 +72,56 @@ namespace SistemaDeCompetencia.Vista
             string estado;
             
             string nombre= textBox_nombre.Text.ToUpper();
+
+            try
+            {
+                if (comboBox_modalidad.SelectedItem == null)
+                {
+                    modalidad = "";
+                }
+                else
+                {
+                    modalidad = comboBox_modalidad.SelectedItem.ToString();
+                }
+                if (comboBox_deporte.SelectedItem == null)
+                {
+                    deporte = "";
+                }
+                else
+                {
+                    deporte = comboBox_deporte.SelectedItem.ToString();
+                }
+                if (comboBox_estado.SelectedItem == null)
+                {
+                    estado = "";
+                }
+                else
+                {
+                    estado = comboBox_estado.SelectedItem.ToString();
+
+                }
+
+
+
+                if (nombre.Equals("") && estado.Equals("") && modalidad.Equals("") && deporte.Equals(""))
+                {
+                    MessageBox.Show("Debe ingresar al menos uno de los criterios de búsqueda", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    listaDtoCompetencia.Clear();
+                    listaDtoCompetencia = gestorCompetencia.FiltrarCompetencias(nombre, estado, modalidad, deporte, dtoUsuarioForm);
+                    tablaDeCompetencias.Rows.Clear();
+                    cargarTabla(listaDtoCompetencia);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             
-
-            if (comboBox_modalidad.SelectedItem == null)
-            {
-                modalidad = "";
-            }
-            else
-            {
-                modalidad = comboBox_modalidad.SelectedItem.ToString();
-            }
-            if (comboBox_deporte.SelectedItem == null)
-            {
-                deporte = "";
-             }
-            else 
-            {
-                deporte = comboBox_deporte.SelectedItem.ToString();
-            }
-            if (comboBox_estado.SelectedItem == null)
-            {
-                estado = "";
-            }
-            else 
-            {
-                estado = comboBox_estado.SelectedItem.ToString();
-
-            }
-
-
-
-            if (nombre.Equals("") && estado.Equals("") && modalidad.Equals("") && deporte.Equals(""))
-            {
-                MessageBox.Show("Debe ingresar al menos uno de los criterios de búsqueda", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else 
-            {
-               listaDtoCompetencia.Clear();
-               listaDtoCompetencia = gestorCompetencia.FiltrarCompetencias(nombre,estado,modalidad,deporte, dtoUsuarioForm);
-               tablaDeCompetencias.Rows.Clear();
-               cargarTabla(listaDtoCompetencia);
-            }
-           
                  
 
         }
@@ -197,9 +213,9 @@ namespace SistemaDeCompetencia.Vista
 
 
             }
-            catch (Exception )
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe ingresar al menos uno de los criterios de búsqueda", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

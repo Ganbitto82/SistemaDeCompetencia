@@ -25,8 +25,17 @@ namespace SistemaDeCompetencia.Vista
             dtocomp = dtoCompetencia;
             dtoUsuario = dtoUsuarioForm;
             listaDtoParticipante.Clear();
-            listaDtoParticipante = gComp.listarParticipantesCompetencia(dtocomp.CompetenciaId);
-            cargarTablaParticipante(listaDtoParticipante);
+            try
+            {
+                listaDtoParticipante = gComp.listarParticipantesCompetencia(dtocomp.CompetenciaId);
+                cargarTablaParticipante(listaDtoParticipante);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+            
             
         }
 

@@ -35,10 +35,19 @@ namespace SistemaDeCompetencia.Vista
 
         public DarAltaCompetencia(DtoUsuario dtoUsuario)
         {
-            dtoUsuarioForm = dtoUsuario;
-            InitializeComponent();
-            cargarModalidad();
-            cargarDeportes();
+            try
+            {
+                dtoUsuarioForm = dtoUsuario;
+                InitializeComponent();
+                cargarModalidad();
+                cargarDeportes();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+            
             
         }
         
@@ -59,35 +68,53 @@ namespace SistemaDeCompetencia.Vista
         }
         private void cargarDeportes()
         { //funcion que carga los deportes en el comboBox 
-            listaDeporte = gComp.listarDeportes(dtoUsuarioForm.DtoUsuarioId);
-            comboBox_deporte.Text = "--Seleccione--";
-            foreach (var deporte in listaDeporte)
+            try
             {
-                comboBox_deporte.Items.Add(deporte.Nombre);
+                listaDeporte = gComp.listarDeportes(dtoUsuarioForm.DtoUsuarioId);
+                comboBox_deporte.Text = "--Seleccione--";
+                foreach (var deporte in listaDeporte)
+                {
+                    comboBox_deporte.Items.Add(deporte.Nombre);
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
 
         }
         private void comboBox_deporte_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //selecciona un deporte y busca los lugares que le corresponde
-            
-            deporteSeleccionado = comboBox_deporte.SelectedItem.ToString();
-
-            int deporteId = 0;
-            foreach (var deporte in listaDeporte)
+            try
             {
-                if (deporte.Nombre == deporteSeleccionado)
+                //selecciona un deporte y busca los lugares que le corresponde
+
+                deporteSeleccionado = comboBox_deporte.SelectedItem.ToString();
+
+                int deporteId = 0;
+                foreach (var deporte in listaDeporte)
                 {
-                    deporteId = deporte.DeporteId;
-                    dtoDeporte = deporte;
+                    if (deporte.Nombre == deporteSeleccionado)
+                    {
+                        deporteId = deporte.DeporteId;
+                        dtoDeporte = deporte;
+                    }
                 }
+                //busca los lugares
+                listaDtoLugares = gComp.listarLugares(deporteId, dtoUsuarioForm.DtoUsuarioId);
+
+                TablaLugares.Rows.Clear();
+                cargarTabla(listaDtoLugares);
+
             }
-            //busca los lugares
-            listaDtoLugares = gComp.listarLugares(deporteId, dtoUsuarioForm.DtoUsuarioId);
+            catch (Exception ex)
+            {
 
-            TablaLugares.Rows.Clear();
-            cargarTabla(listaDtoLugares);
-
+                MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
         }
               private void cargarTabla(List<DtoLugarDeRealizacion> listaDtoLugares)
         {
@@ -340,182 +367,186 @@ namespace SistemaDeCompetencia.Vista
             bool verificacionDeNombre;
             bool permisoEmpate = false;
             bool permisoParaCrearCompetencia = true;
-        
 
-            if (nombreCompentencia == null)
+            try
             {
-                permisoParaCrearCompetencia = false;
-                listaErrores.Add("Debe ingresar un nombre para la competencia");
-                //MessageBox.Show("Debe ingresar un nombre para la competencia", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-                
-            else
-                verificacionDeNombre = gComp.nombreEnUso(nombreCompentencia);
-
-            if (deporteSeleccionado == null)
-            {
-                permisoParaCrearCompetencia = false;
-                listaErrores.Add("Debe seleccionar un deporte");
-                //MessageBox.Show("Debe seleccionar un deporte", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-               
-            else 
-            {
-              
-                if (cargarValoresDisponibilidad() == false)
+                if (nombreCompentencia == null)
                 {
                     permisoParaCrearCompetencia = false;
-                    listaErrores.Add("Debe cargar las disponibilidades");
-                    //MessageBox.Show("Debe cargar las disponibilidades", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    listaErrores.Add("Debe ingresar un nombre para la competencia");
+                    //MessageBox.Show("Debe ingresar un nombre para la competencia", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                    
-             }
 
-            if (modalidad == null)
-            {
-                permisoParaCrearCompetencia = false;
-                listaErrores.Add("Debe seleccionar una modalidad");
-                //MessageBox.Show("Debe seleccionar una modalidad", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-                
+                else
+                    verificacionDeNombre = gComp.nombreEnUso(nombreCompentencia);
 
-            else 
-            {
-
-                if (modalidad.Equals("SISTEMA_DE_LIGA"))
-                {
-
-
-                    if (comboBox_permiso.SelectedItem == null)
-                    {
-                        permisoParaCrearCompetencia = false;
-                        listaErrores.Add("Debe seleccionar si permite empate");
-                       // MessageBox.Show("Debe seleccionar si permite empate ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                   
-                    }
-
-                        
-                    else
-                    {
-                        if (comboBox_permiso.SelectedItem.ToString() == "SI")
-                        {
-                            if (validarPuntos() == false)
-                            {
-                                permisoParaCrearCompetencia = false;
-                                listaErrores.Add("La cantidad de puntos por partidos ganado NO debe ser menor que la cantidad de puntos por partido empatados");
-                                //MessageBox.Show("La cantidad de puntos por partidos ganado NO debe ser menor que la cantidad de puntos por partido empatados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                                
-                            permisoEmpate = true;
-                        }
-
-                            
-                    }
-                    if (validarPuntosPorPresentarse() == false)
-                    {
-                        permisoParaCrearCompetencia = false;
-                        listaErrores.Add("Los puntos por presentarse deben ser menor a la cantidad de puntos por partidos ganado");
-                        //MessageBox.Show("Los puntos por presentarse deben ser menor a la cantidad de puntos por partidos ganado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                if (comboBox_formaPutuacion.SelectedItem == null)
+                if (deporteSeleccionado == null)
                 {
                     permisoParaCrearCompetencia = false;
-                    listaErrores.Add("Debe seleccionar forma de puntuacion ");
-                    //MessageBox.Show("Debe seleccionar forma de puntuacion ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    listaErrores.Add("Debe seleccionar un deporte");
+                    //MessageBox.Show("Debe seleccionar un deporte", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                   
+
                 else
                 {
-                    if (comboBox_formaPutuacion.SelectedItem.ToString() == "SETS")
 
+                    if (cargarValoresDisponibilidad() == false)
                     {
-                        if (validarCampoSets() == false)
+                        permisoParaCrearCompetencia = false;
+                        listaErrores.Add("Debe cargar las disponibilidades");
+                        //MessageBox.Show("Debe cargar las disponibilidades", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+
+                if (modalidad == null)
+                {
+                    permisoParaCrearCompetencia = false;
+                    listaErrores.Add("Debe seleccionar una modalidad");
+                    //MessageBox.Show("Debe seleccionar una modalidad", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+
+                else
+                {
+
+                    if (modalidad.Equals("SISTEMA_DE_LIGA"))
+                    {
+
+
+                        if (comboBox_permiso.SelectedItem == null)
                         {
                             permisoParaCrearCompetencia = false;
-                            listaErrores.Add("La cantidad máxima de un sets debe ser número impar o debe ser un númro menor a 10");
-                           // MessageBox.Show("La cantidad máxima de un sets debe ser número impar o debe ser un númro menor a 10", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            listaErrores.Add("Debe seleccionar si permite empate");
+                            // MessageBox.Show("Debe seleccionar si permite empate ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                         }
-                            
+
+
+                        else
+                        {
+                            if (comboBox_permiso.SelectedItem.ToString() == "SI")
+                            {
+                                if (validarPuntos() == false)
+                                {
+                                    permisoParaCrearCompetencia = false;
+                                    listaErrores.Add("La cantidad de puntos por partidos ganado NO debe ser menor que la cantidad de puntos por partido empatados");
+                                    //MessageBox.Show("La cantidad de puntos por partidos ganado NO debe ser menor que la cantidad de puntos por partido empatados", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+
+                                permisoEmpate = true;
+                            }
+
+
+                        }
+                        if (validarPuntosPorPresentarse() == false)
+                        {
+                            permisoParaCrearCompetencia = false;
+                            listaErrores.Add("Los puntos por presentarse deben ser menor a la cantidad de puntos por partidos ganado");
+                            //MessageBox.Show("Los puntos por presentarse deben ser menor a la cantidad de puntos por partidos ganado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
+                    if (comboBox_formaPutuacion.SelectedItem == null)
+                    {
+                        permisoParaCrearCompetencia = false;
+                        listaErrores.Add("Debe seleccionar forma de puntuacion ");
+                        //MessageBox.Show("Debe seleccionar forma de puntuacion ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    else
+                    {
+                        if (comboBox_formaPutuacion.SelectedItem.ToString() == "SETS")
+
+                        {
+                            if (validarCampoSets() == false)
+                            {
+                                permisoParaCrearCompetencia = false;
+                                listaErrores.Add("La cantidad máxima de un sets debe ser número impar o debe ser un númro menor a 10");
+                                // MessageBox.Show("La cantidad máxima de un sets debe ser número impar o debe ser un númro menor a 10", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+
+                        }
+                    }
+
+
+                }
+                if (listaErrores.Count != 0)
+                {
+                    var mensajeDeErrores = string.Join(Environment.NewLine, listaErrores);
+                    MessageBox.Show(mensajeDeErrores, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    listaErrores.Clear();
                 }
 
-                
-            }
-            if (listaErrores.Count != 0)
-            {
-                var mensajeDeErrores = string.Join(Environment.NewLine, listaErrores);
-                MessageBox.Show(mensajeDeErrores, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                listaErrores.Clear();
-            }
-
-            if (permisoParaCrearCompetencia)
-            {
-                //creamos el dtoCompetencia y seteamos sus atributos
-                DtoCompetencia dtoCompetencia = new DtoCompetencia();
-                DtoLugarDeRealizacion dtoLugarDeRealizacion = new DtoLugarDeRealizacion();
-
-                //cargar usuario	
-                dtoCompetencia.DtoUsuario = dtoUsuarioForm;
-                dtoCompetencia.UsuarioId = dtoUsuarioForm.DtoUsuarioId;
-
-                //seteamos el nombre
-                dtoCompetencia.Nombre = textBox_nombre.Text.ToUpper();
-
-                //cargamos deporte 	
-                dtoCompetencia.DtoDeporte = dtoDeporte;
-                //disponibilidades 	
-                dtoCompetencia.Disponibilidades = listaDtoDisponibilidad;
-                /* ver como se hace con la modalidad*/
-                dtoCompetencia.Modalidad = modalidadDto;
-
-                dtoCompetencia.PuntosPorPartidosGanado = Convert.ToInt32(numericUpDown_partGanados.Value);
-                dtoCompetencia.PermisoDeEmpate = permisoEmpate;
-                dtoCompetencia.PuntosPorPartidoEmpatado = Convert.ToInt32(numericUpDown_partEmpatados.Value);
-                dtoCompetencia.PuntosPorPresentarse = Convert.ToInt32(numericUpDown_presencia.Value);
-
-                /* MessageBox.Show("Mensaje de informacion","Titulo",MessageBoxButtons.OK,MessageBoxIcon.Information);*/
-                //forma de puntuacion
-                if (comboBox_formaPutuacion.SelectedItem != null && comboBox_formaPutuacion.SelectedItem.ToString().Equals("SETS"))
+                if (permisoParaCrearCompetencia)
                 {
-                    DtoSet f = new DtoSet();
-                    f.Cantidad = Convert.ToInt32(numericUpDown_sets.Value);
-                    dtoCompetencia.DtoFormaDePuntuacion = f;
-                }
-                else if (comboBox_formaPutuacion.SelectedItem != null && comboBox_formaPutuacion.SelectedItem.ToString().Equals("PUNTUACION"))
-                {
-                    DtoPuntuacion f = new DtoPuntuacion();
-                    f.TantosOtorgados = Convert.ToInt32(numericUpDown_tantos.Value);
-                    dtoCompetencia.DtoFormaDePuntuacion = f;
-                }
-                else if (comboBox_formaPutuacion.SelectedItem != null && comboBox_formaPutuacion.SelectedItem.ToString().Equals("RESULTADO FINAL"))
-                {
-                    DtoResultadoFinal f = new DtoResultadoFinal();
-                    dtoCompetencia.DtoFormaDePuntuacion = f;
-                }
-                //reglamento
-                dtoCompetencia.Reglamento = textBoxReglamento.Text;
+                    //creamos el dtoCompetencia y seteamos sus atributos
+                    DtoCompetencia dtoCompetencia = new DtoCompetencia();
+                    DtoLugarDeRealizacion dtoLugarDeRealizacion = new DtoLugarDeRealizacion();
+
+                    //cargar usuario	
+                    dtoCompetencia.DtoUsuario = dtoUsuarioForm;
+                    dtoCompetencia.UsuarioId = dtoUsuarioForm.DtoUsuarioId;
+
+                    //seteamos el nombre
+                    dtoCompetencia.Nombre = textBox_nombre.Text.ToUpper();
+
+                    //cargamos deporte 	
+                    dtoCompetencia.DtoDeporte = dtoDeporte;
+                    //disponibilidades 	
+                    dtoCompetencia.Disponibilidades = listaDtoDisponibilidad;
+                    /* ver como se hace con la modalidad*/
+                    dtoCompetencia.Modalidad = modalidadDto;
+
+                    dtoCompetencia.PuntosPorPartidosGanado = Convert.ToInt32(numericUpDown_partGanados.Value);
+                    dtoCompetencia.PermisoDeEmpate = permisoEmpate;
+                    dtoCompetencia.PuntosPorPartidoEmpatado = Convert.ToInt32(numericUpDown_partEmpatados.Value);
+                    dtoCompetencia.PuntosPorPresentarse = Convert.ToInt32(numericUpDown_presencia.Value);
+
+                    /* MessageBox.Show("Mensaje de informacion","Titulo",MessageBoxButtons.OK,MessageBoxIcon.Information);*/
+                    //forma de puntuacion
+                    if (comboBox_formaPutuacion.SelectedItem != null && comboBox_formaPutuacion.SelectedItem.ToString().Equals("SETS"))
+                    {
+                        DtoSet f = new DtoSet();
+                        f.Cantidad = Convert.ToInt32(numericUpDown_sets.Value);
+                        dtoCompetencia.DtoFormaDePuntuacion = f;
+                    }
+                    else if (comboBox_formaPutuacion.SelectedItem != null && comboBox_formaPutuacion.SelectedItem.ToString().Equals("PUNTUACION"))
+                    {
+                        DtoPuntuacion f = new DtoPuntuacion();
+                        f.TantosOtorgados = Convert.ToInt32(numericUpDown_tantos.Value);
+                        dtoCompetencia.DtoFormaDePuntuacion = f;
+                    }
+                    else if (comboBox_formaPutuacion.SelectedItem != null && comboBox_formaPutuacion.SelectedItem.ToString().Equals("RESULTADO FINAL"))
+                    {
+                        DtoResultadoFinal f = new DtoResultadoFinal();
+                        dtoCompetencia.DtoFormaDePuntuacion = f;
+                    }
+                    //reglamento
+                    dtoCompetencia.Reglamento = textBoxReglamento.Text;
 
 
-                GestorCompetencia gestorCompetencia = new GestorCompetencia();
-                try
-                {
-                    dtoCompetencia=gestorCompetencia.darDeAltaCompetenciaDeporiva(dtoCompetencia);
+                    GestorCompetencia gestorCompetencia = new GestorCompetencia();
                     
+                    
+                    dtoCompetencia = gestorCompetencia.darDeAltaCompetenciaDeporiva(dtoCompetencia);
+
                     MessageBox.Show("La competencia fué dada de alta con éxito.", "Competencia Creada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     /*Form frmListarComp = new ListarCompetencia(dtoUsuarioForm);
                     frmListarComp.Show();
                     this.Close();*/
-                    Form frmListarParticipante = new ListarParticipante(dtoCompetencia,dtoUsuarioForm);
+                    Form frmListarParticipante = new ListarParticipante(dtoCompetencia, dtoUsuarioForm);
                     frmListarParticipante.Show();
                     this.Close();
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message, "No se pudo completar la operacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
                 }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "No se pudo completar la operacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
             
             
         }

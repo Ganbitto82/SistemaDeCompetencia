@@ -41,7 +41,7 @@ namespace SistemaDeCompetencia.Dao
             }
             catch 
             {
-                throw new Exception("Error al buscar Competencia en la Base de datos.");
+                throw new Exception("Error al insertar Competencia en la Base de datos.");
             }
             
            
@@ -104,7 +104,7 @@ namespace SistemaDeCompetencia.Dao
             }
             catch
             {
-                throw new Exception("Error al buscar Competencia en la Base de datos.");
+                throw new Exception("Error al modificar Competencia en la Base de datos.");
             }
         }
            
@@ -122,7 +122,7 @@ namespace SistemaDeCompetencia.Dao
                 context.SaveChanges();
 
             }
-            catch { throw new Exception("Error al buscar Competencia en la Base de datos."); }
+            catch { throw new Exception("Error al eliminar Fixture en la Base de datos."); }
             
             
         }

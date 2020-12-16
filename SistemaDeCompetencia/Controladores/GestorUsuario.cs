@@ -17,19 +17,28 @@ namespace SistemaDeCompetencia.Controladores
         public DtoUsuario autenticarUsusario(DtoLogin loginDTO)
         {
             DtoUsuario userDTO = new DtoUsuario();
-
-
-            List<Login> log = daoLogin.buscarPorCorreo(loginDTO.correoElectronico);
-            if (log.Count > 0 && log.First().Contraseña.Equals(loginDTO.Contraseña))
+            try
             {
-                userDTO.DtoUsuarioId = log.First().UsuarioId;
+                List<Login> log = daoLogin.buscarPorCorreo(loginDTO.correoElectronico);
+                if (log.Count > 0 && log.First().Contraseña.Equals(loginDTO.Contraseña))
+                {
+                    userDTO.DtoUsuarioId = log.First().UsuarioId;
+                }
+                else
+                {
+                    throw new Exception("El Usuario o Contraseña no son válidos.");
+                }
+
+                return userDTO;
             }
-            else
+            catch (Exception ex)
             {
-                throw new Exception("El Usuario o Contraseña no son válidos.");
+
+                throw ex;
             }
 
-            return userDTO;
+
+           
         }
     }
 }
